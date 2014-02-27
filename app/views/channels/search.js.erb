@@ -1,4 +1,4 @@
-$("#channels").html("<%= escape_javascript(render("channels")) %>");
+$("#channels").html("<%= escape_javascript(render("search_channels")) %>");
 
 $("#channels div").each(function () {
 	var url = $(this).data("url");

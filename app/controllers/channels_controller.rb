@@ -1,6 +1,19 @@
 class ChannelsController < ApplicationController
 	@@twitchChannelSearchURL = "https://api.twitch.tv/kraken/search/channels?q="
 
+	def index
+		@streams = Stream.all
+	end
+
+	def show
+		@channel = Stream.find_by name: params[:id]
+		if @channel
+			@quotes = @channel.quotes
+		else
+			render 'show_missing'
+		end
+	end
+
  	def search
  		require "net/http"
 		twitchChannelSearch

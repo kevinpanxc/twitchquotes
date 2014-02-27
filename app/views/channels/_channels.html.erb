@@ -1,0 +1,5 @@
+<% @channels.each do |channel| %>
+	<%= content_tag :div, data: {url: channel["url"], id:channel["_id"]} do %>
+		<%= channel["display_name"] %>
+	<% end %>
+<% end %>

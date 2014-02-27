@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225053316) do
+ActiveRecord::Schema.define(version: 20140227043014) do
 
   create_table "quotes", force: true do |t|
     t.string   "quote"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "stream_url"
     t.string   "stream_id"
-    t.string   "stream_name"
   end
 
   create_table "streams", force: true do |t|

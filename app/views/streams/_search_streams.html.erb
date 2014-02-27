@@ -1,5 +1,5 @@
 <% @streams.each do |stream| %>
-	<%= content_tag :div, data: {url: stream["url"], id:stream["_id"]} do %>
+	<%= content_tag :div, data: {id:stream["_id"], url:stream["url"]} do %>
 		<%= stream["display_name"] %>
 	<% end %>
 <% end %>

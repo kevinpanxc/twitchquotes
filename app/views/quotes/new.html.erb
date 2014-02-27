@@ -5,9 +5,9 @@
 		<%= form_for(@quote) do |f| %>
 			<%= render 'shared/quote_error_messages' %>
 			<%= f.text_field :quote %>
-			<%= f.hidden_field :stream_url, id: "stream_url" %>
 			<%= f.hidden_field :stream_id, id: "stream_id" %>
-			<%= f.hidden_field :stream_name, id: "stream_name" %>
+			<%= hidden_field_tag "stream_name" %>
+			<%= hidden_field_tag "stream_url" %>
 			<%= f.submit "Add Quote", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>

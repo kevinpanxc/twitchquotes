@@ -1,13 +1,13 @@
 $("#channels").html("<%= escape_javascript(render("search_streams")) %>");
 
 $("#channels div").each(function () {
-	var url = $(this).data("url");
 	var id = $(this).data("id");
+	var url = $(this).data("url");
 	this.onclick = (function (url, id, name) {
 		return function () {
 			document.getElementById("stream_id").value = id;
 			document.getElementById("stream_url").value = url;
-			document.getElementById("stream_name").value = name.trim();
+			document.getElementById("stream_name").value = name;
 		}
 	})(url, id, this.innerHTML);
 });
@@ -21,12 +21,4 @@ function serialize (obj) {
 	    str += key + "=" + obj[key];
 	}
 	return str;
-}
-
-function addHidden (formId, key, value) {
-	var input = document.createElement("input");
-	input.type = 'hidden';
-	input.name = key;
-	input.value = value;
-	document.getElementById(formId).appendChild(input);
 }

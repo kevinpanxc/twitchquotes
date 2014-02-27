@@ -2,10 +2,10 @@ Twitchquotes::Application.routes.draw do
   resources :users
   resources :quotes
   resources :sessions, only: [:new, :create, :destroy]
-  resources :channels, only: [:index, :show]
+  resources :streams, only: [:index, :show]
 
   root to: 'static_pages#home'
-  get "api_search_channels", to: 'channels#search'
+  get "api_search_streams", to: 'streams#search'
   get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'

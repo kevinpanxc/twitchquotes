@@ -14,14 +14,14 @@
 </div>
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-		<%= form_tag api_search_channels_path, :method => 'get', :id => "channels_search" do %>
+		<%= form_tag api_search_streams_path, :method => 'get', :id => "channels_search" do %>
 		    <%= text_field_tag :search, params[:search] %>
 		    <%= submit_tag "Search Stream", :name => nil, class: "btn btn-large btn-primary" %>
 		<% end %>
 		<div id="channels">
 			<%
 				if !@channels.nil?
-					render 'channels/search_channels'
+					render 'streams/search_streams'
 				end
 			%>
 		</div>

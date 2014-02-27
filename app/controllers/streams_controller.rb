@@ -1,4 +1,4 @@
-class ChannelsController < ApplicationController
+class StreamsController < ApplicationController
 	@@twitchChannelSearchURL = "https://api.twitch.tv/kraken/search/channels?q="
 
 	def index
@@ -6,9 +6,9 @@ class ChannelsController < ApplicationController
 	end
 
 	def show
-		@channel = Stream.find_by name: params[:id]
-		if @channel
-			@quotes = @channel.quotes
+		@stream = Stream.find_by name: params[:id]
+		if @stream
+			@quotes = @stream.quotes
 		else
 			render 'show_missing'
 		end
@@ -26,9 +26,9 @@ class ChannelsController < ApplicationController
 	def twitchChannelSearch
 		if params[:search]
 			processedJson = getResponseAndJSONDecode(@@twitchChannelSearchURL + params[:search])
-			@channels = processedJson["channels"]
+			@streams = processedJson["channels"]
 		elsif
-			@channels = Array.new
+			@streams = Array.new
 		end
 	end
 

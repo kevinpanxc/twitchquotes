@@ -7,7 +7,7 @@ $("#channels div").each(function () {
 		return function () {
 			document.getElementById("stream_id").value = id;
 			document.getElementById("stream_url").value = url;
-			document.getElementById("stream_name").value = name;
+			document.getElementById("stream_name").value = name.trim();
 		}
 	})(url, id, this.innerHTML);
 });

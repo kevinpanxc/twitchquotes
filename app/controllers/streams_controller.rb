@@ -6,7 +6,8 @@ class StreamsController < ApplicationController
 	end
 
 	def show
-		@stream = Stream.find_by name: params[:id]
+		# @stream = Stream.find_by name: params[:id]
+		@stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first
 		if @stream
 			@quotes = @stream.quotes
 		else

@@ -15,7 +15,7 @@ class QuotesController < ApplicationController
 			save_quote(@quote)
 		else
 			if stream.save
-				save_quote(@quote)	
+				save_quote(@quote)
 			else
 				flash[:error] = "Failed to save stream"
 				render 'new'

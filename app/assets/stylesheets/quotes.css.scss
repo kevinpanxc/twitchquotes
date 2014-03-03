@@ -2,28 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul {
-	padding: 0;
-	font-size: 18px;
+@mixin individual-quote {
+	overflow: auto;
+	padding: 12px;
+	border-radius: 12px;
+	background-color: white;
+	border: 1px solid #eee;
 	text-align: center;
+	cursor: default;
 }
 
-.quotes {
+ul.quotes {
 	list-style: none;
 	margin: 0;
+	padding: 0;
+
+	font-size: 18px;
+	text-align: center;
 	li {
-		overflow: auto;
-		padding: 12px;
 		width: 80%;
 		margin-bottom: 24px;
-		border-radius: 12px;
-		background-color: white;
 		display: inline-block;
-		border: 1px solid #eee;
+		@include individual-quote;
 		&:last-child {
 			border-bottom: 1px solid #eee;
 		}
-		cursor: default;
 	}
 
 	li:hover {
@@ -31,7 +34,149 @@ ul {
 	}
 }
 
-.stream-name {
+.quotes_list_stream_name_date {
 	margin-top: 8px;
 	font-size: 12px;
+}
+
+.quote_actions {
+	position: absolute;
+	margin-top: -5px;
+	padding-left: 5px;
+	font-size: 18px;
+	display: none;
+	color: rgb(255, 255, 255);
+	background: #866bb9;
+	padding: 3px;
+	border-radius: 4px;
+}
+
+.quote_link {
+	color: rgb(255, 255, 255);
+}
+
+.quote_link:hover {
+	color: rgb(220, 220, 220);
+}
+
+/*show quote page*/
+
+#show_quote {
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 40px;
+	font-size: 22px;
+
+	@include individual-quote;
+}
+
+/*add quote page*/
+
+.add_quote_main_content {
+	padding: 0 8%;
+}
+
+#channels_search_form > input {
+	border: 0;
+	background: transparent;
+	font-size: 40px !important;
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+#new_quote_form {
+	display: none;
+}
+
+ul#channels {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.spinner {
+	display: none;
+	img {
+		width: 40px;
+	}
+}
+
+#channels li {
+	padding: 5px;
+	border: solid #baaad7 3px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	color: #545454;
+
+	&:hover {
+		border: solid #866bb9 3px;
+	}
+}
+
+#channels li > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#channels .logo {
+	margin-right: 10px;
+}
+
+#channels .logo > img {
+	width: 48px;
+}
+
+#channels .name_status > div > div {
+	display: inline-block;
+	padding: 0 8px;
+	border-right: 2px #ADADAD solid;
+}
+
+#channels .name_status > div > div:last-child {
+	border-right: 0px;
+}
+
+#channels .name_follower_game {
+	font-size: 20px;
+}
+
+#channels .status {
+	margin-top: 8px;
+	padding: 0 8px;
+}
+
+#channels .name {
+	font-weight: bold;
+	color: black;
+}
+
+.btn-custom {
+  background-color: #866bb9;
+  border-color: #866bb9;
+  color: white;
+}
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active {
+  background-color: #785ab1;
+  border-color: #6b4da4;
+}
+.btn-custom.disabled:hover,
+.btn-custom.disabled:focus,
+.btn-custom.disabled:active,
+.btn-custom.disabled.active,
+.btn-custom[disabled]:hover,
+.btn-custom[disabled]:focus,
+.btn-custom[disabled]:active,
+.btn-custom[disabled].active,
+fieldset[disabled] .btn-custom:hover,
+fieldset[disabled] .btn-custom:focus,
+fieldset[disabled] .btn-custom:active,
+fieldset[disabled] .btn-custom.active {
+  background-color: #866bb9;
+  border-color: #866bb9;
 }

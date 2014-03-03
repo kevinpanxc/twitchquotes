@@ -11,10 +11,10 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
+    <div class="container" id="main">
        <%= render 'layouts/messages' %>
        <%= yield %>
        <%= debug(params) if Rails.env.development? %>
-    </main>
+    </div>
   </body>
 </html>

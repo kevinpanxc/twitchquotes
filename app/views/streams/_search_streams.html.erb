@@ -1,5 +1,11 @@
 <% @streams.each do |stream| %>
-	<%= content_tag :div, data: {id:stream["_id"], url:stream["url"]} do %>
-		<%= stream["display_name"] %>
+	<%= content_tag :li, data: {id:stream["_id"], url:stream["url"]} do %>
+		<div class="logo">
+			<img src="<%= stream["logo"] %>"/>
+		</div>
+		<div class="name_status">
+			<div class="name_follower_game"><div class="name"><%= stream["display_name"] %></div><div class="followers"><span class="glyphicon glyphicon-heart"></span> <%= stream["followers"] %></div><div><span class="glyphicon glyphicon-flash"></span> <%= stream["game"] %></div></div>
+			<div class="status"><%= stream["status"] %></div>
+		</div>
 	<% end %>
 <% end %>

@@ -1,15 +1,17 @@
 $("#channels").html("<%= escape_javascript(render("search_streams")) %>");
 
-$("#channels div").each(function () {
+$("#channels li").each(function () {
 	var id = $(this).data("id");
 	var url = $(this).data("url");
 	this.onclick = (function (url, id, name) {
 		return function () {
+			$("#channels_search").fadeOut();
+			$("#new_quote_form").show();
 			document.getElementById("stream_id").value = id;
 			document.getElementById("stream_url").value = url;
 			document.getElementById("stream_name").value = name.trim();
 		}
-	})(url, id, this.innerHTML);
+	})(url, id, $(this).find(".name").html());
 });
 
 function serialize (obj) {

@@ -8,27 +8,42 @@
 }
 
 body {
-	font-family: "Open Sans", Arial, Helvetica !important;
 	background-color: #F7F7F7 !important;
 }
 
-main {
+#main {
+	font-family: "Open Sans", Arial, Helvetica !important;
 	background-color: #F7F7F7 !important;
+	padding-top: 24px;
+}
+
+.paginate_parent {
+	margin-top: -24px;
+	text-align: center;
+}
+
+.pagination > .active > a {
+	background-color: #866bb9 !important;
+	border-color: #866bb9 !important;
+}
+
+.pagination > li:not(.active):not(.disabled) > a {
+	color: #866bb9 !important;
 }
 
 /* header */
 
+nav {
+	border-top: 8px solid #866bb9 !important;
+}
+
 #logo {
-	float: left;
-	margin-right: 10px;
 	font-size: 1.7em;
-	color: white;
-	text-transform: uppercase;
+	color: #4A4A4A;
 	letter-spacing: -1px;
 	font-weight: bold;
-	line-height: 1;
 	&:hover {
-		color: white;
+		color: #866bb9;
 		text-decoration: none;
 	}
 }

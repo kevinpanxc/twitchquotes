@@ -1,8 +1,9 @@
-<li><%= link_to 'About', about_path %></li>
-<li><%= link_to 'Help', help_path %></li>
-<% if signed_in? %>
-	<li><%= link_to "Profile", current_user %></li>
-	<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-<% else %>
-	<li><%= link_to "Sign in", signin_path %></li>
-<% end %>
+<li><%= link_to new_quote_path do %>
+    <span class="glyphicon glyphicon-plus" title="New quote"></span>
+<% end %></li>
+<li><%= link_to streams_path do %>
+    <span class="glyphicon glyphicon-th-large" title="All streams"></span>
+<% end %></li>
+<li><%= link_to about_path do %>
+    <span class="glyphicon glyphicon-leaf" title="About"></span>
+<% end %></li>

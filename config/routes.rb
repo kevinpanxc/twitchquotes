@@ -4,7 +4,7 @@ Twitchquotes::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]
 
-  root to: 'static_pages#home'
+  root to: 'quotes#index'
   get "api_search_streams", to: 'streams#search'
   get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help'

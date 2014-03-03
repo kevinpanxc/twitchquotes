@@ -1,10 +1,14 @@
 class QuotesController < ApplicationController
 	def index
-		@quotes = Quote.order(created_at: :desc)
+		@quotes = Quote.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
 	end
 
 	def new
 		@quote = Quote.new
+	end
+
+	def show
+		@quote = Quote.find(params[:id])
 	end
 
 	def create

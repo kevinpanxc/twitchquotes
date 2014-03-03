@@ -6,7 +6,7 @@
 			</div>
 			<div class="name"><%= stream.name %></div>
 			<div class="followers"><span class="glyphicon glyphicon-heart"></span> <%= stream.followers %></div>
-			<div class="number_of_quotes"><%= stream.quotes.count %> quotes</div>
+			<div class="number_of_quotes"><%= pluralize(stream.quotes.count, 'quote') %></div>
 		</div>
 	<% end %>
 </div>

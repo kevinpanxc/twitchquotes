@@ -1,0 +1,36 @@
+// Place all the styles related to the Channels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stream_box > a > div {
+	padding: 7%;
+	margin: 0 auto;
+	border: solid #baaad7 3px;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+
+	background: #866bb9;
+	color: white;
+
+	&:hover {
+		border: solid #866bb9 3px;
+	}
+}
+
+.stream_box > a:hover {
+	text-decoration: none;
+}
+
+.stream_box .logo_parent {
+	background: #937bc0;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.stream_box .name {
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 5px;
+}

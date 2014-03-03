@@ -1,7 +1,9 @@
 <% provide(:title, 'All Streams') %>
 
-<h1>All Streams</h1>
-
-<ul class="streams">
-	<%= render @streams %>
-</ul>
+<% @streams.each_slice(5) do |stream_batch| %>
+	<div class="row stream_row">
+		<div class="col-md-1"></div>
+		<%= render stream_batch %>
+		<div class="col-md-1"></div>
+	</div>
+<% end %>

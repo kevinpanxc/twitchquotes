@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@mixin individual-quote {
+@mixin individual_quote {
 	overflow: auto;
 	padding: 12px;
 	border-radius: 12px;
@@ -23,7 +23,7 @@ ul.quotes {
 		width: 80%;
 		margin-bottom: 24px;
 		display: inline-block;
-		@include individual-quote;
+		@include individual_quote;
 		&:last-child {
 			border-bottom: 1px solid #eee;
 		}
@@ -67,7 +67,7 @@ ul.quotes {
 	margin-top: 40px;
 	font-size: 22px;
 
-	@include individual-quote;
+	@include individual_quote;
 }
 
 /*add quote page*/
@@ -164,6 +164,7 @@ ul#channels {
 .btn-custom.active {
   background-color: #785ab1;
   border-color: #6b4da4;
+  color: white;
 }
 .btn-custom.disabled:hover,
 .btn-custom.disabled:focus,
@@ -179,4 +180,5 @@ fieldset[disabled] .btn-custom:active,
 fieldset[disabled] .btn-custom.active {
   background-color: #866bb9;
   border-color: #866bb9;
+  color: white;
 }

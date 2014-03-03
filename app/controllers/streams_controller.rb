@@ -1,12 +1,18 @@
 class StreamsController < ApplicationController
 	@@twitchChannelSearchURL = "https://api.twitch.tv/kraken/search/channels?q="
+	@@twitchChannelGetByName = "https://api.twitch.tv/kraken/channels/"
 
 	def index
 		@streams = Stream.all
+
+		@streams.each do |stream|
+			json = twitchChannelGetByName(stream.name)
+			stream.followers = json["followers"]
+			stream.logo = json["logo"]
+		end
 	end
 
 	def show
-		# @stream = Stream.find_by name: params[:id]
 		@stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first
 		if @stream
 			@quotes = @stream.quotes
@@ -31,6 +37,10 @@ class StreamsController < ApplicationController
 		elsif
 			@streams = Array.new
 		end
+	end
+
+	def twitchChannelGetByName(stream_name)
+		processedJson = getResponseAndJSONDecode(@@twitchChannelGetByName + stream_name)
 	end
 
 	def getResponseAndJSONDecode (uriString)

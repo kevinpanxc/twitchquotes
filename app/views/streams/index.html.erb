@@ -1,9 +1,40 @@
 <% provide(:title, 'All Streams') %>
 
+<% if @letter %>
+	<div class="paginate_parent_top">
+		<ul class="pagination">
+			<% ("A".."Z").each { |letter| %>
+				<% if @letter == letter %>
+					<li class="active"><a class="active" href="/streams?letter=<%=letter%>"><%= letter %></a></li>
+				<% else %>
+					<li><a href="/streams?letter=<%=letter%>"><%= letter %></a></li>
+				<% end %>
+			<% } %>
+		</ul>
+	</div>
+<% end %>
+
+<% if @streams.empty? %>
+	<h1>No streams with quotes</h1>
+	<div class="col-md-2 col-md-offset-5">
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<%= link_to new_quote_path do %>
+				    <button class="btn btn-large btn-custom" style="border-radius: 4px">Add a quote!</button>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
 <% @streams.each_slice(5) do |stream_batch| %>
 	<div class="row stream_row">
 		<div class="col-md-1"></div>
 		<%= render stream_batch %>
 		<div class="col-md-1"></div>
 	</div>
+<% end %>
+
+<% if !@letter %>
+	<div class="paginate_parent_bottom"><%= will_paginate %></div>
 <% end %>

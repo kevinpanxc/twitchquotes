@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227043014) do
+ActiveRecord::Schema.define(version: 20140304051232) do
 
   create_table "quotes", force: true do |t|
     t.string   "quote"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20140227043014) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo"
+    t.integer  "followers"
+    t.integer  "quotes_count"
   end
 
   create_table "users", force: true do |t|

@@ -1,12 +1,12 @@
 <div class="col-md-2 stream_box">
 	<%= link_to stream_path(stream.name) do %>
-		<div>
+		<div title="<%= stream.name %>">
 			<div class="logo_parent">
 				<img class="logo" src="<%= stream.logo %>" />
 			</div>
 			<div class="name"><%= stream.name %></div>
 			<div class="followers"><span class="glyphicon glyphicon-heart"></span> <%= stream.followers %></div>
-			<div class="number_of_quotes"><%= pluralize(stream.quotes.count, 'quote') %></div>
+			<div class="number_of_quotes"><%= pluralize(stream.quotes_count, 'quote') %></div>
 		</div>
 	<% end %>
 </div>

@@ -40,6 +40,8 @@ class QuotesController < ApplicationController
 
 		def save_quote(quote)
 			if quote.save
+				quote.stream.quotes_count = quote.stream.quotes.count
+				quote.stream.save
 				redirect_to quotes_path
 			else
 				render 'new'

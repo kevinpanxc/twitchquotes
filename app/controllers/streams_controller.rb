@@ -17,7 +17,8 @@ class StreamsController < ApplicationController
 	def show
 		@stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first
 		if @stream
-			@quotes = @stream.quotes
+			@quotes = @stream.quotes.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
+			# @stream.quotes(order: "created_at DESC")
 		else
 			render 'show_missing'
 		end

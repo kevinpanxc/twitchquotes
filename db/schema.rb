@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140307041832) do
   enable_extension "plpgsql"
 
   create_table "quotes", force: true do |t|
-    t.string   "quote"
+    t.text     "quote"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stream_id"

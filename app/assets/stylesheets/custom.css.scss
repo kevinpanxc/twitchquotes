@@ -72,6 +72,11 @@ nav {
 	@extend .error;
 }
 
+#mywebsite_parent {
+	text-align: center;
+	margin-top: 20px;
+}
+
 .btn-custom {
   background-color: #866bb9;
   border-color: #866bb9;
@@ -100,4 +105,52 @@ fieldset[disabled] .btn-custom.active {
   background-color: #866bb9;
   border-color: #866bb9;
   color: white !important;
+}
+
+.btn-mywebsite { 
+  color: white; 
+  background-color: #2DBBF7;
+  border: 8px solid #97DAF7 !important;
+} 
+ 
+.btn-mywebsite:hover, 
+.btn-mywebsite:focus, 
+.btn-mywebsite:active, 
+.btn-mywebsite.active, 
+.open .dropdown-toggle.btn-mywebsite { 
+  color: white !important; 
+  background-color: #2DBBF7; 
+  border-color: #2DBBF7; 
+} 
+ 
+.btn-mywebsite:active, 
+.btn-mywebsite.active, 
+.open .dropdown-toggle.btn-mywebsite { 
+  background-image: none; 
+  color: white !important;
+} 
+ 
+.btn-mywebsite.disabled, 
+.btn-mywebsite[disabled], 
+fieldset[disabled] .btn-mywebsite, 
+.btn-mywebsite.disabled:hover, 
+.btn-mywebsite[disabled]:hover, 
+fieldset[disabled] .btn-mywebsite:hover, 
+.btn-mywebsite.disabled:focus, 
+.btn-mywebsite[disabled]:focus, 
+fieldset[disabled] .btn-mywebsite:focus, 
+.btn-mywebsite.disabled:active, 
+.btn-mywebsite[disabled]:active, 
+fieldset[disabled] .btn-mywebsite:active, 
+.btn-mywebsite.disabled.active, 
+.btn-mywebsite[disabled].active, 
+fieldset[disabled] .btn-mywebsite.active { 
+  background-color: #2DBBF7; 
+  border-color: #2DBBF7; 
+  color: white !important;
+} 
+ 
+.btn-mywebsite .badge { 
+  color: #2DBBF7; 
+  background-color: white; 
 }

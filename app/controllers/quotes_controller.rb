@@ -13,15 +13,15 @@ class QuotesController < ApplicationController
 
 	def create
 		@quote = Quote.new(quote_params)
-		stream = Stream.new(stream_params)
+		@stream = Stream.new(stream_params)
 
 		if Stream.exists?(stream_id: params[:quote][:stream_id])
 			save_quote(@quote)
 		else
-			if stream.save
+			if @stream.save
 				save_quote(@quote)
 			else
-				flash[:error] = "Failed to save stream"
+				flash.now[:error] = "Failed to save stream"
 				render 'new'
 			end
 		end
@@ -41,7 +41,11 @@ class QuotesController < ApplicationController
 
 		def stream_params
 			params.permit(:stream_id, :stream_name, :stream_url)
-			return_params = ActionController::Parameters.new(stream_id: params[:quote][:stream_id], name: params[:stream_name], url: params[:stream_url] )
+			return_params = ActionController::Parameters.new(stream_id: params[:quote][:stream_id], 
+				name: params[:stream_name], 
+				url: params[:stream_url],
+				logo: params[:stream_logo],
+				followers: params[:stream_followers] )
 			return_params.permit!
 		end
 

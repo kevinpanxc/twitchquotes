@@ -1,6 +1,9 @@
 <% provide(:title, 'Quotes from ' + @stream.name) %>
 
-<h1><%= @stream.name %>'s Stream</h1>
+<div class="jumbotron">
+	<div class="stream_name_logo"><img src="<%= @stream.logo %>"/><h1><%= @stream.name %></h1></div>
+	<p><%= link_to "View on Twitch", @stream.url, class: "btn btn-custom btn-lg" %></p>
+</div>
 
 <ul class="quotes">
 	<%= render @quotes %>

@@ -1,5 +1,5 @@
 <% @streams.each do |stream| %>
-	<%= content_tag :li, data: {id:stream["_id"], url:stream["url"]} do %>
+	<%= content_tag :li, data: {id:stream["_id"], url:stream["url"], followers:stream["followers"], logo:stream["logo"]} do %>
 		<div class="logo">
 			<img src="<%= stream["logo"] %>"/>
 		</div>

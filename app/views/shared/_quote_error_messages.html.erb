@@ -1,12 +1,8 @@
 <% if @quote.errors.any? %>
-	<div id="error_explanation">
-	<div class="alert alert-error">
-	The form contains <%= pluralize(@quote.errors.count, "error") %>.
-	</div>
-		<ul>
-			<% @quote.errors.full_messages.each do |msg| %>
-				<li>* <%= msg %></li>
-			<% end %>
-		</ul>
-	</div>
+	<% @quote.errors.full_messages.each do |msg| %>
+		<div class="alert alert-danger">
+	      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	      <%= content_tag :div, msg %>
+	    </div>
+	<% end %>
 <% end %>

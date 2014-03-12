@@ -1,4 +1,4 @@
-class QuotesController < ApplicationController
+class QuotesController < ApplicationController	
 	def index
 		@quotes = Quote.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
 	end

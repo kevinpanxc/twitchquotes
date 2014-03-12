@@ -1,6 +1,6 @@
 <li class="single_quote_block">
 	<%= render "quotes/quote_actions", quote: quote %>
-	"<%= quote.quote %>"
+	"<%=raw quote.quote %>"
 	<div class="quotes_list_stream_name_date">
 		<%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
 	</div>

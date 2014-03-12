@@ -67,9 +67,9 @@ nav {
 		margin: 0 0 18px 0;
 	}
 }
-.field with errors {
-	@extend .control-group;
-	@extend .error;
+
+.field_with_errors {
+	@extend .has-error;
 }
 
 #mywebsite_parent {

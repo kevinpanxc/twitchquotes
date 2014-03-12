@@ -9,7 +9,7 @@ class Quote < ActiveRecord::Base
     private
         def process_quotes
             Emoticons.emoticons.each do |key, value|
-                self.quote = self.quote.gsub(/(?<=\s|^)#{key}(?=($|\s))/, '<img src="' + value + '"/>')
+                self.quote = self.quote.gsub(/(?<=\s|^)#{key}(?=($|\s))/, '<img class="emoticon" src="' + value + '"/>')
             end
         end
 end

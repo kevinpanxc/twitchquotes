@@ -1,5 +1,7 @@
 <% provide(:title, 'All quotes') %>
 
+<%= render 'layouts/announcements', msg: "Hey guys, I recently added a few changes that allows you to add twitch emotes into your quotes. Simply type what you would typically type in chat such as \"Kappa\" and you will see the emotes appear. Currently I only have 7 of the most popular emotes added in: <img class=\"emoticon\" src=\"#{asset_path("emoticons/kappa.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/brainslug.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/failfish.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/frankerz.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/keepo.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/kreygasm.png")}\" />, <img class=\"emoticon\" src=\"#{asset_path("emoticons/pjsalt.png")}\" />. More will come when I have more time!" %>
+
 <ul class="quotes">
 	<%= render @quotes %>
 </ul>

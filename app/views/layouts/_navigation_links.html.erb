@@ -13,3 +13,6 @@
         <span class="glyphicon glyphicon-leaf" title="About"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">About</span>
     <% end %>
 </li>
+<% if signed_in? %>
+    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+<% end %>

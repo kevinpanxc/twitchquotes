@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col add_quote_main_content" id="channels_search">
 		<% # render 'shared/stream_error_messages' %>
-		<%= render 'shared/quote_error_messages' %>
+		<%= render 'shared/error_messages', object: @quote %>
 		<%= form_tag api_search_streams_path, :method => 'get', :id => "channels_search_form" do %>
 		    <%= text_field_tag :search, params[:search], placeholder: "Search streams...", autocomplete: "off" %>
 		<% end %>

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_filter :signed_in_user, only: [:admin]
+
 	def new
 		@user = User.new
 	end
@@ -14,6 +16,11 @@ class UsersController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def admin
+		@announcement_update = Announcement.last
+		@announcement = Announcement.new
 	end
 
 	private

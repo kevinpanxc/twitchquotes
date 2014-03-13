@@ -1,15 +1,16 @@
 Twitchquotes::Application.routes.draw do
-  resources :users
+  # resources :users
   resources :quotes
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]
+  resources :announcements, only: [:create, :update, :edit]
 
   root to: 'quotes#index'
   get "api_search_streams", to: 'streams#search'
-  get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/signin', to: 'sessions#new'
+  get '/admin', to: 'users#admin'
   delete '/signout', to: 'sessions#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

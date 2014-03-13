@@ -1,0 +1,27 @@
+<% if has_announcement_in_db? %>
+    <div class="row">
+        <h2>Latest Announcement</h2>
+        <div class="col-md-6 col-md-offset-3">
+            <%= form_for(@announcement_update) do |f| %>
+                <%= render 'shared/error_messages', object: @announcement_update %>
+                <%= f.label :content_unevaluated %>
+                <%= f.text_area :content_unevaluated, style: "height: 200px" %>
+                <%= f.label :expired %>
+                <%= f.check_box :expired %>
+                <%= f.submit "Update Announcement", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<div class="row">
+    <h2>Add New Announcement</h2>
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@announcement) do |f| %>
+            <%= render 'shared/error_messages', object: @announcement %>
+            <%= f.label :content_unevaluated %>
+            <%= f.text_area :content_unevaluated, style: "height: 200px" %>
+            <%= f.submit "Create Announcement", class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>

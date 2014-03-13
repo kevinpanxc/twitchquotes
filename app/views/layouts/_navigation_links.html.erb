@@ -1,9 +1,15 @@
-<li><%= link_to new_quote_path do %>
-    <span class="glyphicon glyphicon-plus" title="New quote"></span>
-<% end %></li>
-<li><%= link_to streams_path do %>
-    <span class="glyphicon glyphicon-th-large" title="All streams"></span>
-<% end %></li>
-<li><%= link_to about_path do %>
-    <span class="glyphicon glyphicon-leaf" title="About"></span>
-<% end %></li>
+<li>
+    <%= link_to new_quote_path do %>
+        <span class="glyphicon glyphicon-plus" title="New Quote"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">New Quote</span>
+    <% end %>
+</li>
+<li>
+    <%= link_to streams_path do %>
+        <span class="glyphicon glyphicon-th-large" title="All Streams"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">All Streams</span>
+    <% end %>
+</li>
+<li>
+    <%= link_to about_path do %>
+        <span class="glyphicon glyphicon-leaf" title="About"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">About</span>
+    <% end %>
+</li>

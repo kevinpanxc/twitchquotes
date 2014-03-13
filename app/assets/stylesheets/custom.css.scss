@@ -41,6 +41,14 @@ nav {
 	border-top: 8px solid #866bb9 !important;
 }
 
+.navbar-collapse .navbar-toggle {
+    float: none;
+    border: 0;
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
 #logo {
 	font-size: 1.7em;
 	color: #4A4A4A;

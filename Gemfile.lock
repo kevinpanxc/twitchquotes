@@ -35,6 +35,7 @@ GEM
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
+    certified (0.1.1)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -45,7 +46,13 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    font-awesome-sass (4.0.3.1)
+      sass (~> 3.2)
+    hashie (2.0.5)
     hike (1.2.3)
+    httpauth (0.2.1)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -54,12 +61,30 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    jwt (0.1.11)
+      multi_json (>= 1.5)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    multipart-post (2.0.0)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
+    omniauth-facebook (1.4.0)
+      omniauth-oauth2 (~> 1.0.2)
+    omniauth-oauth2 (1.0.3)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.4)
     quiet_assets (1.0.2)
@@ -127,9 +152,13 @@ DEPENDENCIES
   bcrypt-ruby
   better_errors
   bootstrap-sass
+  certified
   coffee-rails (~> 4.0.0)
+  font-awesome-sass
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth
+  omniauth-facebook (= 1.4.0)
   pg
   quiet_assets
   rails (= 4.0.2)

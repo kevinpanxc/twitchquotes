@@ -41,12 +41,20 @@ nav {
 	border-top: 8px solid #866bb9 !important;
 }
 
-.navbar-collapse .navbar-toggle {
+.navbar-collapse .custom-navbar-toggle {
     float: none;
     border: 0;
     &:hover {
         background-color: transparent !important;
     }
+}
+
+.glyphicon {
+    font-size: 16px;
+}
+
+.facebook-blue {
+    color: #3b5998;
 }
 
 #logo {

@@ -32,6 +32,16 @@ gem 'jbuilder', '~> 1.2'
 # Paginate model objects
 gem 'will_paginate'
 
+# Facebook login with Omniauth
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+
+# Free font icons from font awesome!
+gem 'font-awesome-sass'
+
+# Fix for SSL error that happens when testing locally
+gem 'certified'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

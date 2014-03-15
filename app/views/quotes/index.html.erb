@@ -1,7 +1,7 @@
 <% provide(:title, 'All Quotes') %>
 
 <% if has_announcement? %>
-    <%= render 'layouts/announcements', msg: raw(latest_announcement) %>
+    <%= render 'announcements/announcements', msg: raw(latest_announcement) %>
 <% end %>
 
 <ul class="quotes">

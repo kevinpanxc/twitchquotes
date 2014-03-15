@@ -1,17 +1,39 @@
 <li>
     <%= link_to new_quote_path do %>
-        <span class="glyphicon glyphicon-plus" title="New Quote"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">New Quote</span>
+        <span class="glyphicon glyphicon-plus" title="New Quote"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">New Quote</span>
     <% end %>
 </li>
 <li>
     <%= link_to streams_path do %>
-        <span class="glyphicon glyphicon-th-large" title="All Streams"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">All Streams</span>
+        <span class="glyphicon glyphicon-th-large" title="All Streams"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">All Streams</span>
     <% end %>
 </li>
 <li>
     <%= link_to about_path do %>
-        <span class="glyphicon glyphicon-leaf" title="About"></span><span data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">About</span>
+        <span class="glyphicon glyphicon-leaf" title="About"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">About</span>
     <% end %>
+</li>
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="fa fa-facebook-square <%= current_facebook_user ? "facebook-blue" : "" %>" title="Facebook" style="font-size: 19px"></span>
+        <span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">
+            <%= current_facebook_user ? "#{current_facebook_user.name}" : "Facebook" %>
+        </span>
+    </a>
+    <ul class="dropdown-menu">
+        <% if current_facebook_user %>
+            <li>
+                <%= link_to current_facebook_user.name, "#" %>
+            </li>
+            <li>
+                <%= link_to "Sign out", facebook_signout_path, id: "facebook_sign_out" %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "facebook_sign_in" %>
+            </li>
+        <% end %>
+    </ul>
 </li>
 <% if signed_in? %>
     <li><%= link_to "Sign out", signout_path, method: "delete" %></li>

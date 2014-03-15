@@ -1,3 +1,1 @@
-# Twitchquotes::Application.config.secret_token = ENV['SECRET_TOKEN']
-
-Twitchquotes::Application.config.secret_key_base = "2aa0be4d1c5ce6c98f79aa62a34800fe39d8ceb3004bb8bcd6e322caed071dadb2b5f151b67516889c6ab775f16cb7ab73346a2ad9da46f17aa3455cef9fc202"
+Twitchquotes::Application.config.secret_token = ENV['SECRET_TOKEN']

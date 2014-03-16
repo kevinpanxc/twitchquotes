@@ -1,25 +1,16 @@
 class LikesController < ApplicationController
     before_filter :require_facebook_sign_in
+    before_filter :setup
 
     def create
-        @quote = Quote.find(params[:quote_id])
-        @quote_dom_id = params[:quote_dom_id]
-
-        dislike_to_remove = current_facebook_user.dislikes.find_by(quote_id: params[:quote_id])
-
-        @remove_dislike = false
-
-        if dislike_to_remove
-            @remove_dislike = true
-
-            dislike_to_remove.destroy
-        end
-
         @like = Like.new(like_params)
-        @like.save
 
-        respond_to do |format|
-            format.js
+        if !remove_dislike && @like.save
+            respond_to do |format|
+                format.js
+            end
+        else
+            render 'general/server_error'
         end
     end
 
@@ -27,11 +18,12 @@ class LikesController < ApplicationController
         like = Like.find(params[:id])
         like.destroy
 
-        @quote = Quote.find(params[:quote_id])
-        @quote_dom_id = params[:quote_dom_id]
-
-        respond_to do |format|
-            format.js
+        if !Like.exists?(params[:id])
+            respond_to do |format|
+                format.js
+            end
+        else
+            render 'general/server_error'
         end
     end
 
@@ -43,5 +35,23 @@ class LikesController < ApplicationController
             )
 
             return_params.permit!
+        end
+
+        def setup
+            @quote = Quote.find(params[:quote_id])
+            @quote_dom_id = params[:quote_dom_id]
+        end
+
+        def remove_dislike
+            @remove_dislike = false
+
+            dislike_to_remove = current_facebook_user.dislikes.find_by(quote_id: params[:quote_id])
+
+            if dislike_to_remove
+                @remove_dislike = true
+                dislike_to_remove.destroy
+            end
+
+            current_facebook_user.dislikes.find_by(quote_id: params[:quote_id])
         end
 end

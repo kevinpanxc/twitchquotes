@@ -57,34 +57,30 @@ ul.quotes li .quote_vote_area {
 	font-size: 12px;
 }
 
-.quotes_list_stream_name_date a {
+.quotes_list_stream_name_date .quote_link {
 	text-decoration: none;
-	margin-right: 8px;
-}
-
-.quote_link {
+	margin-right: 4px;
 	color: rgb(170, 170, 170);
 }
 
-.quote_link:hover {
+.quotes_list_stream_name_date .quote_link:hover {
 	color: rgb(120, 120, 120);
 }
 
 .quote_actions {
+	text-align: left;
 	display: inline-block;
 	font-size: 18px;
 	color: rgb(255, 255, 255);
 	background: #866bb9;
-	padding: 3px;
+	padding: 3px 12px;
 	border-radius: 4px;
+	margin-top: 6px;
 }
 
 /*show quote page*/
 
 #show_quote {
-	width: 70%;
-	margin: 0 auto;
-	margin-top: 40px;
 	font-size: 22px;
 
 	@include individual_quote;

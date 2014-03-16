@@ -1,0 +1,7 @@
+if (!quote_dom) {
+    var quote_dom = $("#quote_<%= @quote_dom_id%>");
+}
+
+var previous_aggregate_votes = parseInt(quote_dom.find(".aggregate_vote_count").html());
+
+quote_dom.find(".aggregate_vote_count").html(previous_aggregate_votes + parseInt(<%= number_to_add %>));

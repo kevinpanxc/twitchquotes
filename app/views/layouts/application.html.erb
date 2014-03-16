@@ -15,6 +15,7 @@
     <div class="container" id="main">
       <%= render 'layouts/messages' %>
       <%= render 'layouts/facebook_sign_in_modal' %>
+      <%= render 'layouts/server_error_modal' %>
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>

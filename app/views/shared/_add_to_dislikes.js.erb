@@ -1,0 +1,7 @@
+if (!quote_dom) {
+    var quote_dom = $("#quote_<%= @quote_dom_id%>");
+}
+
+var previous_dislikes = parseInt(quote_dom.find(".dislike_count").html());
+
+quote_dom.find(".dislike_count").html(previous_dislikes + parseInt(<%= number_to_add %>));

@@ -1,0 +1,7 @@
+if (!quote_dom) {
+    var quote_dom = $("#quote_<%= @quote_dom_id%>");
+}
+
+var previous_likes = parseInt(quote_dom.find(".like_count").html());
+
+quote_dom.find(".like_count").html(previous_likes + parseInt(<%= number_to_add %>));

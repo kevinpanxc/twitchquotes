@@ -1,11 +1,7 @@
 var quote_dom = $("#quote_<%= @quote_dom_id%>");
 
-var previous_likes = parseInt(quote_dom.find(".like_count").html());
+<%= render 'shared/add_to_likes', number_to_add: -1 %>
 
-var previous_aggregate_votes = parseInt(quote_dom.find(".aggregate_vote_count").html());
-
-quote_dom.find(".aggregate_vote_count").html(--previous_aggregate_votes);
-
-quote_dom.find(".like_count").html(--previous_likes);
+<%= render 'shared/add_to_aggregate_votes', number_to_add: -1 %>
 
 quote_dom.find(".like_form_parent").html("<%= escape_javascript(render('likes/like', quote: @quote)) %>");

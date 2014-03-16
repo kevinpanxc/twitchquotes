@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+    before_filter :require_facebook_sign_in
+
     def create
         @quote = Quote.find(params[:quote_id])
         @quote_dom_id = params[:quote_dom_id]

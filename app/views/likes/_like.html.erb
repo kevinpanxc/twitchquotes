@@ -1,0 +1,6 @@
+<%= form_for(Like.new, remote: true) do |f| %>
+    <%= button_tag(type: 'submit') do %>
+        <span class="fa fa-chevron-up"></span>
+    <% end %>
+    <%= render 'shared/like_dislike_form_hidden_fields', quote: quote %>
+<% end %>

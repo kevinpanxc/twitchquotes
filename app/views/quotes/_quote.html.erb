@@ -1,7 +1,14 @@
 <li class="single_quote_block">
-	<%= render "quotes/quote_actions", quote: quote %>
-	"<%=raw quote.quote %>"
-	<div class="quotes_list_stream_name_date">
-		<%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
-	</div>
+    <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>">
+        <%= render "quotes/upvote_downvote", quote: quote %>
+    </div>
+    <div class="quote_text_area">
+    	"<%=raw quote.quote %>"
+    	<div class="quotes_list_stream_name_date">
+            <%= link_to quote_path(quote) do %>
+                <span class="glyphicon glyphicon-link quote_link" title="Link to quote"></span>
+            <% end %>
+    		<%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
+    	</div>
+    </div>
 </li>

@@ -9,11 +9,6 @@ jQuery ->
     false
   )
 
-  $(".single_quote_block").hover (->
-      $(this).find(".quote_actions").show()
-    ), (->
-      $(this).find(".quote_actions").hide())
-
   $( "input:text" ).css( "font-size", "14px" )
 
   # Ajax search on keyup

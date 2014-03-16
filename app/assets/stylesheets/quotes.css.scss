@@ -34,29 +34,49 @@ ul.quotes {
 	}
 }
 
+ul.quotes li .quote_text_area {
+	width: 88%;
+	margin: 0 auto;
+}
+
+ul.quotes li .quote_vote_area {
+	position: absolute;
+	margin-top: -6px;
+}
+
+.fa-chevron-up.active {
+	color: #ED8D26;
+}
+
+.fa-chevron-down.active {
+	color: #6DA6E3;
+}
+
 .quotes_list_stream_name_date {
-	margin-top: 8px;
+	margin-top: 12px;
 	font-size: 12px;
 }
 
+.quotes_list_stream_name_date a {
+	text-decoration: none;
+	margin-right: 8px;
+}
+
+.quote_link {
+	color: rgb(170, 170, 170);
+}
+
+.quote_link:hover {
+	color: rgb(120, 120, 120);
+}
+
 .quote_actions {
-	position: absolute;
-	margin-top: -5px;
-	padding-left: 5px;
+	display: inline-block;
 	font-size: 18px;
-	display: none;
 	color: rgb(255, 255, 255);
 	background: #866bb9;
 	padding: 3px;
 	border-radius: 4px;
-}
-
-.quote_link {
-	color: rgb(255, 255, 255);
-}
-
-.quote_link:hover {
-	color: rgb(220, 220, 220);
 }
 
 /*show quote page*/
@@ -151,4 +171,38 @@ ul#channels {
 #channels .name {
 	font-weight: bold;
 	color: black;
+}
+
+.new_like, .edit_like {
+	display: inline-block;
+	margin-bottom: 0px;
+}
+
+.new_like, .edit_like {
+	button {
+		background: transparent;
+		border: none;
+		padding: 0;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.new_dislike, .edit_dislike {
+	display: inline-block;	
+	margin-bottom: 0px;
+}
+
+.new_dislike, .edit_dislike {
+	button {
+		background: transparent;
+		border: none;
+		padding: 0;
+		
+		&:focus {
+			outline: none;
+		}
+	}
 }

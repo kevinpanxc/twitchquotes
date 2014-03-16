@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315024439) do
+ActiveRecord::Schema.define(version: 20140316013202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20140315024439) do
     t.text     "content_unevaluated"
   end
 
+  create_table "dislikes", force: true do |t|
+    t.integer  "facebook_user_id"
+    t.integer  "quote_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dislikes", ["facebook_user_id", "quote_id"], name: "index_dislikes_on_facebook_user_id_and_quote_id", unique: true, using: :btree
+  add_index "dislikes", ["facebook_user_id"], name: "index_dislikes_on_facebook_user_id", using: :btree
+  add_index "dislikes", ["quote_id"], name: "index_dislikes_on_quote_id", using: :btree
+
   create_table "facebook_users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -33,6 +44,17 @@ ActiveRecord::Schema.define(version: 20140315024439) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "likes", force: true do |t|
+    t.integer  "facebook_user_id"
+    t.integer  "quote_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["facebook_user_id", "quote_id"], name: "index_likes_on_facebook_user_id_and_quote_id", unique: true, using: :btree
+  add_index "likes", ["facebook_user_id"], name: "index_likes_on_facebook_user_id", using: :btree
+  add_index "likes", ["quote_id"], name: "index_likes_on_quote_id", using: :btree
 
   create_table "quotes", force: true do |t|
     t.text     "quote"

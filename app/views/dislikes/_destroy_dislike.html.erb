@@ -1,0 +1,6 @@
+<%= form_for(current_facebook_user.dislikes.find_by(quote_id: quote.id), html: { method: :delete }, remote: true) do |f| %>
+    <%= button_tag(type: 'submit') do %>
+        <span class="fa fa-chevron-down active"></span>
+    <% end %>
+    <%= render 'shared/like_dislike_form_hidden_fields', quote: quote %>
+<% end %>

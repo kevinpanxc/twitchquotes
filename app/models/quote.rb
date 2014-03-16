@@ -1,4 +1,9 @@
 class Quote < ActiveRecord::Base
+    has_many :likes, dependent: :destroy
+    has_many :likers, through: :likes, source: :facebook_user
+    has_many :dislikes, dependent: :destroy
+    has_many :dislikers, through: :dislikes, source: :facebook_user
+
 	validates :quote, presence: true, length: { maximum: 1200 }
 	validates :stream_id, presence: true
 

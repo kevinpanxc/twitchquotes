@@ -4,6 +4,8 @@ Twitchquotes::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]
   resources :announcements, only: [:create, :update, :edit]
+  resources :likes, only: [:create, :destroy]
+  resources :dislikes, only: [:create, :destroy]
 
   root to: 'quotes#index'
   get "api_search_streams", to: 'streams#search'

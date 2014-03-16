@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController	
 	def index
+		@quote_dom_id = 0
 		@quotes = Quote.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
 	end
 
@@ -8,6 +9,7 @@ class QuotesController < ApplicationController
 	end
 
 	def show
+		@quote_dom_id = 0
 		@quote = Quote.find(params[:id])
 	end
 

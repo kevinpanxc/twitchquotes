@@ -9,7 +9,7 @@ module FacebookSessionsHelper
 
     def require_facebook_sign_in
         if !facebook_signed_in?
-            head :ok
+            render "facebook_sessions/sign_in_notification"
         end
     end
 end

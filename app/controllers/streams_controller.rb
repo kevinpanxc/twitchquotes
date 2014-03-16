@@ -15,6 +15,7 @@ class StreamsController < ApplicationController
 	end
 
 	def show
+		@quote_dom_id = 0
 		@stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first
 		if @stream
 			@quotes = @stream.quotes.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")

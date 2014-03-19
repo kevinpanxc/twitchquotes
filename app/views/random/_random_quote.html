@@ -1,0 +1,19 @@
+<% provide(:title, 'Random Quote') %>
+
+<div class="row">
+    <div id="show_quote" class="single_quote_block col-md-8 col-md-offset-2">
+        "<%=raw @quote.quote %>"
+        <div class="quotes_list_stream_name_date">
+            <%= link_to quote_path(@quote), class: 'quote_link' do %>
+                <span class="glyphicon glyphicon-link quote_link" title="Link to quote"></span>
+            <% end %>
+            <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4" style="margin-top: 20px; text-align: center">
+        Brought to you by <%= link_to 'TwitchQuotes', root_path, class: "btn btn-custom", style: "margin-left: 4px" %>
+    </div>
+</div>

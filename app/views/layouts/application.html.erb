@@ -9,19 +9,23 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <div class="container" id="main">
-      <%= render 'layouts/messages' %>
-      <%= render 'layouts/facebook_sign_in_modal' %>
-      <%= render 'layouts/server_error_modal' %>
-      <% if has_announcement? %>
-          <%= render 'announcements/announcements', msg: raw(latest_announcement) %>
-      <% end %>
+    <% if !@random_view.nil? && @random_view %>
       <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
+    <% else %>
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+      <div class="container" id="main">
+        <%= render 'layouts/messages' %>
+        <%= render 'layouts/facebook_sign_in_modal' %>
+        <%= render 'layouts/server_error_modal' %>
+        <% if has_announcement? %>
+            <%= render 'announcements/announcements', msg: raw(latest_announcement) %>
+        <% end %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    <% end %>
     <%= render 'layouts/google_analytics_script' %>
   </body>
 </html>

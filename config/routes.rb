@@ -6,6 +6,7 @@ Twitchquotes::Application.routes.draw do
   resources :announcements, only: [:create, :update, :edit]
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
+  resources :random, only: [:index, :show]
 
   root to: 'quotes#index'
   get "api_search_streams", to: 'streams#search'

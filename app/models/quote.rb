@@ -11,6 +11,12 @@ class Quote < ActiveRecord::Base
 
     before_save :process_quotes
 
+    def self.random
+        if (c = count) != 0
+            self.offset(rand(c)).first
+        end
+    end
+
     private
         def process_quotes
             Emoticons.emoticons.each do |key, value|

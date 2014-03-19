@@ -4,12 +4,15 @@
 
 @mixin individual_quote {
 	overflow: auto;
-	padding: 12px;
 	border-radius: 12px;
 	background-color: white;
 	border: 1px solid #eee;
 	text-align: center;
 	cursor: default;
+
+	&:hover {
+		border: 1px solid #ddd;
+	}
 }
 
 ul.quotes {
@@ -24,13 +27,10 @@ ul.quotes {
 		margin-bottom: 24px;
 		display: inline-block;
 		@include individual_quote;
+		padding: 12px;
 		&:last-child {
 			border-bottom: 1px solid #eee;
 		}
-	}
-
-	li:hover {
-		border: 1px solid #ddd;
 	}
 }
 
@@ -82,8 +82,9 @@ ul.quotes li .quote_vote_area {
 
 #show_quote {
 	font-size: 22px;
-
 	@include individual_quote;
+
+	padding: 24px;
 }
 
 /*add quote page*/

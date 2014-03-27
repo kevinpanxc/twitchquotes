@@ -6,7 +6,8 @@ right_key_nav = (link, e) ->
   return
 
 ready = ->
-  if $("body").hasClass("quotes_index")
+  document.onkeydown = ->
+  if $("body").hasClass("quotes_index") || $("body").hasClass("streams_show")
     next = $(".pagination .next a")
     prev = $(".pagination .previous a")
     next_href = next.attr("href")

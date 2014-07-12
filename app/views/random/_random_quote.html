@@ -2,7 +2,7 @@
 
 <div class="row">
     <div id="show_quote" class="single_quote_block col-md-8 col-md-offset-2">
-        "<%=raw @quote.quote %>"
+        <div class="show_quote_text_area">"<%=raw @quote.quote %>"</div>
         <div class="quotes_list_stream_name_date">
             <%= link_to quote_path(@quote), class: 'quote_link' do %>
                 <span class="glyphicon glyphicon-link quote_link" title="Link to quote"></span>

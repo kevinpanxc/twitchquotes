@@ -13,6 +13,10 @@
 	&:hover {
 		border: 1px solid #ddd;
 	}
+
+	.show_quote_text_area {
+		padding: 24px 24px 6px 24px;
+	}
 }
 
 ul.quotes {
@@ -89,10 +93,6 @@ ul.quotes li .quote_vote_area {
 	.panel-heading {
 		padding-left: 50px;
 		text-align: left;
-	}
-
-	.show_quote_text_area {
-		padding: 16px 24px 16px 24px;
 	}
 }
 

@@ -16,7 +16,8 @@
 	</div>
 	<div class="col add_quote_main_content" id="new_quote_form">
 		<%= form_for(@quote) do |f| %>
-			<%= f.text_area :quote, rows: 4, placeholder: "Enter quote here, Kappa" %>
+			<%= f.text_field :title, placeholder: "Quote title" %>
+			<%= f.text_area :quote, rows: 4, placeholder: "Enter quote here" %>
 			<%= f.hidden_field :stream_id, id: "stream_id" %>
 			<%= hidden_field_tag "stream_name" %>
 			<%= hidden_field_tag "stream_url" %>

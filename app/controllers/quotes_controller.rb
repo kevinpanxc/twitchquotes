@@ -38,7 +38,7 @@ class QuotesController < ApplicationController
 
 	private
 		def quote_params
-			params.require(:quote).permit(:quote, :stream_id)
+			params.require(:quote).permit(:quote, :stream_id, :title)
 		end
 
 		def stream_params

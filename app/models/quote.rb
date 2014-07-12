@@ -3,14 +3,12 @@ class Quote < ActiveRecord::Base
     has_many :likers, through: :likes, source: :facebook_user
     has_many :dislikes, dependent: :destroy
     has_many :dislikers, through: :dislikes, source: :facebook_user
+    belongs_to :stream, foreign_key: "stream_id", primary_key: "stream_id"
 
 	validates :quote, presence: true, length: { maximum: 1200 }
 	validates :stream_id, presence: true
 
-	belongs_to :stream, foreign_key: "stream_id", primary_key: "stream_id"
-
     before_save :process_quotes
-
     after_destroy :refresh_stream_quote_count
 
     def self.random

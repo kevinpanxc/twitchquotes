@@ -11,6 +11,8 @@ class Quote < ActiveRecord::Base
 
     before_save :process_quotes
 
+    after_destroy :refresh_stream_quote_count
+
     def self.random
         if (c = count) != 0
             self.offset(rand(c)).first
@@ -22,5 +24,10 @@ class Quote < ActiveRecord::Base
             Emoticons.emoticons.each do |key, value|
                 self.quote = self.quote.gsub(/(?<=\s|^)#{key}(?=($|\s))/, '<img class="emoticon" src="' + value + '"/>')
             end
+        end
+
+        def refresh_stream_quote_count
+            self.stream.quotes_count = self.stream.quotes.count
+            self.stream.save
         end
 end

@@ -1,7 +1,7 @@
 preloader = new Image("/assets/default_spinner.GIF")
 
 ready = ->
-  if $("body").hasClass("quotes_new")
+  if $("body").hasClass("quotes_new") or $("body").hasClass("quotes_create")
     $('#channels_search_form').submit( ->
       $.get(this.action, $(this).serialize(), (-> $('.spinner').hide()), 'script')
       $('#channels').html("")

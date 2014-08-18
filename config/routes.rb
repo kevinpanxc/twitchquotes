@@ -12,6 +12,7 @@ Twitchquotes::Application.routes.draw do
   get "api_search_streams", to: 'streams#search'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
+  get '/builder', to: 'static_pages#quote_builder'
   get '/signin', to: 'sessions#new'
   get '/admin', to: 'users#admin'
   delete '/signout', to: 'sessions#destroy'

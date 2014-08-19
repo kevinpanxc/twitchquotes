@@ -7,12 +7,12 @@ ready = ->
         Unicode.initialize_font_selector()
         builder = document.getElementById("builder")
         $(".eu").click ->
-            builder.value += this.innerHTML
+            insert_at_caret(builder, this.innerHTML)
             return
         builder.onkeypress = (key) ->
             alpha = String.fromCharCode(key.charCode)
             if !/[^a-zA-Z]/.test(alpha)
-                builder.value += Unicode.get_char(alpha)
+                insert_at_caret(builder, Unicode.get_char(alpha))
                 return false
 
 
@@ -34,6 +34,34 @@ object_notation_generator = (alpha) ->
   return_string += builder("z", alpha.charAt(25)) + ",\n"
   return_string += builder("Z".toUpperCase(), alpha.charAt(51))
   return_string
+
+insert_at_caret = (text_area, text) ->
+  scroll_pos = text_area.scrollTop
+  str_pos = 0
+  br = ((if (text_area.selectionStart or text_area.selectionStart is "0") then "ff" else ((if document.selection then "ie" else false))))
+  if br is "ie"
+    text_area.focus()
+    range = document.selection.createRange()
+    range.moveStart "character", -text_area.value.length
+    str_pos = range.text.length
+  else str_pos = text_area.selectionStart  if br is "ff"
+  front = (text_area.value).substring(0, str_pos)
+  back = (text_area.value).substring(str_pos, text_area.value.length)
+  text_area.value = front + text + back
+  str_pos = str_pos + text.length
+  if br is "ie"
+    text_area.focus()
+    range = document.selection.createRange()
+    range.moveStart "character", -text_area.value.length
+    range.moveStart "character", str_pos
+    range.moveEnd "character", 0
+    range.select()
+  else if br is "ff"
+    text_area.selectionStart = str_pos
+    text_area.selectionEnd = str_pos
+    text_area.focus()
+  text_area.scrollTop = scroll_pos
+  return
 
 Unicode = (->
   current = "Small Caps"

@@ -14,15 +14,7 @@
 
 <% if [true, false].sample %>
     <div class="row hidden-xs hidden-sm" style="text-align: center; margin-top: 20px;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- TwitchQuotes Random -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
-             data-ad-client="ca-pub-0144173183236578"
-             data-ad-slot="9613491259"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <%= render 'layouts/horizontal_ad_one' %>
     </div>
 <% end %>
 

@@ -1,0 +1,13 @@
+EXPORTING FROM HEROKU, THEN IMPORT TO LOCAL
+
+    heroku pgbackups:capture
+    curl -o latest.dump `heroku pgbackups:url`
+    rake db:reset
+    pg_restore -O -d [DATABASE NAME] latest.dump
+
+IMPORTING TO HEROKU
+
+    PGPASSWORD=mypassword pg_dump -Fc --no-acl --no-owner -h localhost -U myuser mydb > mydb.dump
+    heroku pgbackups:restore DATABASE 'https://s3.amazonaws.com/me/items/3H0q/mydb.dump'
+
+        Where DATABASE represents the HEROKU_POSTGRESQL_COLOR_URL of the database you wish to restore to. If no DATABASE is specified, it defaults to the applications current DATABASE_URL.

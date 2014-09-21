@@ -5,6 +5,8 @@ ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+gem 'unicorn'
+
 # Postgres
 gem 'pg'
 

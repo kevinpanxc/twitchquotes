@@ -7,6 +7,7 @@ class Quote < ActiveRecord::Base
 
 	validates :quote, presence: true, length: { maximum: 1200 }
 	validates :stream_id, presence: true
+    validates :title, presence: true
 
     before_save :process_quotes
     after_destroy :refresh_stream_quote_count

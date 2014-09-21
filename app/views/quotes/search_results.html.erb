@@ -1,4 +1,4 @@
-<% provide(:title, 'Quotes from Twitch Chat') %>
+<% provide(:title, 'Search Results') %>
 
 <div class="row">
     <div class="col-md-10">
@@ -6,8 +6,10 @@
             <%= render 'shared/quote_search_box' %>
         </div>
 
-        <ul class="quotes">
-            <%= render @quotes %>
+        <div id="number_of_search_results"><%= @quotes.count %> results returned</div>
+
+        <ul class="quotes_search">
+            <%= render partial: "quote_search", collection: @quotes, as: :quote %>
         </ul>
 
         <div class="paginate_parent_bottom"><%= will_paginate %></div>

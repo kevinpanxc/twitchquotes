@@ -1,0 +1,8 @@
+<li>
+    <%= link_to quote_path(quote), class: "quote_search_result_link" do %>
+        <div class="panel panel-default">
+            <div class="panel-heading"><%= quote.title %></div>
+            <div class="panel-body"><%=raw quote.quote %>
+        </div>
+    <% end %>
+</li>

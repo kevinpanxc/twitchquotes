@@ -1,0 +1,18 @@
+<%
+    if defined?(@search_type).nil?
+        @search_type = "title"
+    end
+
+    if defined?(@query).nil?
+        @query = ""
+    end
+%>
+
+<%= form_tag search_quotes_path, :method => 'get', :id => "quote_search_form" do %>
+    <div class="quote_search_form_wrapper">
+        <%= text_field_tag 'query', @query, placeholder: "Search...", id: "search_text" %>
+        <%= submit_tag "Search", id: "search_button" %>
+        <%= hidden_field_tag "search_type", @search_type, id: "search_type" %>
+        <div id="search_options"> <div class="<%= @search_type == "title" ? "search_options_active" : "" %>" data-value="title" >By Title</div><div class="<%= @search_type == "quote" ? "search_options_active" : "" %>" data-value="quote" >By Quote</div> </div>
+    </div>
+<% end %>

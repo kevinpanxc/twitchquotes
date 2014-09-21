@@ -3,9 +3,9 @@
         <%= render "quotes/upvote_downvote", quote: quote %>
     </div>
     <div class="quote_text_area">
-    	"<span class="quote_content"><%=raw quote.quote %></span>"
+    	"<span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>"
     	<div class="quotes_list_stream_name_date">
-            <span class="glyphicon glyphicon-edit quote_link copy_clipboard" title="Copy to Clipboard"></span>
+            <span class="glyphicon glyphicon-edit quote_link copy_clipboard" data-dom-id="<%= @quote_dom_id %>" title="Copy to Clipboard"></span>
             <%= link_to quote_path(quote), class: 'quote_link' do %>
                 <span class="glyphicon glyphicon-link" title="Link to quote"></span>
             <% end %>

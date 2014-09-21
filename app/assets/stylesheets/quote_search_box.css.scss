@@ -1,0 +1,72 @@
+$quote_search_form_wrapper_padding: 15;
+$search_text_button_height: 50;
+$search_text_button_font_size: 20;
+$search_options_height: 22;
+$search_options_margin_top: 8;
+
+#quote_search_form {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 25px;
+
+    input:focus {
+        outline: 0px;
+    }
+}
+
+.quote_search_form_wrapper {
+    background-color: #EFEFEF;
+    height: $search_text_button_height + $quote_search_form_wrapper_padding * 2 + $search_options_height + $search_options_margin_top + px;
+    margin-bottom: 0px;
+    display: inline-block;
+    width: 90%;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+#search_text {
+    font-size: $search_text_button_font_size + px;
+    width: 84%;
+    height: $search_text_button_height + px;
+    border-radius: 5px;
+    margin-right: 1%;
+    color: #555;
+    margin-bottom: 0px;
+}
+
+#search_button {
+    font-size: $search_text_button_font_size + px;
+    width: 14%;
+    height: $search_text_button_height + px;
+    border-radius: 5px;
+    color: #555;
+    margin-bottom: 0px;
+}
+
+#search_options {
+    text-align: left;
+    padding-left: 10px;
+    margin-top: $search_options_margin_top + px;
+}
+
+#search_options div {
+    display: inline-block;
+    margin-right: 8px;
+    height: $search_options_height + px;
+    padding: 2px 8px 2px 8px;
+    border-radius: 4px;
+    background-color: #999;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.search_options_active {
+    background-color: #866bb9 !important;
+    cursor: default !important;
+}
+
+#number_of_search_results {
+    color: #555;
+    margin-bottom: 8px;
+}

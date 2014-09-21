@@ -44,6 +44,20 @@ class QuotesController < ApplicationController
         end
     end
 
+    def search
+        @quote_dom_id = 0
+        @search_type = "title"
+        @query = ""
+        if params[:search_type] == "quote"
+            @quotes = Quote.where("lower(quote) like ?", "%#{params[:query].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        else
+            @quotes = Quote.where("lower(title) like ?", "%#{params[:query].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        end
+        @search_type = params[:search_type] if params.has_key? :search_type
+        @query = params[:query] if params.has_key? :query
+        render 'search_results'
+    end
+
     def destroy
         @quote = Quote.find(params[:id])
         @quote.stream.quotes_count = @quote.stream.quotes.count

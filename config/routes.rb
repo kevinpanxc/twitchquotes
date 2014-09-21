@@ -1,6 +1,8 @@
 Twitchquotes::Application.routes.draw do
   # resources :users
-  resources :quotes
+  resources :quotes do
+    get 'search', on: :collection
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]
   resources :announcements, only: [:create, :update, :edit]
@@ -9,7 +11,8 @@ Twitchquotes::Application.routes.draw do
   resources :random, only: [:index, :show]
 
   root to: 'quotes#index'
-  get "api_search_streams", to: 'streams#search'
+
+  get 'api_search_streams', to: 'streams#search'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/builder', to: 'static_pages#quote_builder'

@@ -29,6 +29,10 @@ ready = ->
         else
             true
     )
+  else if $("body").hasClass("quotes_index") or $("body").hasClass("quotes_show")
+    $('.copy_clipboard').click( ->
+        prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $(this).parent().parent().find(".quote_content").html());
+    )
 
 $(document).ready ready
 $(document).on "page:load", ready

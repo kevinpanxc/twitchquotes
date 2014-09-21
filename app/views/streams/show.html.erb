@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
     	<div class="stream_name_logo"><img src="<%= @stream.logo %>"/><h1><%= @stream.name %></h1></div>
-    	<p><%= link_to "View on Twitch", @stream.url, class: "btn btn-custom btn-lg" %></p>
+    	<p><%= link_to "View on Twitch", @stream.url, class: "btn btn-custom btn-lg", style: "margin-right: 10px" %> <%= link_to "Random Quote", random_path(@stream.name), class: "btn btn-custom btn-lg" %></p>
     </div>
 
     <div class="col-md-10">

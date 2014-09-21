@@ -27,10 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     bcrypt (3.1.7)
-    bcrypt (3.1.7-x86-mingw32)
     bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
-    bcrypt-ruby (3.1.5-x86-mingw32)
       bcrypt (>= 3.1.3)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -89,7 +86,6 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.17.1)
-    pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
@@ -152,7 +148,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   bcrypt-ruby

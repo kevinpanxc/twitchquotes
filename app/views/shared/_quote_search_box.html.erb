@@ -9,10 +9,21 @@
 %>
 
 <%= form_tag search_quotes_path, :method => 'get', :id => "quote_search_form" do %>
-    <div class="quote_search_form_wrapper">
-        <%= text_field_tag 'query', @query, placeholder: "Search...", id: "search_text" %>
-        <%= submit_tag "Search", id: "search_button" %>
-        <%= hidden_field_tag "search_type", @search_type, id: "search_type" %>
-        <div id="search_options"> <div class="<%= @search_type == "title" ? "search_options_active" : "" %>" data-value="title" >By Title</div><div class="<%= @search_type == "quote" ? "search_options_active" : "" %>" data-value="quote" >By Quote</div> </div>
+    <div class="quote_search_form_wrapper col-md-10 col-md-offset-1">
+        <div class="row" style="width: 100%; margin-left: auto; margin-right: auto">
+            <div class="col-xs-10" id="search_text_parent">
+                <%= text_field_tag 'query', @query, placeholder: "Search..." %>
+            </div>
+            <div class="col-xs-2" id="search_button_parent">
+                <%= button_tag type: 'submit' do %>
+                    <span class="glyphicon glyphicon-search"></span>
+                <% end %>
+            </div>
+            <%= hidden_field_tag "search_type", @search_type %>
+        </div>
+        <div id="search_options" class="row"> 
+            <div class="<%= @search_type == "title" ? "search_options_active" : "" %> col-md-1 col-md-offset-1" data-value="title" >Titles</div>
+            <div class="<%= @search_type == "quote" ? "search_options_active" : "" %> col-md-1" data-value="quote" >Quotes</div>
+        </div>
     </div>
 <% end %>

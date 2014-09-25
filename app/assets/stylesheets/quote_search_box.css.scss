@@ -1,13 +1,12 @@
 $quote_search_form_wrapper_padding: 15;
-$search_text_button_height: 50;
-$search_text_button_font_size: 20;
+$search_text_button_height: 45;
+$search_text_button_font_size: 18;
 $search_options_height: 22;
 $search_options_margin_top: 8;
 
 #quote_search_form {
     text-align: center;
     margin: 0;
-    margin-bottom: 25px;
 
     input:focus {
         outline: 0px;
@@ -16,36 +15,46 @@ $search_options_margin_top: 8;
 
 .quote_search_form_wrapper {
     background-color: #EFEFEF;
-    height: $search_text_button_height + $quote_search_form_wrapper_padding * 2 + $search_options_height + $search_options_margin_top + px;
-    margin-bottom: 0px;
     display: inline-block;
-    width: 90%;
-    padding: 15px;
     border-radius: 12px;
+    margin-bottom: 25px;
+    padding: 12px;
 }
 
-#search_text {
-    font-size: $search_text_button_font_size + px;
-    width: 84%;
-    height: $search_text_button_height + px;
-    border-radius: 5px;
-    margin-right: 1%;
-    color: #555;
-    margin-bottom: 0px;
+#search_text_parent, #search_button_parent {
+    padding: 0;
+    padding-bottom: 2px;
 }
 
-#search_button {
+#search_text_parent {
+    padding-right: 10px;
+}
+
+#search_text_parent > input {
     font-size: $search_text_button_font_size + px;
-    width: 14%;
     height: $search_text_button_height + px;
     border-radius: 5px;
     color: #555;
-    margin-bottom: 0px;
+    margin: 0;
+}
+
+#search_button_parent > button {
+    font-size: $search_text_button_font_size + px;
+    height: $search_text_button_height + px;
+    color: #555;
+    background-color: rgb(221, 221, 221);
+    border-radius: 5px;
+    border: solid 1px #bbb;
+    width: 100%;
+    margin: 0;
+}
+
+#search_button_parent > button:focus {
+    outline: 0;
 }
 
 #search_options {
-    text-align: left;
-    padding-left: 10px;
+    text-align: center;
     margin-top: $search_options_margin_top + px;
 }
 

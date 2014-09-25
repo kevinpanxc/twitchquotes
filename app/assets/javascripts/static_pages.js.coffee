@@ -7,12 +7,12 @@ ready = ->
         Unicode.initialize_font_selector()
         builder = document.getElementById("builder")
         $(".eu").click ->
-            insert_at_caret(builder, this.innerHTML)
+            insert_at_caret_2(builder, $('<div/>').html(this.innerHTML).text())
             return
         builder.onkeypress = (key) ->
             alpha = String.fromCharCode(key.charCode)
             if !/[^a-zA-Z]/.test(alpha)
-                insert_at_caret(builder, Unicode.get_char(alpha))
+                insert_at_caret_2(builder, Unicode.get_char(alpha))
                 return false
 
 
@@ -61,6 +61,13 @@ insert_at_caret = (text_area, text) ->
     text_area.selectionEnd = str_pos
     text_area.focus()
   text_area.scrollTop = scroll_pos
+  return
+
+insert_at_caret_2 = (text_area, text) ->
+  old = text_area.selectionEnd
+  text_area.value = text_area.value.substr(0, text_area.selectionEnd) + text + text_area.value.substr(text_area.selectionEnd)
+  text_area.selectionEnd = old + text.length
+  text_area.selectionStart = old + text.length
   return
 
 Unicode = (->

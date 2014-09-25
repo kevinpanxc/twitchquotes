@@ -22,6 +22,7 @@
       <div class="container" id="main">
         <%= render 'layouts/messages' %>
         <%= render 'layouts/facebook_sign_in_modal' %>
+        <%= render 'layouts/sign_in_modal' %>
         <%= render 'layouts/server_error_modal' %>
         <% if has_announcement? %>
             <%= render 'announcements/announcements', msg: raw(latest_announcement) %>

@@ -9,6 +9,7 @@ Twitchquotes::Application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
   resources :random, only: [:index, :show]
+  resources :users, only: [:new, :create]
 
   root to: 'quotes#index'
 
@@ -18,6 +19,7 @@ Twitchquotes::Application.routes.draw do
   get '/builder', to: 'static_pages#quote_builder'
   get '/signin', to: 'sessions#new'
   get '/admin', to: 'users#admin'
+  get '/signup', to: 'users#new'
   delete '/signout', to: 'sessions#destroy'
 
   get 'auth/:provider/callback', to: 'facebook_sessions#create'

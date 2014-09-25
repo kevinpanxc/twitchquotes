@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712043940) do
+ActiveRecord::Schema.define(version: 20140924054350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,14 @@ ActiveRecord::Schema.define(version: 20140712043940) do
   end
 
   create_table "dislikes", force: true do |t|
-    t.integer  "facebook_user_id"
     t.integer  "quote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
-  add_index "dislikes", ["facebook_user_id", "quote_id"], name: "index_dislikes_on_facebook_user_id_and_quote_id", unique: true, using: :btree
-  add_index "dislikes", ["facebook_user_id"], name: "index_dislikes_on_facebook_user_id", using: :btree
   add_index "dislikes", ["quote_id"], name: "index_dislikes_on_quote_id", using: :btree
+  add_index "dislikes", ["user_id"], name: "index_dislikes_on_user_id", using: :btree
 
   create_table "facebook_users", force: true do |t|
     t.string   "provider"
@@ -46,15 +45,14 @@ ActiveRecord::Schema.define(version: 20140712043940) do
   end
 
   create_table "likes", force: true do |t|
-    t.integer  "facebook_user_id"
     t.integer  "quote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
-  add_index "likes", ["facebook_user_id", "quote_id"], name: "index_likes_on_facebook_user_id_and_quote_id", unique: true, using: :btree
-  add_index "likes", ["facebook_user_id"], name: "index_likes_on_facebook_user_id", using: :btree
   add_index "likes", ["quote_id"], name: "index_likes_on_quote_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "quotes", force: true do |t|
     t.text     "quote"
@@ -82,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140712043940) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

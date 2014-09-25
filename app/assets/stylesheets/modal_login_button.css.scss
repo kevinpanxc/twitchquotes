@@ -1,0 +1,40 @@
+// #sign_in_modal > .modal-dialog {
+//     width: 75%;
+// }
+
+// #sign_in_modal > .modal-dialog > .modal-content {
+//     width: 100%;
+// }
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 700px;
+    margin: 30px auto;
+  }
+}
+
+#sign_in_modal_errors {
+    display: none;
+}
+
+button#modal_sign_in_button {
+    display: block; 
+    width: 100%; 
+    margin-bottom: 10px;
+}
+
+button#modal_sign_up_button {
+    display: block; 
+    width: 100%; 
+    margin-bottom: 10px; 
+    background-color: #866bb9; 
+    color: white;
+}
+
+button#modal_sign_up_button:hover {
+    background-color: #9070CF;
+}
+
+button#modal_sign_in_button:focus, button#modal_sign_up_button:focus {
+    outline: 0;
+}

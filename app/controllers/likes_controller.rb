@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
-    before_filter :require_facebook_sign_in
+    # before_filter :require_facebook_sign_in
+    before_filter :signed_in_user_open_modal
     before_filter :setup
 
     def create
@@ -31,7 +32,7 @@ class LikesController < ApplicationController
         def like_params
             return_params = ActionController::Parameters.new(
                 quote_id: params[:quote_id],
-                facebook_user_id: current_facebook_user.id
+                user_id: current_user.id
             )
 
             return_params.permit!
@@ -45,13 +46,13 @@ class LikesController < ApplicationController
         def remove_dislike
             @remove_dislike = false
 
-            dislike_to_remove = current_facebook_user.dislikes.find_by(quote_id: params[:quote_id])
+            dislike_to_remove = current_user.dislikes.find_by(quote_id: params[:quote_id])
 
             if dislike_to_remove
                 @remove_dislike = true
                 dislike_to_remove.destroy
             end
 
-            current_facebook_user.dislikes.find_by(quote_id: params[:quote_id])
+            current_user.dislikes.find_by(quote_id: params[:quote_id])
         end
 end

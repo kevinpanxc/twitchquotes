@@ -26,4 +26,16 @@ module SessionsHelper
 			redirect_to signin_path, notice: "Please sign in."
 		end
 	end
+
+	def signed_in_user_open_modal
+		unless signed_in?
+			render "sessions/sign_in_notification"
+		end
+	end
+
+	def is_admin
+		unless current_user.admin?
+			redirect_to signin_path, notice: "Not authorized."
+		end
+	end
 end

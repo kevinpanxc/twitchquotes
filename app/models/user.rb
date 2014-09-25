@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+    has_many :likes, dependent: :destroy
+    has_many :liked_quotes, through: :likes, source: :quote
+    has_many :dislikes, dependent: :destroy
+    has_many :disliked_quotes, through: :dislikes, source: :quote
+	
 	has_secure_password
 
 	validates :name, presence: true, length: { maximum: 50 }

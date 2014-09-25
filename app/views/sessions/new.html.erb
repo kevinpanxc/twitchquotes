@@ -1,15 +1,13 @@
-<% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
-
+<% provide(:title, "Sign In") %>
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-
+        <h1 style="text-align: left">Sign In</h1>
 		<%= form_tag('/sessions', method: :post) do %>
-			<%= label_tag(:email, "Email") %>
-			<%= text_field_tag(:email) %>
-			<%= label_tag(:password, "Password") %>
-			<%= password_field_tag(:password) %>
-			<%= submit_tag("Sign in", class: "btn btn-large btn-primary") %>
+			<%= text_field_tag(:email, nil, placeholder: "Email") %>
+			<%= password_field_tag(:password, nil, placeholder: "Password") %>
+			<%= submit_tag("Sign In", class: "btn btn-large btn-custom") %>
 		<% end %>
+
+        <div class="sign_up_prompt">Don't have an account? Sign up <%= link_to 'here', signup_path %></div>
 	</div>
 </div>

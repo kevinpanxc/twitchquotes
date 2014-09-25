@@ -18,7 +18,7 @@
         <span class="glyphicon glyphicon-leaf" title="About"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">About</span>
     <% end %>
 </li>
-<li class="dropdown">
+<li class="dropdown" style="display: none">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <span class="fa fa-facebook-square <%= current_facebook_user ? "facebook-blue" : "" %>" title="Facebook" style="font-size: 19px"></span>
         <span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">
@@ -41,5 +41,15 @@
     </ul>
 </li>
 <% if signed_in? %>
-    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+    <li>
+        <%= link_to signout_path, method: "delete" do %>
+            <span class="glyphicon glyphicon-log-out" title="Sign Out"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">Sign Out</span>
+        <% end %>
+    </li>
+<% else %>
+    <li>
+        <%= link_to signin_path do %>
+            <span class="glyphicon glyphicon-log-in" title="Sign In"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">Sign In</span>
+        <% end %>
+    </li>
 <% end %>

@@ -1,0 +1,8 @@
+<% if @success %>
+    location.reload();
+<% else %>
+    $('#sign_up_modal_errors').show();
+    <% @user.errors.full_messages.each do |msg| %>
+        $('#sign_up_modal_errors').append('<div><%= msg %></div>');
+    <% end %>
+<% end %>

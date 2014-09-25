@@ -1,0 +1,6 @@
+<% if @error_string.empty? %>
+    location.reload();
+<% else %>
+    $('#sign_in_modal_errors').show();
+    $('#sign_in_modal_errors').html("<%= @error_string %>");
+<% end %>

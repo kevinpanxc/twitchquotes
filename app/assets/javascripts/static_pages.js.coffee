@@ -64,8 +64,12 @@ insert_at_caret = (text_area, text) ->
   return
 
 insert_at_caret_2 = (text_area, text) ->
-  old = text_area.selectionEnd
-  text_area.value = text_area.value.substr(0, text_area.selectionEnd) + text + text_area.value.substr(text_area.selectionEnd)
+  old
+  unless text_area.selectionStart is text_area.selectionEnd
+    old = text_area.selectionStart
+  else
+    old = text_area.selectionEnd
+  text_area.value = text_area.value.substr(0, text_area.selectionStart) + text + text_area.value.substr(text_area.selectionEnd)
   text_area.selectionEnd = old + text.length
   text_area.selectionStart = old + text.length
   return

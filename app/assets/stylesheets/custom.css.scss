@@ -174,3 +174,15 @@ fieldset[disabled] .btn-mywebsite.active {
   color: #2DBBF7; 
   background-color: white; 
 }
+
+#profile-nav-li {
+  text-align: center;
+}
+
+#profile-nav-li > a:focus {
+  outline: 0;
+}
+
+#profile-nav-li > a {
+  background-color: white;
+}

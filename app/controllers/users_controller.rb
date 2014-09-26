@@ -8,6 +8,16 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+
+        @which_quotes = params.has_key?(:which) ? params[:which] : "like"
+
+        if @which_quotes == "like"
+            @links = @user.likes.paginate(page: params[:page], :per_page => 24, order: "created_at DESC")
+        else
+            @links = @user.dislikes.paginate(page: params[:page], :per_page => 24, order: "created_at DESC")
+        end
+
+        @quotes = @links.map { |link| link.quote }
     end
 
     def create

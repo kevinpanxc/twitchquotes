@@ -1,3 +1,43 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile_main_container {
+    background-color: white;
+    border-radius: 12px;
+    padding-bottom: 20px;
+}
+
+#profile_username {
+    text-align: left;
+}
+
+#profile_right_column {
+    background-color: #F8F8F8;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+#profile_grey_divider {
+    border-bottom: 1px solid #DFDFDF;
+    margin-bottom: 28px
+}
+
+.profile_side_button_group {
+    width: 100%;
+}
+
+.profile_side_button_group a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.active_user_show_page {
+    border-left: solid #866bb9 10px;
+}
+
+.profile_user_info {
+    padding: 20px 0px 20px 0px;
+}

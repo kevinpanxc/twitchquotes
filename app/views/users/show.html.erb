@@ -1,3 +1,44 @@
 <% provide(:title, @user.username) %>
-<h1><%= @user.username %></h1>
-<%= @user.username %>, <%= @user.email %>
+
+<div class="container-fluid" id="profile_main_container">
+    <div class="col-md-8">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 id="profile_username"><%= @user.username %></h1>
+            </div>
+
+            <div class="row" id="profile_grey_divider"></div>
+
+            <div class="row">
+                <% if @quotes.count != 0 %>
+                    <ul class="quotes_search">
+                        <%= render partial: "quotes/quote_search", collection: @quotes, as: :quote %>
+                    </ul>
+                <% else %>
+                    <div>You don't have any quotes under this category!</div>
+                <% end %>
+
+                <div class="paginate_parent_bottom"><%= will_paginate @links %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4" id="profile_right_column">
+        <div class="container-fluid">
+            <div class="row profile_user_info">
+                <div><b>Email:</b> <%= @user.email %></div>
+                <div><b>Date joined:</b> <%= @user.created_at.strftime("%B %d, %Y") %></div>
+            </div>
+            <div class="row">
+                <div class="btn-group-vertical profile_side_button_group">
+                    <button type="button" class="btn btn-default <%= @which_quotes == "like" ? "active_user_show_page" : "" %>">
+                        <%= link_to "Liked Quotes", user_path(@user, which: "like") %>
+                    </button>
+                    <button type="button" class="btn btn-default <%= @which_quotes == "dislike" ? "active_user_show_page" : "" %>">
+                        <%= link_to "Disliked Quotes", user_path(@user, which: "dislike") %>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

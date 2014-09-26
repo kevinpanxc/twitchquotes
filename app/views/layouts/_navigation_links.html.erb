@@ -41,10 +41,23 @@
     </ul>
 </li>
 <% if signed_in? %>
-    <li>
-        <%= link_to signout_path, method: "delete" do %>
-            <span class="glyphicon glyphicon-log-out" title="Sign Out"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">Sign Out</span>
+    <li class="dropdown" id="profile-nav-li">
+        <%= link_to "#", data: { toggle: "dropdown", class: "dropdown-toggle" } do %>
+            <span class="glyphicon glyphicon-user" title="Sign Out"></span>
+            <span style="margin-left: 2px"><%= current_user.username %></span>
         <% end %>
+        <ul class="dropdown-menu">
+            <li>
+                <%= link_to user_path(current_user) do %>
+                    <span class="glyphicon glyphicon-unchecked" title="Profile"></span> Profile
+                <% end %>
+            </li>
+            <li>
+                <%= link_to signout_path, method: "delete" do %>
+                    <span class="glyphicon glyphicon-log-out" title="Sign Out"></span> Sign Out
+                <% end %>
+            </li>
+        </ul>
     </li>
 <% else %>
     <li>

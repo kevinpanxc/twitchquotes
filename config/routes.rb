@@ -9,7 +9,7 @@ Twitchquotes::Application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
   resources :random, only: [:index, :show]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 
   root to: 'quotes#index'
 

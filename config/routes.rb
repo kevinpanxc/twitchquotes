@@ -19,6 +19,7 @@ Twitchquotes::Application.routes.draw do
   get '/builder', to: 'static_pages#quote_builder'
   get '/signin', to: 'sessions#new'
   get '/admin', to: 'users#admin'
+  post '/admin/toggle_social', to: 'users#toggle_social'
   get '/signup', to: 'users#new'
   delete '/signout', to: 'sessions#destroy'
 

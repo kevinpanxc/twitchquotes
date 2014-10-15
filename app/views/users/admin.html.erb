@@ -25,3 +25,14 @@
         <% end %>
     </div>
 </div>
+
+<div class="row">
+    <h2>Display Social Settings</h2>
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_tag admin_toggle_social_path, method: :post, style: 'text-align:center' do |f| %>
+            <%= radio_button_tag 'social', 'true', @display_social, style: 'display:inline-block;width:24px' %> Display</br>
+            <%= radio_button_tag 'social', 'false', !@display_social, style: 'display:inline-block;width:24px' %> Hide
+            <%= submit_tag "Save", class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>

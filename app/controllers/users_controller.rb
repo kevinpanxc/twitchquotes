@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_filter :signed_in_user, only: [:admin]
-    before_filter :is_admin, only: [:admin]
+    before_filter :signed_in_user, only: [:admin, :toggle_social]
+    before_filter :is_admin, only: [:admin, :toggle_social]
 
     def new
         @user = User.new
@@ -49,6 +49,17 @@ class UsersController < ApplicationController
     def admin
         @announcement_update = Announcement.last
         @announcement = Announcement.new
+        @display_social = Rails.application.config.display_social
+    end
+
+    def toggle_social
+        if params[:social] == 'true'
+            Rails.application.config.display_social = true
+        else
+            Rails.application.config.display_social = false
+        end
+        flash[:success] = "Display social settings toggled to #{params[:social]}"
+        redirect_to admin_path
     end
 
     private

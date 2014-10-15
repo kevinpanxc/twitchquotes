@@ -1,13 +1,15 @@
-<% if current_user && current_user.liked_quotes.include?(quote) %>
-    <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>
-<% else %>
-    <span class="like_form_parent"><%= render "likes/like", quote: quote %></span>
-<% end %>
+<% if Rails.application.config.display_social %>
+    <% if current_user && current_user.liked_quotes.include?(quote) %>
+        <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>
+    <% else %>
+        <span class="like_form_parent"><%= render "likes/like", quote: quote %></span>
+    <% end %>
 
-<div class="aggregate_vote_count"><%= quote.likes.count - quote.dislikes.count %></div>
+    <div class="aggregate_vote_count"><%= quote.likes.count - quote.dislikes.count %></div>
 
-<% if current_user && current_user.disliked_quotes.include?(quote) %>
-    <span class="dislike_form_parent"><%= render "dislikes/destroy_dislike", quote: quote %></span>
-<% else %>
-    <span class="dislike_form_parent"><%= render "dislikes/dislike", quote: quote %></span>
+    <% if current_user && current_user.disliked_quotes.include?(quote) %>
+        <span class="dislike_form_parent"><%= render "dislikes/destroy_dislike", quote: quote %></span>
+    <% else %>
+        <span class="dislike_form_parent"><%= render "dislikes/dislike", quote: quote %></span>
+    <% end %>
 <% end %>

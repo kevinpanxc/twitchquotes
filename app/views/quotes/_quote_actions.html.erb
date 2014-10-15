@@ -1,10 +1,10 @@
-<span class="like_count"><%= quote.likers.count %></span>
+<span class="like_count"><%= quote.likes.count %></span>
 <% if current_user && current_user.liked_quotes.include?(quote) %>
     <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>
 <% else %>
     <span class="like_form_parent"><%= render "likes/like", quote: quote %></span>
 <% end %>
-<span class="dislike_count"><%= quote.dislikers.count %></span>
+<span class="dislike_count"><%= quote.dislikes.count %></span>
 <% if current_user && current_user.disliked_quotes.include?(quote) %>
     <span class="dislike_form_parent"><%= render "dislikes/destroy_dislike", quote: quote %></span>
 <% else %>

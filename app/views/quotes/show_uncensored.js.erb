@@ -1,2 +1,2 @@
 $("#button_remove_censors").hide();
-$("#quote_content_<%= @quote_dom_id += 1 %>").html("<%=raw @quote.quote %>");
+$("#quote_content_<%= @quote_dom_id += 1 %>").html("<%= escape_javascript(raw @quote.quote) %>");

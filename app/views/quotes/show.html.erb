@@ -1,4 +1,4 @@
-<% provide(:title, @quote.title.html_safe) %>
+<% provide(:title, ProfanityFilter.replace_with_stars(@quote.title).html_safe) %>
 <div class="row">
     <div class="col-md-2" style="text-align: right">
         <div class="quote_actions" id="quote_<%= @quote_dom_id += 1 %>">
@@ -6,11 +6,22 @@
         </div>
     </div>
     <div id="show_quote" class="single_quote_block panel panel-default col-md-8">
-        <div class="panel-heading"><%= @quote.title %></div>
-        <div class="show_quote_text_area">"<span id="quote_content_<%= @quote_dom_id%>"><%=raw @quote.quote %></span>"</div>
+        <div class="panel-heading"><%= ProfanityFilter.replace_with_stars(@quote.title) %></div>
+        <div class="show_quote_text_area">"<span id="quote_content_<%= @quote_dom_id%>"><%=raw ProfanityFilter.replace_with_stars(@quote.quote) %></span>"</div>
         <div class="quotes_list_stream_name_date">
             <span class="glyphicon glyphicon-edit quote_link copy_clipboard" title="Copy to Clipboard" data-dom-id="<%= @quote_dom_id %>"></span>
             <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago
         </div>
     </div>
 </div>
+
+<% unless @quote.marked_as.nil? %>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8" style="text-align: center">
+            <%= form_tag(quote_path(@quote), remote: true, method: :get) do |f| %>
+                <%= button_tag 'Remove censors', type: 'submit', class: 'btn btn-danger', id: 'button_remove_censors' %>
+                <%= hidden_field_tag 'uncensored', true %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

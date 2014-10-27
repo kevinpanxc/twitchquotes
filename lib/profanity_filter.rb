@@ -29,6 +29,28 @@ module ProfanityFilter
         end
     end
 
+    def self.replace_with_stars(text)
+        return_text = text
+
+        KEY_WORDS.each do |word|
+            while return_text =~ /#{word}/i do
+                match = return_text[/#{word}/i]
+                star_string = ""
+                if word.length == 2
+                    star_string = "#{match[0]}*"
+                else
+                    (word.length - 2).times do
+                        star_string += "*"
+                    end
+                    star_string = match[0] + star_string + match[match.length - 1]
+                end
+                return_text.sub!(/(#{word})/i, star_string)
+            end
+        end
+
+        return_text
+    end
+
     def self.reset
         Quote.update_all("marked_as=null")
     end

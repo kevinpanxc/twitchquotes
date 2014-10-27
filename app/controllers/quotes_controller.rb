@@ -12,8 +12,20 @@ class QuotesController < ApplicationController
     end
 
     def show
-        @quote_dom_id = 0
-        @quote = Quote.find(params[:id])
+        if params.has_key?(:uncensored)
+            unless Quote.exists?(params[:id])
+                render 'general/server_error'
+            else
+                @quote = Quote.find(params[:id])
+                @quote_dom_id = 0
+                respond_to do |format|
+                    format.js { render 'show_uncensored.js.erb' }
+                end
+            end      
+        else
+            @quote_dom_id = 0
+            @quote = Quote.find(params[:id])
+        end
     end
 
     def edit

@@ -9,6 +9,7 @@ module ProfanityFilter
 
     def self.set_profanity_flag(ignore_flagged)
         ActiveRecord::Base.transaction do
+            # fetch quotes in batches and set marked_as integer
             Quote.find_each do |quote|
                 if !ignore_flagged || quote.marked_as.nil?
                     if KEY_WORDS.any? { |word| quote.quote.downcase.include? word }

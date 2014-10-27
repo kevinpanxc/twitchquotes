@@ -1,10 +1,10 @@
 <li class="single_quote_block">
-    <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>">
-        <%= render "quotes/upvote_downvote", quote: quote %>
+    <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>" <% if !quote.marked_as.nil? %> style="display: none" <% end %>>
+        <%= render "quotes/quote_actions_block", quote: quote %>
     </div>
     <div class="quote_text_area" id="quote_text_area_<%= @quote_dom_id %>">
         <% if quote.marked_as.nil? %>
-        	<%= render "quotes/quote_text_area", quote: quote %>
+        	<%= render "quotes/quote_content_block", quote: quote %>
         <% else %>
             <span class="quote_explicit_message">
                 Quote has been hidden due to explicit language 

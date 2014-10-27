@@ -66,11 +66,14 @@ class QuotesController < ApplicationController
     end
 
     def show_marked_quote
-        @quote = Quote.find(params[:id])
-        @missing_dom_id = !(params.has_key? :dom_id)
-        @quote_dom_id = params[:dom_id]
-        respond_to do |format|
-            format.js
+        unless Quote.exists?(params[:id]) and params.has_key? :dom_id
+            render 'general/server_error'
+        else
+            @quote = Quote.find(params[:id])
+            @quote_dom_id = params[:dom_id]
+            respond_to do |format|
+                format.js
+            end
         end
     end
 

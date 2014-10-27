@@ -4,8 +4,7 @@ module ProfanityFilter
         "vibrator",
         "pussy",
         "milf",
-        "nude",
-        "cum"
+        "nude"
     ]
 
     def self.set_profanity_flag(ignore_flagged)
@@ -28,5 +27,9 @@ module ProfanityFilter
         else
             return nil
         end
+    end
+
+    def self.reset
+        Quote.update_all("marked_as=null")
     end
 end

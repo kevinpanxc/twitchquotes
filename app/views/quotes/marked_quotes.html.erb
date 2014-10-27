@@ -1,0 +1,13 @@
+<% provide(:title, 'Marked Quotes') %>
+
+<div class="row">
+    <div class="col-md-10">
+        <div id="number_of_search_results"><%= @quotes.count %> quotes marked</div>
+
+        <ul class="quotes_search">
+            <%= render partial: "quote_search_result", collection: @quotes, as: :quote %>
+        </ul>
+
+        <div class="paginate_parent_bottom"><%= will_paginate %></div>
+    </div>
+</div>

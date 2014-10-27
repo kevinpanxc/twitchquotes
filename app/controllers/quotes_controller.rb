@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
-    before_filter :signed_in_user, only: [:edit, :update]
+    before_filter :signed_in_user, only: [:edit, :update, :marked]
+    before_filter :is_admin, only: [:marked]
 
     def index
         @quote_dom_id = 0
@@ -75,6 +76,11 @@ class QuotesController < ApplicationController
                 format.js
             end
         end
+    end
+
+    def marked
+        @quotes = Quote.where.not( marked_as: nil ).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        render 'marked_quotes'
     end
 
     private

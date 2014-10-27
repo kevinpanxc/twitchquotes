@@ -2,6 +2,7 @@ Twitchquotes::Application.routes.draw do
   # resources :users
   resources :quotes do
     get 'search', on: :collection
+    get 'show_marked_quote', on: :member
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]

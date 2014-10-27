@@ -1,0 +1,5 @@
+<% if !@missing_dom_id %>
+    $("#quote_text_area_<%= @quote_dom_id %>").html('<%= escape_javascript(render "quotes/quote_text_area", quote: @quote) %>');
+<% else %>
+    alert("Internal server error");
+<% end %>

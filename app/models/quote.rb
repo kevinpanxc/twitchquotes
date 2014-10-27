@@ -10,6 +10,7 @@ class Quote < ActiveRecord::Base
     validates :title, presence: true
 
     before_save :process_quotes
+    before_save :check_profanity
     after_destroy :refresh_stream_quote_count
 
     def self.random
@@ -23,6 +24,10 @@ class Quote < ActiveRecord::Base
             Emoticons.emoticons.each do |key, value|
                 self.quote = self.quote.gsub(/(?<=\s|^)#{key}(?=($|\s))/, '<img class="emoticon" src="' + value + '"/>')
             end
+        end
+
+        def check_profanity
+            self.marked_as = ProfanityFilter.has_profanity(self.quote)
         end
 
         def refresh_stream_quote_count

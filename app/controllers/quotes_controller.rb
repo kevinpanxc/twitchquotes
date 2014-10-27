@@ -65,6 +65,15 @@ class QuotesController < ApplicationController
         redirect_to quotes_path
     end
 
+    def show_marked_quote
+        @quote = Quote.find(params[:id])
+        @missing_dom_id = !(params.has_key? :dom_id)
+        @quote_dom_id = params[:dom_id]
+        respond_to do |format|
+            format.js
+        end
+    end
+
     private
         def quote_params
             params.require(:quote).permit(:quote, :stream_id, :title)

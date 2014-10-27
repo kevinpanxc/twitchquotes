@@ -2,14 +2,19 @@
     <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>">
         <%= render "quotes/upvote_downvote", quote: quote %>
     </div>
-    <div class="quote_text_area">
-    	"<span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>"
-    	<div class="quotes_list_stream_name_date">
-            <span class="glyphicon glyphicon-edit quote_link copy_clipboard" data-dom-id="<%= @quote_dom_id %>" title="Copy to Clipboard"></span>
-            <%= link_to quote_path(quote), class: 'quote_link' do %>
-                <span class="glyphicon glyphicon-link" title="Link to quote"></span>
-            <% end %>
-    		<%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
-    	</div>
+    <div class="quote_text_area" id="quote_text_area_<%= @quote_dom_id %>">
+        <% if quote.marked_as.nil? %>
+        	<%= render "quotes/quote_text_area", quote: quote %>
+        <% else %>
+            <span class="quote_explicit_message">
+                Quote has been hidden due to explicit language 
+                <%= form_for(quote, remote: true, url: show_marked_quote_quote_path(quote), method: :get, html: { class: "quote_explicit_show_form" }) do |f| %>
+                    <%= button_tag(type: 'submit') do %>
+                        [+]
+                    <% end %>
+                    <%= hidden_field_tag 'dom_id', @quote_dom_id %>
+                <% end %>
+            </span>
+        <% end %>
     </div>
 </li>

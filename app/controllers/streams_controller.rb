@@ -6,8 +6,7 @@ class StreamsController < ApplicationController
 		elsif params[:page] =~ /^\d+$/
 			@streams = Stream.paginate(page: params[:page], :per_page => 15, order: "quotes_count DESC")
 		else
-			@streams = Stream.where("UPPER(name) LIKE :prefix", prefix: "A%")
-			@letter = "A"
+			@streams = Stream.paginate(page: 1, :per_page => 15, order: "quotes_count DESC")
 		end
 	end
 

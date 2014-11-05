@@ -4,7 +4,10 @@ module ProfanityFilter
         "vibrator",
         "pussy",
         "milf",
-        "nude"
+        "nude",
+        "dick",
+        "╰⋃╯",
+        "卐"        
     ]
 
     def self.set_profanity_flag(ignore_flagged)

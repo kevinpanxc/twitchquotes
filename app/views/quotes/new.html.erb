@@ -15,6 +15,8 @@
 		</ul>
 	</div>
 	<div class="col add_quote_main_content" id="new_quote_form">
+		<div id="new_quote_selected_stream_text">Currently adding a quote for <span></span>'s stream...</div>
+
 		<%= form_for(@quote) do |f| %>
 			<%= f.text_field :title, placeholder: "Quote title (required)" %>
 			<%= f.text_area :quote, rows: 4, placeholder: "Enter quote here... (required)" %>

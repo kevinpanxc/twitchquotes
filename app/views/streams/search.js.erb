@@ -9,6 +9,8 @@ $("#channels li").each(function () {
 		return function () {
 			$("#channels_search").fadeOut();
 			$("#new_quote_form").show();
+			$("#new_quote_selected_stream_text").show();
+			$("#new_quote_selected_stream_text span").html(name.trim());
 			$("#available_emoticons_box").show();
 			document.getElementById("stream_id").value = id;
 			document.getElementById("stream_url").value = url;

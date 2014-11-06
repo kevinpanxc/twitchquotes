@@ -165,6 +165,16 @@ ul.quotes li .quote_vote_area {
 	}
 }
 
+#new_quote_selected_stream_text {
+	margin-bottom: 8px;
+	color: #888;
+	display: none;
+}
+
+#new_quote_selected_stream_text span {
+	color:#333;
+}
+
 #new_quote_form {
 	display: none;
 }

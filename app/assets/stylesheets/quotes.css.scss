@@ -96,6 +96,22 @@ ul.quotes li .quote_text_area {
 	margin: 0 auto;
 }
 
+.quote_text_art_label {
+	text-align: right !important;
+	color: grey;
+	font-size: 12px;
+}
+
+ul.quotes li .quote_text_area_text_art {
+	text-align: left !important;
+	width: 50%;
+	margin: 0 auto;
+}
+
+ul.quotes li .quote_text_area_text_art .quotes_list_stream_name_date {
+	text-align: center !important;
+}
+
 ul.quotes li .quote_vote_area {
 	position: absolute;
 	margin-top: -6px;
@@ -177,6 +193,29 @@ ul.quotes li .quote_vote_area {
 
 #new_quote_form {
 	display: none;
+}
+
+#new_quote_text_art_options {
+	text-align: center;
+	margin-top: -7px;
+	margin-bottom: 8px;
+}
+
+#new_quote_text_art_options div {
+    display: inline-block;
+    margin-right: 8px;
+    height: 22px;
+    padding: 2px 8px 2px 8px;
+    border-radius: 4px;
+    background-color: #999;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.new_quote_text_art_options_options_active {
+    background-color: #866bb9 !important;
+    cursor: default !important;
 }
 
 #available_emoticons_box {

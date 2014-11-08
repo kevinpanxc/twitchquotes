@@ -29,6 +29,12 @@ ready = ->
         else
             true
     )
+    $("#new_quote_text_art_options").find("div").click ->
+            $("#text_art").val($(this).data("value"))
+            $(".new_quote_text_art_options_options_active").removeClass "new_quote_text_art_options_options_active"
+            $(this).addClass "new_quote_text_art_options_options_active"
+            return
+
   else if $("body").hasClass("quotes_index") or $("body").hasClass("quotes_show")
     $('.copy_clipboard').click( ->
         prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $("#quote_content_" + $(this).data("dom-id")).html());

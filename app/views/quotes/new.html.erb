@@ -21,10 +21,15 @@
 			<%= f.text_field :title, placeholder: "Quote title (required)" %>
 			<%= f.text_area :quote, rows: 4, placeholder: "Enter quote here... (required)" %>
 			<%= f.hidden_field :stream_id, id: "stream_id" %>
+			<%= f.hidden_field :text_art, id: "text_art" %>
 			<%= hidden_field_tag "stream_name" %>
 			<%= hidden_field_tag "stream_url" %>
 			<%= hidden_field_tag "stream_logo" %>
 			<%= hidden_field_tag "stream_followers" %>
+	        <div id="new_quote_text_art_options" class="row"> 
+	            <div class="new_quote_text_art_options_options_active col-md-1 col-md-offset-9" data-value="false" >Normal</div>
+	            <div class="col-md-1" data-value="true" >Text Art</div>
+	        </div>
 			<%= f.submit "Add Quote", class: "btn btn-large btn-custom" %>
 		<% end %>
 	</div>

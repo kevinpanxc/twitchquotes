@@ -7,6 +7,9 @@
     </div>
     <div id="show_quote" class="single_quote_block panel panel-default col-md-8">
         <div class="panel-heading"><%= ProfanityFilter.replace_with_stars(@quote.title) %></div>
+    <% if @quote.text_art %>
+        <div class="quote_text_art_label">text art</div>
+    <% end %>
         <div class="show_quote_text_area">
             <% unless @quote.text_art %>
                 "<span id="quote_content_<%= @quote_dom_id%>"><%=raw ProfanityFilter.replace_with_stars(@quote.quote) %></span>"

@@ -7,7 +7,15 @@
     </div>
     <div id="show_quote" class="single_quote_block panel panel-default col-md-8">
         <div class="panel-heading"><%= ProfanityFilter.replace_with_stars(@quote.title) %></div>
-        <div class="show_quote_text_area">"<span id="quote_content_<%= @quote_dom_id%>"><%=raw ProfanityFilter.replace_with_stars(@quote.quote) %></span>"</div>
+        <div class="show_quote_text_area">
+            <% unless @quote.text_art %>
+                "<span id="quote_content_<%= @quote_dom_id%>"><%=raw ProfanityFilter.replace_with_stars(@quote.quote) %></span>"
+            <% else %>
+                <div class="quote_text_art_content_parent_show_quote">
+                    <span id="quote_content_<%= @quote_dom_id%>"><%=raw @quote.quote %></span>
+                </div>
+            <% end %>
+        </div>
         <div class="quotes_list_stream_name_date">
             <span class="glyphicon glyphicon-edit quote_link copy_clipboard" title="Copy to Clipboard" data-dom-id="<%= @quote_dom_id %>"></span>
             <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago

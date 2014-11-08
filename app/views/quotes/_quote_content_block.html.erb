@@ -1,7 +1,9 @@
 <% unless quote.text_art %>
     "<span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>"
 <% else %>
-    <span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>
+    <div class="quote_text_art_content_parent">
+        <span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>
+    </div>
 <% end %>
 <div class="quotes_list_stream_name_date">
     <span class="glyphicon glyphicon-edit quote_link copy_clipboard" data-dom-id="<%= @quote_dom_id %>" title="Copy to Clipboard"></span>

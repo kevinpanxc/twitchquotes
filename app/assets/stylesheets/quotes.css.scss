@@ -96,20 +96,16 @@ ul.quotes li .quote_text_area {
 	margin: 0 auto;
 }
 
-.quote_text_art_label {
-	text-align: right !important;
-	color: grey;
+ul.quotes li .quote_text_art_label {
+	color: #999;
 	font-size: 12px;
+	text-align: right !important;
 }
 
-ul.quotes li .quote_text_area_text_art {
-	text-align: left !important;
-	width: 50%;
-	margin: 0 auto;
-}
-
-ul.quotes li .quote_text_area_text_art .quotes_list_stream_name_date {
-	text-align: center !important;
+.quote_text_art_content_parent {
+	width: 320px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 ul.quotes li .quote_vote_area {

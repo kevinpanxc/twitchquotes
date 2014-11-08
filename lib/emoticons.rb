@@ -15,6 +15,11 @@ class Emoticons
         Keepo: asset_path("emoticons/keepo.png"),
         Kreygasm: asset_path("emoticons/kreygasm.png"),
         FailFish: asset_path("emoticons/failfish.png"),
-        BibleThump: asset_path("emoticons/biblethump.png")
+        BibleThump: asset_path("emoticons/biblethump.png"),
+        BabyRage: asset_path("emoticons/babyrage.png"),
+        krippRage: asset_path("emoticons/kripprage.png"),
+        PunchTrees: asset_path("emoticons/punchtrees.png"),
+        SSSsss: asset_path("emoticons/ssssss.png"),
+        MrDestructoid: asset_path("emoticons/mrdestructoid.png")
     }
 end

@@ -1,5 +1,5 @@
 <% if !params.has_key? :page or params[:page] == '1' %>
-    <div class="page-header" style="margin-top: -24px; padding-bottom: 0px">
+    <div class="page-header" style="<% unless has_announcement? %> margin-top: -24px; <% end %> padding-bottom: 0px">
         <h1>TwitchQuotes <small> The Largest Database for Twitch Chat Copypastas on the Internet</small></h1>
     </div>
 <% end %>

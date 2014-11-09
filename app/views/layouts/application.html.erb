@@ -1,8 +1,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? "#{yield(:title)} | TwitchQuotes" : "TwitchQuotes | The Best Quotes from Twitch Chat" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? "#{yield(:description)}" : "TwitchQuotes is the leading database for Twitch chat quotes and copypastas. Browse copypastas and ASCII text art from your favorite streamer's Twitch chat or even build your own copypasta" %>">
     <%= favicon_link_tag asset_path("favicon.ico") %>
-    <meta name="description" content="The Best Quotes from Twitch Chat!">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

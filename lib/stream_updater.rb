@@ -10,7 +10,7 @@ module StreamUpdater
                 stream.quotes_count = stream.quotes.count
                 stream.save
             rescue
-                puts "Stream #{stream.name} did not successfully update"
+                puts "WARNING: stream #{stream.name} did not successfully update"
             end
         end
     end

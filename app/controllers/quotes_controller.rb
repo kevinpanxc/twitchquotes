@@ -95,6 +95,11 @@ class QuotesController < ApplicationController
         render 'marked_quotes'
     end
 
+    def ascii_art
+        @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        render 'ascii_art'
+    end
+
     private
         def quote_params
             params.require(:quote).permit(:quote, :stream_id, :title, :text_art)

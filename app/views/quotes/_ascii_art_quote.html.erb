@@ -1,0 +1,10 @@
+<div class="col-sm-3 ascii_preview_box">
+    <%= link_to quote_path(quote) do %>
+        <div class="ascii_preview_parent">
+            <div class="ascii_preview_content">
+                <div><%= quote.quote %></div>
+            </div>
+            <div class="ascii_preview_title"><%= quote.title %></div>
+        </div>
+    <% end %>
+</div>

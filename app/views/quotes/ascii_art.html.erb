@@ -1,0 +1,10 @@
+<% provide(:title, 'ASCII Art Copypasta') %>
+<% provide(:description, 'Browse a large collection of ASCII art (text art) copypastas on TwitchQuotes. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
+
+<%= @quotes.each_slice(4).with_index do |quote_batch, i| %>
+    <div class="row quote_row">
+        <%= render partial: "quotes/ascii_art_quote", collection: quote_batch, as: :quote %>
+    </div>
+<% end %>
+
+<div class="paginate_parent_bottom"><%= will_paginate %></div>

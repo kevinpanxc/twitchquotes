@@ -335,3 +335,52 @@ ul#channels {
 .copy_clipboard {
 	cursor: pointer;
 }
+
+.ascii_preview_box {
+	margin-bottom: 20px;
+}
+
+.ascii_preview_box .ascii_preview_parent {
+	padding: 10px 10px 0px 10px;
+	border: solid #BBB 1px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.ascii_preview_box .ascii_preview_parent:hover {
+	border: solid #888 1px;
+}
+
+.ascii_preview_box .ascii_preview_parent .ascii_preview_content {
+	border: solid #888 1px;
+	height: 100%;
+	border-radius: 10px;
+	height: 200px;
+	background-color: white;
+	color: black;
+	overflow: hidden;
+	font-size: 10px;
+}
+
+.ascii_preview_box .ascii_preview_parent .ascii_preview_content:hover {
+	border: solid #555 1px;
+}
+
+.ascii_preview_content > div {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.ascii_preview_box .ascii_preview_parent .ascii_preview_title {
+	color: black;
+	padding-top: 5px;
+	padding-bottom: 12px;
+	font-size: 18px;
+	overflow: hidden;
+}
+
+.ascii_preview_box > a:hover {
+	text-decoration: none !important;
+}

@@ -3,6 +3,7 @@ Twitchquotes::Application.routes.draw do
   resources :quotes do
     get 'search', on: :collection
     get 'marked', on: :collection
+    get 'ascii-art', on: :collection, to: 'quotes#ascii_art'
     get 'show_marked_quote', on: :member
   end
   resources :sessions, only: [:new, :create, :destroy]

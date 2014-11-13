@@ -21,6 +21,8 @@ class Quote < ActiveRecord::Base
 
     private
         def process_quotes
+            self.quote.strip!
+            self.title.strip!
             Emoticons.emoticons.each do |key, value|
                 self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, '<img class="emoticon" src="' + value + '"/>')
             end

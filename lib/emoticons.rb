@@ -21,6 +21,7 @@ class Emoticons
         PunchTrees: asset_path("emoticons/punchtrees.png"),
         SSSsss: asset_path("emoticons/ssssss.png"),
         MrDestructoid: asset_path("emoticons/mrdestructoid.png"),
-        OpieOP: asset_path("emoticons/opieop.png")
+        OpieOP: asset_path("emoticons/opieop.png"),
+        krippFist: asset_path("emoticons/krippfist.png")
     }
 end

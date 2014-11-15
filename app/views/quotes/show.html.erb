@@ -17,7 +17,7 @@
     <div id="show_quote" class="single_quote_block panel panel-default col-md-8">
         <div class="panel-heading"><%= quote_title %></div>
     <% if @quote.text_art %>
-        <div class="quote_text_art_label">text art</div>
+        <div class="quote_text_art_label"><%= link_to 'text art', ascii_art_quotes_path %></div>
     <% end %>
         <div class="show_quote_text_area">
             <% unless @quote.text_art %>

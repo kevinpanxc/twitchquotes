@@ -97,17 +97,18 @@ ul.quotes li .quote_text_area {
 }
 
 ul.quotes li .quote_text_art_label {
-	color: #999;
-	font-size: 12px;
 	text-align: right !important;
 }
 
 #show_quote .quote_text_art_label {
-	color: #999;
-	font-size: 12px;
 	text-align: right !important;
 	margin-right: 6px;
 	margin-top: 3px;	
+}
+
+.quote_text_art_label a {
+	color: #999;
+	font-size: 12px;
 }
 
 .quote_text_art_content_parent {

@@ -1,5 +1,5 @@
 <% provide(:title, 'ASCII Art Copypasta') %>
-<% provide(:description, 'Browse a large collection of ASCII art (text art) copypastas on TwitchQuotes. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
+<% provide(:description, 'Browse a large collection of ASCII art (text art) copypastas from Twitch chat. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
 <%= @quotes.each_slice(4).with_index do |quote_batch, i| %>
     <div class="row quote_row">

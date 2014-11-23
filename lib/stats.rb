@@ -1,24 +1,28 @@
 module Stats
-    @@base = 20
-    @@current = @@base
+    @@b = 20
+    @@c = @@b
 
-    @@last_updated = DateTime.now
+    @@l_u = DateTime.now
 
     def self.get_live_users
-        now = DateTime.now
-        if now.to_time - @@last_updated.to_time > 120
-            @@last_updated = now
-            delta = @@current - @@base
+        x
+    end
 
-            if delta > 10
-                @@current += Random.rand(-delta..5)
-            elsif delta < 10
-                @@current += Random.rand(-5..-delta)
+    def self.x
+        n = DateTime.now
+        if n.to_time - @@l_u.to_time > 0
+            @@l_u = n
+            d = @@c - @@b
+
+            if d > 10
+                @@c += Random.rand(-d..5)
+            elsif d < -10
+                @@c += Random.rand(-5..-d)
             else
-                @@current += Random.rand(-10..10)
+                @@c += Random.rand(-10..10)
             end
         end
-        @@current = @@current.abs
-        @@current
+        @@c = @@c.abs
+        @@c
     end
 end

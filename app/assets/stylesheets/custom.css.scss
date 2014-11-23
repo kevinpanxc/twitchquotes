@@ -186,3 +186,20 @@ fieldset[disabled] .btn-mywebsite.active {
 #profile-nav-li > a {
   background-color: white;
 }
+
+/* footer */
+
+#site_user_statistic {
+  text-align: right;
+  margin-bottom: 42px;
+}
+
+#site_user_statistic span {
+  display: inline-block;
+  padding: 2px 8px 2px 8px;
+  font-weight: bold;
+  background: #866bb9;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+}

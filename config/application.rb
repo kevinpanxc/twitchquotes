@@ -22,5 +22,6 @@ module Twitchquotes
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.display_social = false
+    config.display_stats = false
   end
 end

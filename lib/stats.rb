@@ -10,7 +10,7 @@ module Stats
 
     def self.x
         n = DateTime.now
-        if n.to_time - @@l_u.to_time > 0
+        if n.to_time - @@l_u.to_time > 180
             @@l_u = n
             d = @@c - @@b
 

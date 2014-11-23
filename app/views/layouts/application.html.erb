@@ -30,7 +30,9 @@
         <%= yield %>
         <%= debug(params) if Rails.env.development? %>
 
-        <div id="site_user_statistic" class="row"> <span><%= Stats.get_live_users %></span> users currently browsing TwitchQuotes </div>
+        <% unless controller_name == "quotes" and (action_name == "create" or action_name == "new") %>
+          <div id="site_user_statistic" class="row"> <span><%= Stats.get_live_users %></span> users currently browsing TwitchQuotes </div>
+        <% end %>
       </div>
     <% end %>
   </body>

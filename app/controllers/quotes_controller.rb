@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
     before_filter :signed_in_user, only: [:edit, :update, :marked]
-    before_filter :is_admin, only: [:marked]
+    before_filter :is_admin, only: [:marked, :new, :create]
 
     def index
         @quote_dom_id = 0

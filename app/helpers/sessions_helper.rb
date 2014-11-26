@@ -34,7 +34,7 @@ module SessionsHelper
 	end
 
 	def is_admin
-		unless current_user.admin?
+		unless current_user and current_user.admin?
 			redirect_to signin_path, notice: "Not authorized."
 		end
 	end

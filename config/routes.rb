@@ -1,6 +1,6 @@
 Twitchquotes::Application.routes.draw do
   # resources :users
-  resources :quotes do
+  resources :quotes, except: [:new, :create] do
     get 'search', on: :collection
     get 'marked', on: :collection
     get 'ascii-art', on: :collection, to: 'quotes#ascii_art', as: 'ascii_art'

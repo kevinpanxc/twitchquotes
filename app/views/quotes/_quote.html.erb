@@ -10,7 +10,7 @@
         	<%= render "quotes/quote_content_block", quote: quote %>
         <% else %>
             <span class="quote_explicit_message">
-                Quote has been hidden due to explicit language 
+                Quote has been hidden due to profane language 
                 <%= form_for(quote, remote: true, url: show_marked_quote_quote_path(quote), method: :get, html: { class: "quote_explicit_show_form" }) do |f| %>
                     <%= button_tag(type: 'submit') do %>
                         [+]

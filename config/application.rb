@@ -23,5 +23,6 @@ module Twitchquotes
 
     config.display_social = false
     config.display_stats = false
+    config.exceptions_app = self.routes
   end
 end

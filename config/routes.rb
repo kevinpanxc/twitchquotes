@@ -31,4 +31,9 @@ Twitchquotes::Application.routes.draw do
   get 'auth/failure', to: redirect('/')
   post 'auth/failure', to: redirect('/')
   get 'facebook/signout', to: 'facebook_sessions#destroy', as: 'facebook_signout'
+
+  # error routing
+  match '/404', to: 'errors#error_404'
+  match '/422', to: 'errors#error_422'
+  match '/500', to: 'errors#error_500'
 end

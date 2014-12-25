@@ -24,7 +24,7 @@
         <%= render 'layouts/facebook_sign_in_modal' %>
         <%= render 'layouts/sign_in_modal' %>
         <%= render 'layouts/server_error_modal' %>
-        <% if has_announcement? %>
+        <% if has_announcement? and !content_for?(:server_error_page) %>
             <%= render 'announcements/announcements', msg: raw(latest_announcement) %>
         <% end %>
         <%= yield %>

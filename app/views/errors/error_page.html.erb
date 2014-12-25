@@ -1,0 +1,46 @@
+<style>
+    .error-page-container {
+        width: 600px;
+        padding: 30px;
+        margin: 0 auto;
+        background-color: white; 
+        border-radius: 10px;
+    }
+
+    .kappa-head {
+        width: 360px;
+    }
+
+    .error-page-message {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .error-page-message strong {
+        font-size: 36px;
+        margin-right: 10px;
+    }
+
+    .error-page-message img {
+        display: inline;
+    }
+</style>
+
+<% provide(:server_error_page, true) %>
+
+<%
+    error_message = ""
+    if @status == 404
+        @error_message = "Sorry for bad England, pagerino no founderino"
+    elsif @status == 422
+        @error_message = "The change you wanted was rejected. Maybe you tried to change something you didn't have access to."
+    elsif @status == 500
+        @error_message = "You broke TwitchQuotes, congrats! Here are some pitchforks to riot with ⎯⎯∈ ⎯⎯∈ ⎯⎯∈"
+    end
+%>
+
+<div class="error-page-container">
+    <img src="<%= asset_path("kappa-high-res.png") %>" class="kappa-head"></img>
+    
+    <div class="error-page-message"><strong><%= @status %></strong> <%= raw @error_message %></div>
+</div>

@@ -91,6 +91,10 @@ ul.quotes {
 	}
 }
 
+ul.quotes li.highlight {
+	border: 4px solid #AE9BD1;
+}
+
 ul.quotes li .quote_text_area {
 	width: 88%;
 	margin: 0 auto;

@@ -1,4 +1,6 @@
-<li class="single_quote_block">
+<% highlight = false if local_assigns[:highlight].nil? %>
+
+<li class="single_quote_block <%= "highlight" if highlight%>">
     <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>" <% if !quote.marked_as.nil? %> style="display: none" <% end %>>
         <%= render "quotes/quote_actions_block", quote: quote %>
     </div>

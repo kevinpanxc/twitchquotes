@@ -17,6 +17,9 @@ class UsersController < ApplicationController
             @links = @user.dislikes.paginate(page: params[:page], :per_page => 24, order: "created_at DESC")
         end
 
+        @like_count = @user.likes.count
+        @dislike_count = @user.dislikes.count
+
         @quotes = @links.map { |link| link.quote }
     end
 

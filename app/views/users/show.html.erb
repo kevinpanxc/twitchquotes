@@ -12,7 +12,7 @@
             <div class="row">
                 <% if @quotes.count != 0 %>
                     <ul class="quotes_search">
-                        <%= render partial: "quotes/quote_search", collection: @quotes, as: :quote %>
+                        <%= render partial: "quotes/quote_search_result", collection: @quotes, as: :quote %>
                     </ul>
                 <% else %>
                     <div>You don't have any quotes under this category!</div>
@@ -26,7 +26,8 @@
     <div class="col-md-4" id="profile_right_column">
         <div class="container-fluid">
             <div class="row profile_user_info">
-                <div><b>Email:</b> <%= @user.email %></div>
+                <div>Liked <b><%= @like_count %></b> quotes</div>
+                <div>Disliked <b><%= @dislike_count %></b> quotes</div>
                 <div><b>Date joined:</b> <%= @user.created_at.strftime("%B %d, %Y") %></div>
             </div>
             <div class="row">

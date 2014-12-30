@@ -1,3 +1,5 @@
+<% highlight = false if local_assigns[:highlight].nil? %>
+
 <% unless quote.text_art %>
     "<span id="quote_content_<%= @quote_dom_id%>"><%=raw quote.quote %></span>"
 <% else %>
@@ -10,5 +12,9 @@
     <%= link_to quote_path(quote), class: 'quote_link' do %>
         <span class="glyphicon glyphicon-link" title="Link to quote"></span>
     <% end %>
-    <%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
+    <% unless highlight %>
+        <%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(quote.created_at) %> ago
+    <% else %>
+        <%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream
+    <% end %>
 </div>

@@ -5,10 +5,7 @@ class QuotesController < ApplicationController
     def index
         @quote_dom_id = 0
         @page_one = (!params.has_key? :page) || (params[:page].eql? '1')
-        @highlight_quote = nil
-        if @page_one
-            @highlight_quote = Quote.where(highlight: true).random
-        end
+        @highlight_quote = Quote.where(highlight: true).random
         @quotes = Quote.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
     end
 

@@ -6,6 +6,8 @@
     </div>
     <% if quote.text_art %>
         <div class="quote_text_art_label"><%= link_to 'text art', ascii_art_quotes_path %></div>
+    <% elsif quote.highlight %>
+        <div class="quote_text_art_label" title="Editor's Pick"><%= link_to 'editor\'s pick', '#' %></div>
     <% end %>
     <div class="<%= quote.text_art ? "quote_text_area_text_art" : "quote_text_area" %>" id="quote_text_area_<%= @quote_dom_id %>">
         <% if quote.marked_as.nil? %>

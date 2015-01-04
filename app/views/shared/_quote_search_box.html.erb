@@ -21,9 +21,11 @@
             </div>
             <%= hidden_field_tag "search_type", @search_type %>
         </div>
-        <div id="search_options" class="row"> 
-            <div class="<%= @search_type == "quote" ? "search_options_active" : "" %> col-md-1 col-md-offset-1" data-value="quote" >Quotes</div>
-            <div class="<%= @search_type == "title" ? "search_options_active" : "" %> col-md-1" data-value="title" >Titles</div>
-        </div>
+        <% if show_search_options %>
+            <div id="search_options" class="row"> 
+                <div class="<%= @search_type == "quote" ? "search_options_active" : "" %> col-md-1 col-md-offset-1" data-value="quote" >Quotes</div>
+                <div class="<%= @search_type == "title" ? "search_options_active" : "" %> col-md-1" data-value="title" >Titles</div>
+            </div>
+        <% end %>
     </div>
 <% end %>

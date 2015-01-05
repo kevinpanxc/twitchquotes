@@ -5,8 +5,18 @@ class QuotesController < ApplicationController
     def index
         @quote_dom_id = 0
         @page_one = (!params.has_key? :page) || (params[:page].eql? '1')
-        @highlight_quote = Quote.where(highlight: true).random
-        @quotes = Quote.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
+        @sort_reverse = (params.has_key? :sort) and (params[:sort].eql? 'reverse')
+        @starred = (params.has_key? :starred)
+        @highlight_quote = (@starred) ? nil : Quote.where(highlight: true).random
+
+        query_options = {}
+        query_options[:highlight] = true if @starred
+
+        if @sort_reverse
+            @quotes = Quote.where(query_options).paginate(page: params[:page], per_page: 10, order: "created_at ASC")
+        else
+            @quotes = Quote.where(query_options).paginate(page: params[:page], per_page: 10, order: "created_at DESC")
+        end
     end
 
     def new
@@ -61,15 +71,18 @@ class QuotesController < ApplicationController
 
     def search
         @quote_dom_id = 0
-        @search_type = "title"
+        @search_type = (params.has_key? :search_type) ? params[:search_type] : "quote"
         @query = ""
-        if params[:search_type] == "quote"
-            @quotes = Quote.where("lower(quote) like ?", "%#{params[:query].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        if (params.has_key? :query) and (!params[:query].empty?)
+            @query = params[:query]
+            if @search_type == "quote"
+                @quotes = Quote.where("lower(quote) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            else
+                @quotes = Quote.where("lower(title) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            end
         else
-            @quotes = Quote.where("lower(title) like ?", "%#{params[:query].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            @quotes = Quote.none.paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
         end
-        @search_type = params[:search_type] if params.has_key? :search_type
-        @query = params[:query] if params.has_key? :query
         render 'search_results'
     end
 

@@ -6,7 +6,9 @@
             <%= render 'shared/quote_search_box', show_search_options: true %>
         </div>
 
-        <div id="number_of_search_results"><%= @quotes.count %> results returned</div>
+        <% if !@query.empty? %>
+            <div id="number_of_search_results"><%= @quotes.count %> results returned</div>
+        <% end %>
 
         <ul class="quotes_search">
             <%= render partial: "quote_search_result", collection: @quotes, as: :quote %>

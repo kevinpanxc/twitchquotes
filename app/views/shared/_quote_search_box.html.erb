@@ -3,7 +3,7 @@
         @search_type = "quote"
     end
 
-    if defined?(@query).nil?
+    if defined?(@query).nil? || @query.nil?
         @query = ""
     end
 %>

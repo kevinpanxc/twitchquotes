@@ -6,8 +6,36 @@
 
 <div class="row">
     <div class="col-md-10">
-        <div style="text-align: center" class="row">
-            <%= render 'shared/quote_search_box', show_search_options: false %>
+        <div class="row" id="quote_options_row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="btn-group <%= "dropup" if @sort_reverse %>" role="group">
+                        <%
+                            link_params = {}
+                            link_params[:sort] = "reverse" if !@sort_reverse
+                            link_params[:starred] = true if @starred
+                        %>
+
+                        <%= link_to quotes_path(link_params), class: 'btn btn-default' do %>
+                            <span class="caret" aria-hidden="true"></span> Sort By Date
+                        <% end %>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <%= link_to "Starred", quotes_path(starred: true), {class: (@starred) ? "btn btn-custom" : "btn btn-default"} %>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <%= link_to "ASCII Art", ascii_art_quotes_path, {class: "btn btn-default"} %>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <%= link_to "Random", random_index_path, {class: "btn btn-default"} %>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <%= link_to search_quotes_path, class: 'btn btn-default' do %>
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <ul class="quotes">

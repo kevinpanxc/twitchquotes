@@ -10,7 +10,8 @@ module ProfanityFilter
         "卐",
         "autism",
         "penis",
-        "jizzed"
+        "jizzed",
+        "rape"
     ]
 
     def self.set_profanity_flag(ignore_flagged)

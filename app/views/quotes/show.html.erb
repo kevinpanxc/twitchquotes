@@ -8,6 +8,8 @@
     <% provide(:title, quote_title + " (ASCII Art)") %>
 <% end %>
 
+<% provide(:no_footer, true) %>
+
 <div class="row">
     <div class="col-md-2" style="text-align: right">
         <div class="quote_actions" id="quote_<%= @quote_dom_id += 1 %>">

@@ -203,3 +203,19 @@ fieldset[disabled] .btn-mywebsite.active {
   font-size: 20px;
   border-radius: 5px;
 }
+
+#site_footer {
+  margin: 30px 0px 30px 0px;
+}
+
+#site_footer .well {
+  text-align: center;
+}
+
+#twitchquotes_contact_button {
+  margin-right: 12px;
+}
+
+#twitchquotes_contact_button:focus {
+  outline: 0;
+}

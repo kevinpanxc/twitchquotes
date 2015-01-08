@@ -8,6 +8,11 @@
 
         <% if !@query.empty? %>
             <div id="number_of_search_results"><%= @quotes.count %> results returned</div>
+            <% if @quotes.count == 0 %>
+                <% provide(:no_footer, true) %>
+            <% end %>
+        <% else %>
+            <% provide(:no_footer, true) %>
         <% end %>
 
         <ul class="quotes_search">
@@ -16,7 +21,10 @@
 
         <div class="paginate_parent_bottom"><%= will_paginate %></div>
     </div>
-    <div class="col-md-2 hidden-xs hidden-sm">
-        <%= render 'layouts/vertical_ads', second: true %>
-    </div>
+
+    <% if !@query.empty? %>
+        <div class="col-md-2 hidden-xs hidden-sm">
+            <%= render 'layouts/vertical_ads', second: true %>
+        </div>
+    <% end %>
 </div>

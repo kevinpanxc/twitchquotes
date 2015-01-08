@@ -4,6 +4,11 @@
     <% end %>
 </li> -->
 <li>
+    <%= link_to search_quotes_path do %>
+        <span class="glyphicon glyphicon-search" title="Search"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">Search</span>
+    <% end %>    
+</li>
+<li>
     <%= link_to ascii_art_quotes_path do %>
         <span class="glyphicon glyphicon-picture" title="ASCII Art"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">ASCII Art</span>
     <% end %>    

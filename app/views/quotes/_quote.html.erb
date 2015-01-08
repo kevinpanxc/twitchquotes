@@ -8,7 +8,7 @@
         <div class="quote_text_art_label"><%= link_to 'text art', ascii_art_quotes_path %></div>
     <% elsif quote.highlight %>
         <div class="quote_text_art_label" title="Editor's Pick">
-            <%= link_to '#' do %>
+            <%= link_to quotes_path(starred: true) do %>
                 <span class="glyphicon glyphicon-asterisk"></span>
             <% end %>
         </div>

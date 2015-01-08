@@ -2,7 +2,7 @@
 <% quote_content = ProfanityFilter.replace_with_stars(@quote.quote) %>
 
 <% unless @quote.text_art %>
-    <% provide(:title, quote_title) %>
+    <% provide(:title, raw(quote_title)) %>
     <% provide(:description, raw(quote_content)) %>
 <% else %>
     <% provide(:title, quote_title + " (ASCII Art)") %>

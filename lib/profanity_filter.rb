@@ -13,7 +13,8 @@ module ProfanityFilter
         "jizzed",
         "rape",
         "boob",
-        "erection"
+        "erection",
+        "motherfucker"
     ]
 
     def self.set_profanity_flag(ignore_flagged)

@@ -16,12 +16,11 @@
         <ul class="quotes">
             <%= render @quotes %>
         </ul>
+
+        <div class="paginate_parent_bottom"><%= will_paginate(@quotes) %></div>
     </div>
 
     <div class="col-md-2 hidden-xs hidden-sm">
         <%= render 'layouts/vertical_ads', second: true %>
     </div>
-
-    <div class="paginate_parent_bottom"><%= will_paginate(@quotes) %></div>
-
 </div>

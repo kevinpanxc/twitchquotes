@@ -15,7 +15,8 @@ module ProfanityFilter
         "boob",
         "erection",
         "motherfucker",
-        "ejaculat"
+        "ejaculat",
+        "queef"
     ]
 
     def self.set_profanity_flag(ignore_flagged)

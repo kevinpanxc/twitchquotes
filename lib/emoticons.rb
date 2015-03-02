@@ -24,6 +24,7 @@ class Emoticons
         OpieOP: asset_path("emoticons/opieop.png"),
         krippFist: asset_path("emoticons/krippfist.png"),
         RalpherZ: asset_path("emoticons/ralpherz.png"),
-        ResidentSleeper: asset_path("emoticons/residentsleeper.png")
+        ResidentSleeper: asset_path("emoticons/residentsleeper.png"),
+        DansGame: asset_path("emoticons/dansgame.png")
     }
 end

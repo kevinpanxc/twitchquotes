@@ -53,6 +53,7 @@ class UsersController < ApplicationController
         @announcement_update = Announcement.last
         @announcement = Announcement.new
         @display_social = Rails.application.config.display_social
+        @display_ip_voting = Rails.application.config.display_ip_voting
     end
 
     def toggle_social
@@ -62,6 +63,16 @@ class UsersController < ApplicationController
             Rails.application.config.display_social = false
         end
         flash[:success] = "Display social settings toggled to #{params[:social]}"
+        redirect_to admin_path
+    end
+
+    def toggle_ip_voting
+        if params[:ip_voting] == 'true'
+            Rails.application.config.display_ip_voting = true
+        else
+            Rails.application.config.display_ip_voting = false
+        end
+        flash[:success] = "Display ip voting settings toggled to #{params[:ip_voting]}"
         redirect_to admin_path
     end
 

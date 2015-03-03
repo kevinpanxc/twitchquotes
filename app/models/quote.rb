@@ -1,4 +1,5 @@
 class Quote < ActiveRecord::Base
+    has_many :ip_likes, dependent: :destroy
     has_many :likes, dependent: :destroy
     has_many :likers, through: :likes, source: :user
     has_many :dislikes, dependent: :destroy

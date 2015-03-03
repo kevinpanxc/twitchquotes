@@ -13,12 +13,26 @@ module SessionsHelper
 		@current_user = user
 	end
 
+	def current_user
+		@current_user ||= User.find_by_remember_token(cookies[:remember_token])
+	end
+
 	def signed_in?
 		!current_user.nil?
 	end
 
-	def current_user
-		@current_user ||= User.find_by_remember_token(cookies[:remember_token])
+	def current_ip_user=(ip_user)
+		@ip_user = ip_user
+	end
+
+	def current_ip_user
+		if @ip_user.nil?
+			if IpUser.exists?(ip_address: request.remote_ip)
+				@ip_user = IpUser.find_by(ip_address: request.remote_ip)
+			end
+		end
+
+		@ip_user
 	end
 
 	def signed_in_user

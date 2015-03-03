@@ -1,3 +1,13 @@
+<% if Rails.application.config.display_ip_voting %>
+    <% if current_ip_user && current_ip_user.liked_ip_quotes.include?(quote) %>
+        <div class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></div>
+    <% else %>
+        <div class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></div>
+    <% end %>
+
+    <div class="ip_vote_count"><%= quote.ip_likes.count %></div>
+<% end %>
+
 <% if Rails.application.config.display_social %>
     <% if current_user && current_user.liked_quotes.include?(quote) %>
         <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>

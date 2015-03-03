@@ -306,34 +306,31 @@ ul#channels {
 	color: black;
 }
 
-.new_like, .edit_like {
+.new_ip_like, .edit_ip_like {
+	margin-top: 8px;
+
+	span {
+		font-size: 24px;
+		opacity: 0.8;
+	}
+
+	span.active {
+		color: #E65A5A;
+		opacity: 1.0;
+	}
+}
+
+.new_ip_like, .edit_ip_like, .new_like, .edit_like, .new_dislike, .edit_dislike {
 	display: inline-block;
 	margin-bottom: 0px;
 }
 
-.new_like, .edit_like {
+.new_ip_like, .edit_ip_like, .new_like, .edit_like, .new_dislike, .edit_dislike {
 	button {
 		background: transparent;
 		border: none;
 		padding: 0;
 
-		&:focus {
-			outline: none;
-		}
-	}
-}
-
-.new_dislike, .edit_dislike {
-	display: inline-block;	
-	margin-bottom: 0px;
-}
-
-.new_dislike, .edit_dislike {
-	button {
-		background: transparent;
-		border: none;
-		padding: 0;
-		
 		&:focus {
 			outline: none;
 		}

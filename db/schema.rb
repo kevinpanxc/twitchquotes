@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229213746) do
+ActiveRecord::Schema.define(version: 20150303050730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141229213746) do
   end
 
   add_index "dislikes", ["quote_id"], name: "index_dislikes_on_quote_id", using: :btree
+  add_index "dislikes", ["user_id", "quote_id"], name: "index_dislikes_on_user_id_and_quote_id", unique: true, using: :btree
   add_index "dislikes", ["user_id"], name: "index_dislikes_on_user_id", using: :btree
 
   create_table "facebook_users", force: true do |t|
@@ -44,6 +45,25 @@ ActiveRecord::Schema.define(version: 20141229213746) do
     t.datetime "updated_at"
   end
 
+  create_table "ip_likes", force: true do |t|
+    t.integer  "ip_user_id"
+    t.integer  "quote_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ip_likes", ["ip_user_id", "quote_id"], name: "index_ip_likes_on_ip_user_id_and_quote_id", unique: true, using: :btree
+  add_index "ip_likes", ["ip_user_id"], name: "index_ip_likes_on_ip_user_id", using: :btree
+  add_index "ip_likes", ["quote_id"], name: "index_ip_likes_on_quote_id", using: :btree
+
+  create_table "ip_users", force: true do |t|
+    t.string   "ip_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ip_users", ["ip_address"], name: "index_ip_users_on_ip_address", unique: true, using: :btree
+
   create_table "likes", force: true do |t|
     t.integer  "quote_id"
     t.datetime "created_at"
@@ -52,6 +72,7 @@ ActiveRecord::Schema.define(version: 20141229213746) do
   end
 
   add_index "likes", ["quote_id"], name: "index_likes_on_quote_id", using: :btree
+  add_index "likes", ["user_id", "quote_id"], name: "index_likes_on_user_id_and_quote_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "quotes", force: true do |t|

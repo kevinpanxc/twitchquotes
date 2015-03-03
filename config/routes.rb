@@ -11,6 +11,7 @@ Twitchquotes::Application.routes.draw do
   resources :announcements, only: [:create, :update, :edit]
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
+  resources :ip_likes, only: [:create, :destroy]
   resources :random, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
 
@@ -23,6 +24,7 @@ Twitchquotes::Application.routes.draw do
   get '/signin', to: 'sessions#new'
   get '/admin', to: 'users#admin'
   post '/admin/toggle_social', to: 'users#toggle_social'
+  post '/admin/toggle_ip_voting', to: 'users#toggle_ip_voting'
   get '/signup', to: 'users#new'
   delete '/signout', to: 'sessions#destroy'
 

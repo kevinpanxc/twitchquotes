@@ -21,11 +21,21 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	def create_current_ip_user
+        ip_user = IpUser.new(ip_address: request.remote_ip)
+        if ip_user.save
+            self.current_user = ip_user
+        end
+	end
+
 	def current_ip_user=(ip_user)
 		@ip_user = ip_user
 	end
 
 	def current_ip_user
+		puts 'three two one!'
+		puts @ip_user
+
 		if @ip_user.nil?
 			if IpUser.exists?(ip_address: request.remote_ip)
 				@ip_user = IpUser.find_by(ip_address: request.remote_ip)

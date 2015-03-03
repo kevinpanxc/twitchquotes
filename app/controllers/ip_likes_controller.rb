@@ -28,6 +28,16 @@ class IpLikesController < ApplicationController
 
     private
         def ip_like_params
+            # THIS FAILS??? D:
+            # if current_ip_user.nil?
+            #     ip_user = IpUser.new(ip_address: request.remote_ip)
+            #     if ip_user.save
+            #         current_ip_user = ip_user
+            #     end
+            # end
+
+            create_current_ip_user if current_ip_user.nil?
+
             return_params = ActionController::Parameters.new(
                 quote_id: params[:quote_id],
                 ip_user_id: current_ip_user.id

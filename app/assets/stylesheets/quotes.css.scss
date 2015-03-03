@@ -312,6 +312,10 @@ ul#channels {
 	span {
 		margin-left: -2px;
 		font-size: 24px;
+		opacity: 0.4;
+	}
+
+	span:not(.active):hover {
 		opacity: 0.8;
 	}
 

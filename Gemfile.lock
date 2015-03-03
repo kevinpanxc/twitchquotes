@@ -53,6 +53,9 @@ GEM
       sass (~> 3.2)
     hashie (3.3.1)
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.1)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -71,6 +74,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -114,6 +118,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    raygun4ruby (1.1.5)
+      httparty (~> 0.11)
+      json
+      rack
     rdoc (4.1.2)
       json (~> 1.4)
     sass (3.2.19)
@@ -171,6 +179,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_12factor
   rails_layout
+  raygun4ruby
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks

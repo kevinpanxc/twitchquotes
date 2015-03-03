@@ -49,6 +49,8 @@ gem 'font-awesome-sass'
 # Fix for SSL error that happens when testing locally
 gem 'certified'
 
+gem 'raygun4ruby'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

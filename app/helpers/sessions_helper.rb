@@ -33,9 +33,6 @@ module SessionsHelper
 	end
 
 	def current_ip_user
-		puts 'three two one!'
-		puts @ip_user
-
 		if @ip_user.nil?
 			if IpUser.exists?(ip_address: request.remote_ip)
 				@ip_user = IpUser.find_by(ip_address: request.remote_ip)

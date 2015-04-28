@@ -5,7 +5,7 @@
         <div class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></div>
     <% end %>
 
-    <div class="ip_vote_count"><%= quote.ip_likes.count %></div>
+    <div class="ip_vote_count"><%= quote.ip_likes.count + quote.f_ip_likes %></div>
 <% end %>
 
 <% if Rails.application.config.display_social %>

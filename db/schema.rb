@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303050730) do
+ActiveRecord::Schema.define(version: 20150428154835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150303050730) do
     t.integer  "marked_as"
     t.boolean  "text_art",   default: false
     t.boolean  "highlight",  default: false
+    t.integer  "f_ip_likes", default: 0
   end
 
   create_table "streams", force: true do |t|

@@ -59,6 +59,8 @@ end
 # Bootstrap framework
 gem 'bootstrap-sass'
 
+gem 'rubystats'
+
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

@@ -1,6 +1,6 @@
 <%= form_for(IpLike.new, remote: true) do |f| %>
     <%= button_tag(type: 'submit') do %>
-        <span class="glyphicon glyphicon-heart"></span>
+        <img src='<%= asset_path("emoticons/kappa.png") %>'/>
     <% end %>
     <%= render 'shared/like_dislike_form_hidden_fields', quote: quote %>
 <% end %>

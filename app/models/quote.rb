@@ -10,6 +10,7 @@ class Quote < ActiveRecord::Base
 	validates :stream_id, presence: true
     validates :title, presence: true
 
+    before_create :generate_f_ip_likes
     before_save :process_quotes
     before_save :check_profanity
     after_destroy :refresh_stream_quote_count
@@ -21,6 +22,11 @@ class Quote < ActiveRecord::Base
     end
 
     private
+        def generate_f_ip_likes
+            gen = Rubystats::NormalDistribution.new(10, 5)
+            self.f_ip_likes = gen.rng.ceil.abs
+        end
+
         def process_quotes
             self.quote.strip!
             self.title.strip!

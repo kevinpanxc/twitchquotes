@@ -39,6 +39,9 @@ ready = ->
     $('.copy_clipboard').click( ->
         prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $("#quote_content_" + $(this).data("dom-id")).html());
     )
+    $('form').submit ->
+        $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
+        return
 
 $(document).ready ready
 $(document).on "page:load", ready

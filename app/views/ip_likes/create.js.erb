@@ -2,4 +2,8 @@ var quote_dom = $("#quote_<%= @quote_dom_id%>");
 
 quote_dom.find(".ip_like_form_parent").html("<%= escape_javascript(render('ip_likes/destroy_like', quote: @quote)) %>");
 
+quote_dom.find('form').submit(function() {
+    $(this).find('img').attr('src', '<%= asset_path("quote_spinner.GIF") %>');
+});
+
 <%= render 'shared/add_to_ip_votes', number_to_add: 1 %>

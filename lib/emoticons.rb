@@ -26,6 +26,8 @@ class Emoticons
         RalpherZ: asset_path("emoticons/ralpherz.png"),
         ResidentSleeper: asset_path("emoticons/residentsleeper.png"),
         DansGame: asset_path("emoticons/dansgame.png"),
-        PogChamp: asset_path("emoticons/pogchamp.png")
+        PogChamp: asset_path("emoticons/pogchamp.png"),
+        SMOrc: asset_path("emoticons/smorc.png"),
+        deIlluminati: asset_path("emoticons/deilluminati.png")
     }
 end

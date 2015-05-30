@@ -29,6 +29,7 @@ class Emoticons
         PogChamp: asset_path("emoticons/pogchamp.png"),
         SMOrc: asset_path("emoticons/smorc.png"),
         deIlluminati: asset_path("emoticons/deilluminati.png"),
-        OSfrog: asset_path("emoticons/osfrog.png")
+        OSfrog: asset_path("emoticons/osfrog.png"),
+        4Head: asset_path("emoticons/4head.png")
     }
 end

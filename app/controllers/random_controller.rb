@@ -9,6 +9,6 @@ class RandomController < ApplicationController
         @random_view = true
 
         @stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first or not_found
-        @quote = @stream.quotes.random
+        @quote = @stream.quotes.random or not_found
     end
 end

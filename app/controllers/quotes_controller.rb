@@ -111,6 +111,7 @@ class QuotesController < ApplicationController
     end
 
     def ascii_art
+        @quote_dom_id = 0
         @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
         render 'ascii_art'
     end

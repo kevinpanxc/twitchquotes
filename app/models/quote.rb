@@ -21,12 +21,12 @@ class Quote < ActiveRecord::Base
         end
     end
 
-    private
-        def generate_f_ip_likes
-            gen = Rubystats::NormalDistribution.new(10, 5)
-            self.f_ip_likes = gen.rng.ceil.abs
-        end
+    def generate_f_ip_likes
+        gen = Rubystats::NormalDistribution.new(10, 5)
+        self.f_ip_likes = gen.rng.ceil.abs
+    end
 
+    private
         def process_quotes
             self.quote.strip!
             self.title.strip!

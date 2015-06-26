@@ -355,13 +355,14 @@ ul#channels {
 	border: solid #BBB 1px;
 	border-radius: 10px;
 	background-color: white;
+	padding-bottom: 12px;
 }
 
 .ascii_preview_box .ascii_preview_parent:hover {
 	border: solid #888 1px;
 }
 
-.ascii_preview_box .ascii_preview_parent .ascii_preview_content {
+.ascii_preview_box .ascii_preview_content {
 	border: solid #888 1px;
 	height: 100%;
 	border-radius: 10px;
@@ -372,26 +373,52 @@ ul#channels {
 	font-size: 10px;
 }
 
-.ascii_preview_box .ascii_preview_parent .ascii_preview_content:hover {
+.ascii_preview_box .ascii_preview_content:hover {
 	border: solid #555 1px;
 }
 
-.ascii_preview_content > div {
+.ascii_preview_box .ascii_preview_content > div {
 	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
 
-.ascii_preview_box .ascii_preview_parent .ascii_preview_title {
+.ascii_preview_box .ascii_preview_title {
 	color: black;
-	padding-top: 5px;
-	padding-bottom: 12px;
+	padding-top: 10px;
 	font-size: 18px;
 	overflow: hidden;
 }
 
-.ascii_preview_box > a:hover {
+.ascii_preview_box .ip_vote_parent {
+	margin-right: 10px;
+	display: inline-block;
+	padding: 0 5px;
+	color: black;
+	background-color: #E8E8E8;
+	border: solid 1px #CCC;
+	border-radius: 5px;
+}
+
+.ascii_preview_box .ascii_preview_link {
+	color: black;
+}
+
+.ascii_preview_title_text {
+	margin-top: 8px;
+	display: inline-block;
+}
+
+.ascii_preview_box .ascii_preview_link:hover {
+	text-decoration: none !important;
+}
+
+.ascii_preview_box .ascii_preview_link:active {
+	text-decoration: none !important;
+}
+
+.ascii_preview_box .ascii_preview_link:focus {
 	text-decoration: none !important;
 }
 

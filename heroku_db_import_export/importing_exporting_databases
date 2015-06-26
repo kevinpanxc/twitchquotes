@@ -1,7 +1,7 @@
 EXPORTING FROM HEROKU, THEN IMPORT TO LOCAL
 
-    heroku pgbackups:capture
-    curl -o latest.dump `heroku pgbackups:url`
+    heroku pg:backups capture -a twitchquotes
+    curl -o latest.dump `heroku pg:backups public-url`
     rake db:reset
     pg_restore -O -d [DATABASE NAME] latest.dump
 

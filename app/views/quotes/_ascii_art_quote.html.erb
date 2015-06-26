@@ -8,7 +8,7 @@
         <div class="ascii_preview_title">
             <% if Rails.application.config.display_ip_voting %>
                 <div class="ip_vote_parent">
-                    <% if current_ip_user && current_ip_user.liked_ip_quotes.include?(quote) %>
+                    <% if current_ip_user && current_ip_user.ip_liked_quotes.include?(quote) %>
                         <span class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></span>
                     <% else %>
                         <span class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></span>

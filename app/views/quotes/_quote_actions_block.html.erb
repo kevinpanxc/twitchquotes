@@ -1,5 +1,5 @@
 <% if Rails.application.config.display_ip_voting %>
-    <% if current_ip_user && current_ip_user.liked_ip_quotes.include?(quote) %>
+    <% if current_ip_user && current_ip_user.ip_liked_quotes.include?(quote) %>
         <div class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></div>
     <% else %>
         <div class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></div>

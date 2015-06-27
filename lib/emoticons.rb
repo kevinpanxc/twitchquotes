@@ -30,6 +30,7 @@ class Emoticons
         SMOrc: asset_path("emoticons/smorc.png"),
         deIlluminati: asset_path("emoticons/deilluminati.png"),
         OSfrog: asset_path("emoticons/osfrog.png"),
-        "4Head" => asset_path("emoticons/4head.png")
+        "4Head" => asset_path("emoticons/4head.png"),
+        KappaPride: asset_path("emoticons/kappapride.png")
     }
 end

@@ -19,3 +19,5 @@ pickle-email-*.html
 .project
 config/initializers/actual_secret_token
 heroku_db_import_export/*.dump
+.DS_Store
+latest.dump

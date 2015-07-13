@@ -1,12 +1,24 @@
-<span class="like_count"><%= quote.likes.count %></span>
-<% if current_user && current_user.liked_quotes.include?(quote) %>
-    <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>
-<% else %>
-    <span class="like_form_parent"><%= render "likes/like", quote: quote %></span>
+<% if Rails.application.config.display_ip_voting %>
+    <% if current_ip_user && current_ip_user.ip_liked_quotes.include?(quote) %>
+        <div class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></div>
+    <% else %>
+        <div class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></div>
+    <% end %>
+
+    <div class="ip_vote_count"><%= quote.ip_likes.count + quote.f_ip_likes %></div>
 <% end %>
-<span class="dislike_count"><%= quote.dislikes.count %></span>
-<% if current_user && current_user.disliked_quotes.include?(quote) %>
-    <span class="dislike_form_parent"><%= render "dislikes/destroy_dislike", quote: quote %></span>
-<% else %>
-    <span class="dislike_form_parent"><%= render "dislikes/dislike", quote: quote %></span>
+
+<% if Rails.application.config.display_social %>
+    <span class="like_count"><%= quote.likes.count %></span>
+    <% if current_user && current_user.liked_quotes.include?(quote) %>
+        <span class="like_form_parent"><%= render "likes/destroy_like", quote: quote %></span>
+    <% else %>
+        <span class="like_form_parent"><%= render "likes/like", quote: quote %></span>
+    <% end %>
+    <span class="dislike_count"><%= quote.dislikes.count %></span>
+    <% if current_user && current_user.disliked_quotes.include?(quote) %>
+        <span class="dislike_form_parent"><%= render "dislikes/destroy_dislike", quote: quote %></span>
+    <% else %>
+        <span class="dislike_form_parent"><%= render "dislikes/dislike", quote: quote %></span>
+    <% end %>
 <% end %>

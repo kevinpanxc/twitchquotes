@@ -46,7 +46,7 @@ ready = ->
         $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
         return
 
-  else if $("body").hasClass("quotes_ascii_art")
+  else if $("body").hasClass("quotes_ascii_art") or $("body").hasClass("streams_show")
     init_zero_clipboard $('.quote_copy_button')
 
 $(document).ready ready

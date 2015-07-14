@@ -18,3 +18,5 @@
         <%= link_to quote.stream.name, stream_path(quote.stream.name), {:style=>"color:#6040a1"} %>'s stream
     <% end %>
 </div>
+
+<button class="quote_copy_button" data-clipboard-target="quote_content_<%= @quote_dom_id %>">copy</button>

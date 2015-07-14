@@ -19,11 +19,11 @@ ready = ->
 
                 unless sounds?
                     sounds = [
-                        "/assets/nl_kripp_most_ridiculous_comeback_ever.mp3",
-                        "/assets/nl_kripp_kripparrian_here.mp3",
-                        "/assets/nl_kripp_i_cannot_believe_i_lost.mp3",
-                        "/assets/nl_kripp_top_deck_mind_control.mp3",
-                        "/assets/nl_kripp_unreal_rng.mp3"
+                        "<%= asset_path("nl_kripp_most_ridiculous_comeback_ever.mp3") %>",
+                        "<%= asset_path("nl_kripp_kripparrian_here.mp3") %>",
+                        "<%= asset_path("nl_kripp_i_cannot_believe_i_lost.mp3") %>",
+                        "<%= asset_path("nl_kripp_top_deck_mind_control.mp3") %>",
+                        "<%= asset_path("nl_kripp_unreal_rng.mp3") %>"
                     ]   
 
                 $h1.html alts[Math.floor(Math.random() * alts.length)]

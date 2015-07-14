@@ -24,7 +24,7 @@ ready = ->
                 $("#quote_quote").css "border", "2px solid #F59595"
             else
                 $("#quote_quote").attr "placeholder", "Enter quote here... (required)"
-                $("#quote_quote").css "border", "1px solid #bbb"            
+                $("#quote_quote").css "border", "1px solid #bbb"
             false        
         else
             true
@@ -39,9 +39,15 @@ ready = ->
     $('.copy_clipboard').click( ->
         prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $("#quote_content_" + $(this).data("dom-id")).html());
     )
+
+    init_zero_clipboard $('.quote_copy_button')
+
     $('form').submit ->
         $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
         return
+
+  else if $("body").hasClass("quotes_ascii_art")
+    init_zero_clipboard $('.quote_copy_button')
 
 $(document).ready ready
 $(document).on "page:load", ready

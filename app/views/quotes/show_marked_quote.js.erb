@@ -1,2 +1,3 @@
 $("#quote_<%= @quote_dom_id %>").show();
 $("#quote_text_area_<%= @quote_dom_id %>").html('<%= escape_javascript(render "quotes/quote_content_block", quote: @quote) %>');
+init_zero_clipboard($("#quote_text_area_<%= @quote_dom_id %>").find('.quote_copy_button'));

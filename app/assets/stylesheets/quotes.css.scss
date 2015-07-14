@@ -3,220 +3,222 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @mixin individual_quote {
-	overflow: auto;
-	border-radius: 12px;
-	background-color: white;
-	border: 1px solid #eee;
-	text-align: center;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-radius: 12px;
+    background-color: white;
+    border: 1px solid #eee;
+    text-align: center;
 
-	&:hover {
-		border: 1px solid #ddd;
-	}
+    &:hover {
+        border: 1px solid #ddd;
+    }
 
-	.show_quote_text_area {
-		padding: 24px 24px 6px 24px;
-	}
+    .show_quote_text_area {
+        padding: 24px 24px 6px 24px;
+    }
 }
 
 .quote_explicit_message {
-	font-size: 12px;
-	color: #828282;
+    font-size: 12px;
+    color: #828282;
 }
 
 .quote_explicit_show_form {
-	margin-bottom: 0px;
-	display: inline;
+    margin-bottom: 0px;
+    display: inline;
 }
 
 .quote_explicit_show_form button {
-	background: none;
-	border: none;
-	color: #606060;
+    background: none;
+    border: none;
+    color: #606060;
 }
 
 .quote_explicit_show_form button:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .quote_explicit_show_form button:focus {
-	outline: 0;
+    outline: 0;
 }
 
 ul.quotes_search {
-	list-style: none;
-	margin: 0;
-	padding: 0;	
+    list-style: none;
+    margin: 0;
+    padding: 0; 
 }
 
 .quote_search_result_link {
-	color: black !important;
-	text-decoration: none !important;
+    color: black !important;
+    text-decoration: none !important;
 }
 
 .quote_search_result_link:hover {
-	color: black !important;
-	text-decoration: none !important;
+    color: black !important;
+    text-decoration: none !important;
 }
 
 .quote_search_result_link .panel-heading {
-	background-color: #EEE;
-	color: #555;
+    background-color: #EEE;
+    color: #555;
 }
 
 .quote_search_result_link .panel-body {
-	white-space: nowrap;
-	overflow: hidden;
-	padding-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-bottom: 8px;
 }
 
 .quote_search_result_link .panel-body:hover {
-	white-space: normal;
+    white-space: normal;
 }
 
 ul.quotes {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-	font-size: 18px;
-	text-align: center;
-	li {
-		width: 88%;
-		margin-bottom: 24px;
-		display: inline-block;
-		@include individual_quote;
-		padding: 12px;
-		&:last-child {
-			border-bottom: 1px solid #eee;
-		}
-	}
+    font-size: 18px;
+    text-align: center;
+    li {
+        width: 88%;
+        margin-bottom: 24px;
+        display: inline-block;
+        @include individual_quote;
+        padding: 12px;
+        position: relative;
+        &:last-child {
+            border-bottom: 1px solid #eee;
+        }
+    }
 }
 
 ul.quotes li.highlight {
-	border-bottom: 3px solid #9A84C4;
-	border-top: 3px solid #9A84C4;
-	// border: 1px solid #CCC;
+    border-bottom: 3px solid #9A84C4;
+    border-top: 3px solid #9A84C4;
+    // border: 1px solid #CCC;
 }
 
 ul.quotes li .quote_text_area {
-	width: 88%;
-	margin: 0 auto;
+    width: 88%;
+    margin: 0 auto;
 }
 
 ul.quotes li .quote_text_art_label {
-	text-align: right !important;
+    text-align: right !important;
 }
 
 #show_quote .quote_text_art_label {
-	text-align: right !important;
-	margin-right: 10px;
-	margin-top: 7px;	
+    text-align: right !important;
+    margin-right: 10px;
+    margin-top: 7px;    
 }
 
 .quote_text_art_label a {
-	color: #999;
-	font-size: 12px;
+    color: #999;
+    font-size: 12px;
 }
 
 .quote_text_art_content_parent {
-	width: 360px;
-	margin-left: auto;
-	margin-right: auto;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .quote_text_art_content_parent_show_quote {
-	width: 410px;
-	margin-left: auto;
-	margin-right: auto;	
+    width: 410px;
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 ul.quotes li .quote_vote_area {
-	position: absolute;
-	margin-top: -6px;
+    position: absolute;
+    margin-top: -6px;
 }
 
 .fa-chevron-up.active {
-	color: #ED8D26;
+    color: #ED8D26;
 }
 
 .fa-chevron-down.active {
-	color: #6DA6E3;
+    color: #6DA6E3;
 }
 
 .quotes_list_stream_name_date {
-	margin-top: 12px;
-	font-size: 12px;
+    margin-top: 12px;
+    font-size: 12px;
 }
 
 .quotes_list_stream_name_date .quote_link {
-	text-decoration: none;
-	margin-right: 4px;
-	color: rgb(170, 170, 170);
+    text-decoration: none;
+    margin-right: 4px;
+    color: rgb(170, 170, 170);
 }
 
 .quotes_list_stream_name_date .quote_link:hover {
-	color: rgb(120, 120, 120);
+    color: rgb(120, 120, 120);
 }
 
 .quote_actions {
-	text-align: left;
-	display: inline-block;
-	font-size: 18px;
-	color: rgb(255, 255, 255);
-	background: #866bb9;
-	padding: 3px 12px;
-	border-radius: 4px;
-	margin-top: 6px;
+    text-align: left;
+    display: inline-block;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    background: #866bb9;
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-top: 6px;
 }
 
 /*show quote page*/
 
 #show_quote {
-	font-size: 22px;
-	@include individual_quote;
+    font-size: 22px;
+    @include individual_quote;
 
-	padding: 0px 0px 24px 0px;
+    padding: 0px 0px 24px 0px;
 
-	.panel-heading {
-		padding-left: 50px;
-		text-align: left;
-	}
+    .panel-heading {
+        padding-left: 50px;
+        text-align: left;
+    }
 }
 
 /*add quote page*/
 
 .add_quote_main_content {
-	padding: 0 8%;
+    padding: 0 8%;
 }
 
 #channels_search_form > input {
-	border: 0;
-	background: transparent;
-	font-size: 40px !important;
+    border: 0;
+    background: transparent;
+    font-size: 40px !important;
 
-	&:focus {
-		outline: 0;
-	}
+    &:focus {
+        outline: 0;
+    }
 }
 
 #new_quote_selected_stream_text {
-	margin-bottom: 8px;
-	color: #888;
-	display: none;
+    margin-bottom: 8px;
+    color: #888;
+    display: none;
 }
 
 #new_quote_selected_stream_text span {
-	color:#333;
+    color:#333;
 }
 
 #new_quote_form {
-	display: none;
+    display: none;
 }
 
 #new_quote_text_art_options {
-	text-align: center;
-	margin-top: -7px;
-	margin-bottom: 8px;
+    text-align: center;
+    margin-top: -7px;
+    margin-bottom: 8px;
 }
 
 #new_quote_text_art_options div {
@@ -237,195 +239,234 @@ ul.quotes li .quote_vote_area {
 }
 
 #available_emoticons_box {
-	display: none;
-	text-align: center;
-	margin-top: 30px;
-	padding: 0 8%;
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+    padding: 0 8%;
 }
 
 ul#channels {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .spinner {
-	display: none;
-	img {
-		width: 40px;
-	}
+    display: none;
+    img {
+        width: 40px;
+    }
 }
 
 #channels li {
-	padding: 5px;
-	border: solid #baaad7 3px;
-	border-radius: 10px;
-	margin-bottom: 10px;
-	cursor: pointer;
-	color: #545454;
+    padding: 5px;
+    border: solid #baaad7 3px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #545454;
 
-	&:hover {
-		border: solid #866bb9 3px;
-	}
+    &:hover {
+        border: solid #866bb9 3px;
+    }
 }
 
 #channels li > div {
-	display: inline-block;
-	vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #channels .logo {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 #channels .logo > img {
-	width: 48px;
+    width: 48px;
 }
 
 #channels .name_status > div > div {
-	display: inline-block;
-	padding: 0 8px;
-	border-right: 2px #ADADAD solid;
+    display: inline-block;
+    padding: 0 8px;
+    border-right: 2px #ADADAD solid;
 }
 
 #channels .name_status > div > div:last-child {
-	border-right: 0px;
+    border-right: 0px;
 }
 
 #channels .name_follower_game {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 #channels .status {
-	margin-top: 8px;
-	padding: 0 8px;
+    margin-top: 8px;
+    padding: 0 8px;
 }
 
 #channels .name {
-	font-weight: bold;
-	color: black;
+    font-weight: bold;
+    color: black;
 }
 
 .new_ip_like, .edit_ip_like {
-	margin-top: 8px;
+    margin-top: 8px;
 
-	span {
-		margin-left: -2px;
-		font-size: 24px;
-		opacity: 0.4;
-	}
+    span {
+        margin-left: -2px;
+        font-size: 24px;
+        opacity: 0.4;
+    }
 
-	span:not(.active):hover {
-		opacity: 0.8;
-	}
+    span:not(.active):hover {
+        opacity: 0.8;
+    }
 
-	span.active {
-		color: #E65A5A;
-		opacity: 1.0;
-	}
+    span.active {
+        color: #E65A5A;
+        opacity: 1.0;
+    }
 }
 
 .new_ip_like, .edit_ip_like, .new_like, .edit_like, .new_dislike, .edit_dislike {
-	display: inline-block;
-	margin-bottom: 0px;
+    display: inline-block;
+    margin-bottom: 0px;
 }
 
 .new_ip_like, .edit_ip_like, .new_like, .edit_like, .new_dislike, .edit_dislike {
-	button {
-		background: transparent;
-		border: none;
-		padding: 0;
+    button {
+        background: transparent;
+        border: none;
+        padding: 0;
 
-		&:focus {
-			outline: none;
-		}
-	}
+        &:focus {
+            outline: none;
+        }
+    }
 }
 
 .ip_vote_count {
-	text-align: center;
+    text-align: center;
 }
 
 .copy_clipboard {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .ascii_preview_box {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .ascii_preview_box .ascii_preview_parent {
-	padding: 10px 10px 0px 10px;
-	border: solid #BBB 1px;
-	border-radius: 10px;
-	background-color: white;
-	padding-bottom: 12px;
+    padding: 10px 10px 0px 10px;
+    border: solid #BBB 1px;
+    border-radius: 10px;
+    background-color: white;
+    padding-bottom: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
 .ascii_preview_box .ascii_preview_parent:hover {
-	border: solid #888 1px;
+    border: solid #888 1px;
 }
 
 .ascii_preview_box .ascii_preview_content {
-	border: solid #888 1px;
-	height: 100%;
-	border-radius: 10px;
-	height: 200px;
-	background-color: white;
-	color: black;
-	overflow: hidden;
-	font-size: 10px;
+    border: solid #888 1px;
+    height: 100%;
+    border-radius: 10px;
+    height: 200px;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    font-size: 10px;
 }
 
 .ascii_preview_box .ascii_preview_content:hover {
-	border: solid #555 1px;
+    border: solid #555 1px;
 }
 
 .ascii_preview_box .ascii_preview_content > div {
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .ascii_preview_box .ascii_preview_title {
-	color: black;
-	padding-top: 10px;
-	font-size: 18px;
-	overflow: hidden;
+    color: black;
+    padding-top: 10px;
+    font-size: 18px;
+    overflow: hidden;
 }
 
 .ascii_preview_box .ip_vote_parent {
-	margin-right: 10px;
-	display: inline-block;
-	padding: 0 5px;
-	color: black;
-	background-color: #E8E8E8;
-	border: solid 1px #CCC;
-	border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 0 5px;
+    color: black;
+    background-color: #E8E8E8;
+    border: solid 1px #CCC;
+    border-radius: 5px;
 }
 
 .ascii_preview_box .ascii_preview_link {
-	color: black;
+    color: black;
 }
 
 .ascii_preview_title_text {
-	margin-top: 8px;
-	display: inline-block;
+    margin-top: 8px;
+    display: inline-block;
 }
 
 .ascii_preview_box .ascii_preview_link:hover {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .ascii_preview_box .ascii_preview_link:active {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .ascii_preview_box .ascii_preview_link:focus {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 #quote_options_row {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.quote_copy_button {
+    background-color: #F8F8F8;
+    border-radius: 10px 0 10px;
+    border: #DDD solid 1px;
+    padding: 3px 9px;
+    position:absolute;
+    // keeping it at 0 instead of -2 cause for some reason, clicking copy will cause the button to move up and push everything up as well...
+    bottom: 0px;
+    right: 0px;
+    color: #555;
+    font-size: 16px;
+    display: none;
+}
+
+.quote_copy_button_top {
+    top: -2px;
+    right: -2px;
+    bottom: auto;
+    border-radius: 0 10px 0 10px;
+    padding: 4px 9px 3px 8px;
+    display: none;
+}
+
+.quote_copy_button:focus {
+    outline: 0;
+}
+
+.quote_copy_button.zeroclipboard-is-hover {
+    background-color: #866bb9;
+    border: #866bb9 solid 1px;
+    color: white;
+}
+
+.quote_copy_button.zeroclipboard-is-active {
+    color: #DDD;
 }

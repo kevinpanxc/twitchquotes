@@ -34,6 +34,8 @@
             <span class="glyphicon glyphicon-edit quote_link copy_clipboard" title="Copy to Clipboard" data-dom-id="<%= @quote_dom_id %>"></span>
             <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago
         </div>
+
+        <button class="quote_copy_button" data-clipboard-target="quote_content_<%= @quote_dom_id %>">copy</button>
     </div>
 </div>
 

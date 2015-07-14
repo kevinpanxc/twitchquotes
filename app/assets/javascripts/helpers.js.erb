@@ -1,0 +1,24 @@
+function init_zero_clipboard (buttons) {
+    ZeroClipboard.destroy()
+    ZeroClipboard.config( { swfPath: "<%= asset_path("ZeroClipboard.swf") %>" } );
+    zero_initialized = true;
+    buttons.each(function(index) {
+        var $button, client;
+        client = void 0;
+        $button = $(this);
+        client = new ZeroClipboard(this);
+        client.on('ready', function(e_1) {
+            $button.show();
+            client.on('aftercopy', function(e_2) {
+                if (!$button.prop("disabled")) {
+                    $button.html('copied!');
+                    $button.prop("disabled",true);
+                    setTimeout((function() {
+                        $button.prop("disabled",false);
+                        $button.html('copy');
+                    }), 800);
+                }
+            });
+        });
+    });
+}

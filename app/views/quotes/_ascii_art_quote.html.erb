@@ -18,5 +18,6 @@
             <% end %>
             <%= link_to quote_path(quote), class: "ascii_preview_link" do %><div class="ascii_preview_title_text"><%= quote.title %></div><% end %>
         </div>
+        <button class="quote_copy_button quote_copy_button_top" data-clipboard-target="quote_content_<%= @quote_dom_id %>">copy</button>
     </div>
 </div>

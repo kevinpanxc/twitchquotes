@@ -42,6 +42,8 @@ ready = ->
 
     init_zero_clipboard $('.quote_copy_button')
 
+    show_swagbucks()
+
     $('form').submit ->
         $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
         return

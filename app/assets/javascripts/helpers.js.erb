@@ -22,3 +22,14 @@ function init_zero_clipboard (buttons) {
         });
     });
 }
+
+function show_swagbucks () {
+    $swagbucks = $('#swagbucks');
+    var li = document.createElement('li');
+    $li = $(li);
+    $li.append($swagbucks);
+    $quotes_ul = $('ul.quotes').find(' > li:nth-child(3)').after($li);
+    $li.css('background', 'none');
+    $li.css('border', 'none');
+    $swagbucks.show();
+}

@@ -48,7 +48,7 @@
             <%= render @quotes %>
         </ul>
 
-        <%= render 'layouts/ads/swagbucks_horizontal' %>
+        <%= render partial: 'layouts/ads/swagbucks_horizontal', locals: {initial_hide: true} %>
 
         <div class="paginate_parent_bottom"><%= will_paginate %></div>
     </div>

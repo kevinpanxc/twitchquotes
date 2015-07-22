@@ -42,7 +42,8 @@ ready = ->
 
     init_zero_clipboard $('.quote_copy_button')
 
-    show_swagbucks()
+    if $("body").hasClass("quotes_index")
+        show_swagbucks_vertical()
 
     $('form').submit ->
         $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
@@ -50,6 +51,8 @@ ready = ->
 
   else if $("body").hasClass("quotes_ascii_art") or $("body").hasClass("streams_show")
     init_zero_clipboard $('.quote_copy_button')
+
+    show_swagbucks_square()
 
 $(document).ready ready
 $(document).on "page:load", ready

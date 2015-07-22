@@ -23,13 +23,23 @@ function init_zero_clipboard (buttons) {
     });
 }
 
-function show_swagbucks () {
+function show_swagbucks_vertical () {
     $swagbucks = $('#swagbucks');
     var li = document.createElement('li');
     $li = $(li);
     $li.append($swagbucks);
-    $quotes_ul = $('ul.quotes').find(' > li:nth-child(3)').after($li);
+    $('ul.quotes').find(' > li:nth-child(3)').after($li);
     $li.css('background', 'none');
     $li.css('border', 'none');
+    $swagbucks.show();
+}
+
+function show_swagbucks_square () {
+    $swagbucks = $('#swagbucks');
+    var div = document.createElement('div');
+    $div = $(div);
+    $div.append($swagbucks);
+    $div.addClass('col-sm-3 ascii_art_swagbucks');
+    $('.quote_row_ad').append($div);
     $swagbucks.show();
 }

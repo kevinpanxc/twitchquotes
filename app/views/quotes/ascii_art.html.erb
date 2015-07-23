@@ -1,18 +1,36 @@
 <% provide(:title, 'ASCII Art Copypasta') %>
 <% provide(:description, 'Browse a large collection of ASCII art (text art) copypastas from Twitch chat. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
-<div class="row quote_row">
-    <%= render partial: "quotes/ascii_art_quote", collection: @quotes[0..3], as: :quote %>
-</div>
+<% stop = false %>
 
-<div class="row quote_row quote_row_ad">
-    <%= render partial: "quotes/ascii_art_quote", collection: @quotes[4..6], as: :quote %>
-</div>
-
-<%= @quotes[7..-1].each_slice(4).with_index do |quote_batch, i| %>
+<% if @quotes.length >= 5 %>
     <div class="row quote_row">
-        <%= render partial: "quotes/ascii_art_quote", collection: quote_batch, as: :quote %>
+        <%= render partial: "quotes/ascii_art_quote", collection: @quotes[0..3], as: :quote %>
     </div>
+<% else %>
+    <% stop = true %>
+    <div class="row quote_row">
+        <%= render partial: "quotes/ascii_art_quote", collection: @quotes[0..-1], as: :quote %>
+    </div>
+<% end %>
+
+<% if @quotes.length >= 8 and !stop %>
+    <div class="row quote_row quote_row_ad">
+        <%= render partial: "quotes/ascii_art_quote", collection: @quotes[4..6], as: :quote %>
+    </div>
+<% elsif !stop %>
+    <% stop = true %>
+    <div class="row quote_row quote_row_ad">
+        <%= render partial: "quotes/ascii_art_quote", collection: @quotes[4..-1], as: :quote %>
+    </div>
+<% end %>
+
+<% if !stop %>
+    <%= @quotes[7..-1].each_slice(4).with_index do |quote_batch, i| %>
+        <div class="row quote_row">
+            <%= render partial: "quotes/ascii_art_quote", collection: quote_batch, as: :quote %>
+        </div>
+    <% end %>
 <% end %>
 
 <div class="paginate_parent_bottom"><%= will_paginate %></div>

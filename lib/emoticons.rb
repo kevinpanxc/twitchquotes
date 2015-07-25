@@ -31,6 +31,7 @@ class Emoticons
         deIlluminati: asset_path("emoticons/deilluminati.png"),
         OSfrog: asset_path("emoticons/osfrog.png"),
         "4Head" => asset_path("emoticons/4head.png"),
-        KappaPride: asset_path("emoticons/kappapride.png")
+        KappaPride: asset_path("emoticons/kappapride.png"),
+        CoolCat: asset_path("emoticons/coolcat.png")
     }
 end

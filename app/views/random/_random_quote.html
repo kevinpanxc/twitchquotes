@@ -2,7 +2,7 @@
 <% provide(:description, 'Generate a random copypasta from the TwitchQuotes copypasta database. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
 <div class="row">
-    <div id="show_quote" class="single_quote_block col-md-8 col-md-offset-2">
+    <div id="show_quote" class="single_quote_block col-xs-8 col-xs-offset-2">
         <% unless @quote.text_art %>
             <div class="show_quote_text_area">"<%=raw @quote.quote %>"</div>
         <% else %>
@@ -22,7 +22,7 @@
 
 <% if [true, false].sample %>
     <div class="row hidden-xs hidden-sm" style="text-align: center; margin-top: 20px;">
-        <%= render 'layouts/ads/horizontal_ad_one' %>
+        <%= render 'layouts/ads/adsense/horizontal_ad_one' %>
     </div>
 <% end %>
 

@@ -9,7 +9,7 @@
 %>
 
 <%= form_tag search_quotes_path, :method => 'get', :id => "quote_search_form" do %>
-    <div class="quote_search_form_wrapper col-md-10 col-md-offset-1">
+    <div class="quote_search_form_wrapper col-xs-10 col-xs-offset-1">
         <div class="row" style="width: 100%; margin-left: auto; margin-right: auto">
             <div class="col-xs-10" id="search_text_parent">
                 <%= text_field_tag 'query', @query, placeholder: "Search..." %>

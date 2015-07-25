@@ -3,83 +3,87 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .stream_box > a > div {
-	padding: 7%;
-	margin: 0 auto;
-	border: solid #baaad7 3px;
-	border-radius: 10px;
-	cursor: pointer;
-	margin-bottom: 20px;
+    padding: 7%;
+    margin: 0 auto;
+    border: solid #baaad7 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
 
-	background: #866bb9;
-	color: white;
+    background: #866bb9;
+    color: white;
 
-	&:hover {
-		border: solid #866bb9 3px;
-	}
+    &:hover {
+        border: solid #866bb9 3px;
+    }
 }
 
 .stream_box > a:hover {
-	text-decoration: none;
+    text-decoration: none;
+}
+
+.stream_box > a:focus {
+    text-decoration: none;
 }
 
 .stream_box .logo_parent {
-	background: #937bc0;
-	padding: 10px;
-	border-radius: 10px;
-	margin-bottom: 10px;
+    background: #937bc0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .stream_box .name {
-	font-weight: bold;
-	font-size: 20px;
-	margin-bottom: 5px;
-	overflow: hidden;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
 }
 
 #sort_buttons_parent span {
-	font-size: 30px;
-	color: #303030;
+    font-size: 30px;
+    color: #303030;
 }
 
 #sort_buttons_parent a {
-	border-bottom: #866bb9 solid 3px;
-	margin-bottom: 1px;
+    border-bottom: #866bb9 solid 3px;
+    margin-bottom: 1px;
 }
 
 #stream_title_jumbotron {
-	padding-top: 0px;
-	padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 #stream_title_jumbotron .row > div {
-	height: 106px;
-	text-align: center;
+    height: 106px;
+    text-align: center;
 }
 
 #stream_title_jumbotron img {
-	margin-top: 8px;
-	height: 90px;
-	padding: 8px;
-	border-radius: 4px;
+    margin-top: 8px;
+    height: 90px;
+    padding: 8px;
+    border-radius: 4px;
 }
 
 #stream_title_jumbotron h1 {
-	font-size: 60px;
-	line-height: 106px;
-	height: 106px;
-	margin: 0px;
-	background-color: #FAFAFA;
-	overflow: hidden;
+    font-size: 60px;
+    line-height: 106px;
+    height: 106px;
+    margin: 0px;
+    background-color: #FAFAFA;
+    overflow: hidden;
 }
 
 #stream_title_jumbotron .stream_title_lpp {
-	height: 106px;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
+    height: 106px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #stream_title_jumbotron .stream_title_lp {
-	display: table-cell;
-	vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }

@@ -2,53 +2,49 @@
 <% provide(:description, 'Browse the funniest copypastas from the Twitch chat of your favorite Twitch streamer. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
 <% if @letter %>
-	<div class="paginate_parent_top">
-		<ul class="pagination">
-			<% ("A".."Z").each { |letter| %>
-				<% if @letter == letter %>
-					<li class="active"><a class="active"><%= letter %></a></li>
-				<% else %>
-					<li><a href="/streams?letter=<%=letter%>"><%= letter %></a></li>
-				<% end %>
-			<% } %>
-		</ul>
-	</div>
+    <div class="paginate_parent_top">
+        <ul class="pagination">
+            <% ("A".."Z").each { |letter| %>
+                <% if @letter == letter %>
+                    <li class="active"><a class="active"><%= letter %></a></li>
+                <% else %>
+                    <li><a href="/streams?letter=<%=letter%>"><%= letter %></a></li>
+                <% end %>
+            <% } %>
+        </ul>
+    </div>
 <% end %>
 
 <% if @streams.empty? %>
-	<div class="row">
-		<div class="col-md-1">
-			<%= render "stream_sort_buttons" %>
-		</div>
-		<div class="col-md-6 col-md-offset-2">
-			<h1>No streams with quotes</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2 col-md-offset-5">
-			<div class="btn-group btn-group-justified">
-				<div class="btn-group">
-					<%= link_to new_quote_path do %>
-					    <button class="btn btn-large btn-custom" style="border-radius: 4px">Add a quote!</button>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-<% end %>
-
-<% @streams.each_slice(5).with_index do |stream_batch, i| %>
-	<div class="row stream_row">
-		<div class="col-md-1">
-			<% if i == 0 %>
-				<%= render "stream_sort_buttons" %>
-			<% end %>
-		</div>
-		<%= render stream_batch %>
-		<div class="col-md-1"></div>
-	</div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>No streams with quotes</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <%= link_to new_quote_path do %>
+                        <button class="btn btn-large btn-custom" style="border-radius: 4px">Add a quote!</button>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <% @streams.each_slice(5).with_index do |stream_batch, i| %>
+        <div class="row stream_row">
+            <div class="col-sm-1">
+                <% if i == 0 %>
+                    <%= render "stream_sort_buttons" %>
+                <% end %>
+            </div>
+            <%= render stream_batch %>
+        </div>
+    <% end %>
 <% end %>
 
 <% if !@letter %>
-	<div class="paginate_parent_bottom"><%= will_paginate %></div>
+    <div class="paginate_parent_bottom"><%= will_paginate %></div>
 <% end %>

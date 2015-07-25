@@ -1,0 +1,12 @@
+<div class="row" id="stream_ad_parent">
+    <h5>Sponsored streams</h5>
+    <%= render partial:'layouts/ads/stream_ad/stream_ad_unit', locals: { stream_link: "http://www.twitch.tv/nl_kripp", logo_link: "http://static-cdn.jtvnw.net/jtv_user_pictures/nl_kripp-profile_image-294722d79072f28f-300x300.png", streamer_name: "nl_Kripp", stream_game: "Hearthstone", stream_desc: "Back At 11PM EST / 5AM CET! GoodGame Con & G2A Give Tmrw! Kripp Shirts: http://www.designbyhumans.com/shop/Kripp/ (✿☯‿☯✿)(✿☯‿☯✿)" } %>
+    <%= render partial:'layouts/ads/stream_ad/stream_ad_unit', locals: { stream_link: "http://www.twitch.tv/reynad27", logo_link: "http://static-cdn.jtvnw.net/jtv_user_pictures/reynad27-profile_image-78a32285e3fd0f88-300x300.png", streamer_name: "reynad27", stream_game: "Hearthstone", stream_desc: "Late night reynoodle | http://bit.ly/1ehUgg1" } %>
+    <%= render partial:'layouts/ads/stream_ad/stream_ad_unit', locals: { stream_link: "http://www.twitch.tv/trumpsc", logo_link: "http://static-cdn.jtvnw.net/jtv_user_pictures/trumpsc-profile_image-0eca634ef027d36b-300x300.png", streamer_name: "TrumpSC", stream_game: "Hearthstone", stream_desc: "TSM Trump Ladders" } %>
+</div>
+
+<script type="text/javascript" id="temp_init_stream_ad">
+    init_stream_ad_ellipsis_listener();
+    show_stream_ad();
+    $('#temp_init_stream_ad').remove();
+</script>

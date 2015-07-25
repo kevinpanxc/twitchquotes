@@ -1,0 +1,82 @@
+#stream_ad_parent {
+    text-align: left;
+
+    h5 {
+        margin: 0;
+        margin-left: 30px;
+        margin-bottom: 12px;
+        color: white;
+    }
+}
+
+.stream_ad_box {
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    div {
+        background-color: #AA92D6;
+        overflow: hidden;
+
+        .logo_parent {
+            width: 64px;
+            display: inline-block;
+        }  
+
+        .stream_name_parent {
+            vertical-align: top;
+            display: inline-block;
+            color: white;
+            padding-top: 5px;
+            padding-left: 2px;
+
+            .name {
+                font-size: 20px;
+            }
+
+            .game {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .stream_ad_heading {
+        border-radius: 5px 5px 0px 0px;
+        height: 74px;
+        white-space: nowrap;
+        padding: 5px;
+    }
+
+    .stream_ad_body {
+        background-color: #baaad7;
+        border-radius: 0px 0px 5px 5px;
+        font-size: 12px;
+        height: 60px;
+        color: white;
+        padding: 5px 8px;
+        position: relative;
+
+        .ellipsis {
+            display: none;
+            background-color: #baaad7;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            font-size: 20px;
+            line-height: 12px;
+            padding-left: 3px;
+            padding-right: 6px;
+            padding-bottom: 7px;
+        }
+    }
+
+    .logo {
+        margin: 0;
+    }
+}

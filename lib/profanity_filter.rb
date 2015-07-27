@@ -51,6 +51,8 @@ module ProfanityFilter
                 star_string = ""
                 if word.length == 2
                     star_string = "#{match[0]}*"
+                elsif word.length == 1
+                    star_string = "*"
                 else
                     (word.length - 2).times do
                         star_string += "*"

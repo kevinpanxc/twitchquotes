@@ -2,7 +2,7 @@
     <div class="ascii_preview_parent">
         <%= link_to quote_path(quote), class: "ascii_preview_link" do %>
             <div class="ascii_preview_content">
-                <div><%= quote.quote %></div>
+                <div id="quote_content_<%= @quote_dom_id%>"><%= quote.quote %></div>
             </div>
         <% end %>
         <div class="ascii_preview_title">

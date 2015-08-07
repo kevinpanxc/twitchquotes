@@ -1,6 +1,4 @@
 class Quote < ActiveRecord::Base
-    cattr_accessor :skip_process_emoticons
-
     has_many :ip_likes, dependent: :destroy
     has_many :likes, dependent: :destroy
     has_many :likers, through: :likes, source: :user
@@ -13,7 +11,7 @@ class Quote < ActiveRecord::Base
     validates :title, presence: true
 
     before_create :generate_f_ip_likes
-    before_save :process_emoticons, unless: :skip_process_emoticons
+    before_save :process_emoticons
     before_save :check_profanity
     after_destroy :refresh_stream_quote_count
 

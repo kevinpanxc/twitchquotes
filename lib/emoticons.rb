@@ -16,14 +16,13 @@ class Emoticons
 
         updated_quote_ids = []
 
-        Quote.skip_process_emoticons = true
         Quote.all.each do |q|
-            if q.quote =~ /<img class=\"emoticon\"/
+            if q.quote =~ /<img[^<>]+\/>/
                 updated_quote_ids.push(q.id)
-                q.update(quote: q.quote.gsub(/src=\"\/assets\/emoticons\/([a-zA-Z0-9]+)[-,.]/) { |match| "data-emote=\"#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}\" #{match}" })
+                # q.update(quote: q.quote.gsub(/<img[^<>]+\/>/) { |match| "data-emote=\"#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}\" #{match}" })
+                q.update(quote: q.quote.gsub(/<img[^<>]+\/>/) { |match| "#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" })
             end
         end
-        Quote.skip_process_emoticons = false
 
         puts "Updated quotes:"
         puts updated_quote_ids.join(', ')

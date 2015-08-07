@@ -1,4 +1,6 @@
 class Quote < ActiveRecord::Base
+    cattr_accessor :skip_process_emoticons
+
     has_many :ip_likes, dependent: :destroy
     has_many :likes, dependent: :destroy
     has_many :likers, through: :likes, source: :user
@@ -11,7 +13,7 @@ class Quote < ActiveRecord::Base
     validates :title, presence: true
 
     before_create :generate_f_ip_likes
-    before_save :process_quotes
+    before_save :process_emoticons, unless: :skip_process_emoticons
     before_save :check_profanity
     after_destroy :refresh_stream_quote_count
 
@@ -27,11 +29,11 @@ class Quote < ActiveRecord::Base
     end
 
     private
-        def process_quotes
+        def process_emoticons
             self.quote.strip!
             self.title.strip!
             Emoticons.emoticons.each do |key, value|
-                self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, '<img class="emoticon" src="' + value + '"/>')
+                self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{key}\" src=\"#{value}\"/>")
             end
         end
 

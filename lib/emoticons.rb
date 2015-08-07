@@ -7,6 +7,28 @@ class Emoticons
         ActionController::Base.helpers.asset_path(path)
     end
 
+    def self.refactor_emoticon_quotes()
+        # build lower case to actual emote string
+        local_case_to_actual = {}
+        @@emoticons.keys.each do |key|
+            local_case_to_actual["#{key.downcase}"] = "#{key}"
+        end
+
+        updated_quote_ids = []
+
+        Quote.skip_process_emoticons = true
+        Quote.all.each do |q|
+            if q.quote =~ /<img class=\"emoticon\"/
+                updated_quote_ids.push(q.id)
+                q.update(quote: q.quote.gsub(/src=\"\/assets\/emoticons\/([a-zA-Z0-9]+)[-,.]/) { |match| "data-emote=\"#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}\" #{match}" })
+            end
+        end
+        Quote.skip_process_emoticons = false
+
+        puts "Updated quotes:"
+        puts updated_quote_ids.join(', ')
+    end
+
     @@emoticons = {
         Kappa: asset_path("emoticons/kappa.png"),
         PJSalt: asset_path("emoticons/pjsalt.png"),

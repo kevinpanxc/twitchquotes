@@ -24,7 +24,7 @@ class Emoticons
             end
         end
 
-        puts "Updated quotes:"
+        puts "Updated quotes (#{updated_quote_ids.length.to_s}):"
         puts updated_quote_ids.join(', ')
     end
 

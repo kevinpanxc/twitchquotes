@@ -45,6 +45,7 @@ module ProfanityFilter
     def self.replace_with_stars(text)
         return_text = text
 
+        # PERHAPS WE CAN OPTIMIZE THIS USING GSUB INSTEAD OF SUB
         KEY_WORDS.each do |word|
             while return_text =~ /#{word}/i do
                 match = return_text[/#{word}/i]

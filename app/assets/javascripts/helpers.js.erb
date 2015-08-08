@@ -1,5 +1,5 @@
 function init_zero_clipboard (buttons) {
-    var img_tag_re = new RegExp("<img class="emoticon" data-emote="(.*?)"[^<>]+>");
+    var img_tag_re = new RegExp("<img[^<>]+>");
     ZeroClipboard.destroy()
     ZeroClipboard.config( { swfPath: "<%= asset_path("ZeroClipboard.swf") %>" } );
     zero_initialized = true;
@@ -13,9 +13,10 @@ function init_zero_clipboard (buttons) {
             // non greedy quantifier ? stops trying to find a match after a match has already been found
             // e.g. <img class="emoticon" data-emote="SMOrc" src=""> src="">
             // Without the ?, you get the whole string as a match but with the ?, you get <img class="emoticon" data-emote="SMOrc" src=""> as a match
-            quote_text = quote_text.replace(img_tag_re, "$1");
-            while(img_tag_re.test(quote_text)) {
-                quote_text = quote_text.replace(img_tag_re, "$1");
+            var img_tag_re_with_match = /<img class="emoticon" data-emote="(.*?)"[^<>]+>/;
+            quote_text = quote_text.replace(img_tag_re_with_match, "$1");
+            while(img_tag_re_with_match.test(quote_text)) {
+                quote_text = quote_text.replace(img_tag_re_with_match, "$1");
             }
             $button.attr("data-clipboard-text", quote_text);
         } else {

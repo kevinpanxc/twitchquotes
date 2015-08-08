@@ -1,8 +1,7 @@
+<% quote_title = ProfanityFilter.replace_with_stars(@quote.title) # just in case since current profanity filter doesn't check titles... %> 
 <% unless @quote.marked_as.nil? %>
-    <% quote_title = ProfanityFilter.replace_with_stars(@quote.title) %>
     <% quote_content = ProfanityFilter.replace_with_stars(@quote.quote) %>
 <% else %>
-    <% quote_title = @quote.title %>
     <% quote_content = @quote.quote %>
 <% end %>
 

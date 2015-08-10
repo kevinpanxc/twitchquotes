@@ -36,6 +36,11 @@ class QuotesController < ApplicationController
         else
             @quote_dom_id = 0
             @quote = Quote.find(params[:id])
+
+            respond_to do |format|
+                format.html
+                format.json { render json: @quote }
+            end
         end
     end
 

@@ -1,7 +1,7 @@
 <tr>
-    <th scope="row"><%= quote.id %></th>
+    <th scope="row"><%= link_to quote.id, quote_path(quote) %></th>
     <td><%= quote.title %></td>
-    <td><%= quote.quote.truncate(120) %></td>
+    <td class="admin_quote_content" data-json-path="<%= quote_path(quote.id, :json) %>" data-quote-id="<%= quote.id %>"><%= quote.quote.truncate(120) %></td>
     <td><%= quote.stream.name %></td>
     <td>
         <% 

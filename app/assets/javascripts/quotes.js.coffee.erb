@@ -61,5 +61,15 @@ ready = ->
             $(this).addClass "search_options_active"
             return
 
+    else if $body.hasClass("admin_index") or $body.hasClass("quotes_admin_quotes")
+        $('.admin_quote_content').bind 'click.show_entire_quote', ->
+            $quote = $(this)
+            $quote.html '<img class="admin_quotes_spinner" src="<%= asset_path("default_spinner.GIF") %>"/>'
+            $.getJSON $quote.data('json-path'), (data) ->
+                $quote.unbind 'click.show_entire_quote'
+                $quote.html data.quote
+                return
+            return
+
 $(document).ready ready
 $(document).on "page:load", ready

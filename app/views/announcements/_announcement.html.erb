@@ -1,0 +1,28 @@
+<% if announcement_counter == 0 %>
+    <tr <% if announcement.expired %> class="active" <% else %> class="info" <% end %>>
+        <th scope="row"><%= announcement_counter + 1 %></th>
+        <td><%= content_tag :div, raw(announcement.content) %></td>
+        <td><%= announcement.created_at.strftime("%b %d, %Y %H:%M") %></td>
+        <td>
+            <div style="margin-bottom: 5px">
+                <%= form_tag announcements_toggle_expire_path, method: "post", style:"margin: 0" do %>
+                    <% if announcement.expired %>
+                        <%= submit_tag "Activate", class: "btn btn-success" %>
+                    <% else %>
+                        <%= submit_tag "Expire", class: "btn btn-warning" %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div>
+                <%= link_to "Edit", edit_announcement_path(announcement), style: "display: block", class: "btn btn-primary" %>
+            </div>
+        </td>
+    </tr>
+<% else %>
+    <tr>
+        <th scope="row"><%= announcement_counter + 1 %></th>
+        <td><%= content_tag :div, raw(announcement.content) %></td>
+        <td><%= announcement.created_at.strftime("%b %d, %Y %H:%M") %></td>
+        <td></td>
+    </tr>
+<% end %>

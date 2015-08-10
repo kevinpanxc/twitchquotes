@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-    before_filter :signed_in_user, only: [:admin, :toggle_social]
-    before_filter :is_admin, only: [:admin, :toggle_social]
-
     def new
         @user = User.new
     end
@@ -47,33 +44,6 @@ class UsersController < ApplicationController
                 render 'new'
             end
         end
-    end
-
-    def admin
-        @announcement_update = Announcement.last
-        @announcement = Announcement.new
-        @display_social = Rails.application.config.display_social
-        @display_ip_voting = Rails.application.config.display_ip_voting
-    end
-
-    def toggle_social
-        if params[:social] == 'true'
-            Rails.application.config.display_social = true
-        else
-            Rails.application.config.display_social = false
-        end
-        flash[:success] = "Display social settings toggled to #{params[:social]}"
-        redirect_to admin_path
-    end
-
-    def toggle_ip_voting
-        if params[:ip_voting] == 'true'
-            Rails.application.config.display_ip_voting = true
-        else
-            Rails.application.config.display_ip_voting = false
-        end
-        flash[:success] = "Display ip voting settings toggled to #{params[:ip_voting]}"
-        redirect_to admin_path
     end
 
     private

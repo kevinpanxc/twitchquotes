@@ -8,12 +8,13 @@ Twitchquotes::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :streams, only: [:index, :show]
-  resources :announcements, only: [:create, :update, :edit]
+  resources :announcements, only: [:index, :create, :update, :edit, :new]
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
   resources :ip_likes, only: [:create, :destroy]
   resources :random, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
+  resources :admin, only: [:index]
 
   root to: 'quotes#index'
 
@@ -22,9 +23,9 @@ Twitchquotes::Application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/builder', to: 'static_pages#quote_builder'
   get '/signin', to: 'sessions#new'
-  get '/admin', to: 'users#admin'
-  post '/admin/toggle_social', to: 'users#toggle_social'
-  post '/admin/toggle_ip_voting', to: 'users#toggle_ip_voting'
+  post '/admin/toggle_social', to: 'admin#toggle_social'
+  post '/admin/toggle_ip_voting', to: 'admin#toggle_ip_voting'
+  post '/announcements/toggle_expire', to: 'announcements#toggle_expire', as: 'announcements_toggle_expire'
   get '/signup', to: 'users#new'
   delete '/signout', to: 'sessions#destroy'
 

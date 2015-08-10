@@ -1,0 +1,36 @@
+<tr>
+    <th scope="row"><%= quote.id %></th>
+    <td><%= quote.title %></td>
+    <td><%= quote.quote.truncate(120) %></td>
+    <td><%= quote.stream.name %></td>
+    <td>
+        <% 
+            if quote.marked_as.nil?
+                button_class = "btn-default"
+                glyphicon_class = "glyphicon-remove"
+            else
+                button_class = "btn-danger"
+                glyphicon_class = "glyphicon-ok"
+            end
+        %>
+        <%= link_to admin_toggle_quote_path(quote, marked_as: true), method: :post, class: "btn " + button_class, disabled: true do %>
+            <span class="glyphicon <%= glyphicon_class %>"></span>
+        <% end %>
+    </td>
+    <td>
+        <% 
+            if quote.highlight
+                button_class = "btn-success"
+                glyphicon_class = "glyphicon-ok"
+            else
+                button_class = "btn-default"
+                glyphicon_class = "glyphicon-remove"
+            end
+        %>
+        <%= link_to admin_toggle_quote_path(quote, highlight: true), method: :post, class: "btn " + button_class do %>
+            <span class="glyphicon <%= glyphicon_class %>"></span>
+        <% end %>
+    </td>
+    <td><%= quote.f_ip_likes %></td>
+    <td><%= quote.ip_likes.count %></td>
+</tr>

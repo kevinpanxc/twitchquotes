@@ -1,3 +1,22 @@
 // Place all the styles related to the Announcements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.announcements_header {
+    text-align: left;
+    padding: 18px 0;
+    margin: 0px;
+}
+
+.announcement_new_edit_header {
+    text-align: left;
+    font-size: 36px;
+}
+
+.announcement_action:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.announcement_action > a {
+    display: block;
+}

@@ -1,6 +1,6 @@
-<h1 style="text-align: left; font-size: 36px">Edit announcement</h1>
+<h1 class="announcement_new_edit_header">Edit announcement</h1>
 <%= form_for(@announcement) do |f| %>
     <%= render 'shared/error_messages', object: @announcement %>
-    <%= f.text_area :content_unevaluated, rows: 4, style: "height: 200px" %>
+    <%= f.text_area :content_unevaluated, rows: 4 %>
     <%= f.submit "Edit Announcement", class: "btn btn-large btn-custom" %>
 <% end %>

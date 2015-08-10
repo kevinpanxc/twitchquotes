@@ -2,6 +2,7 @@ class AdminController < ApplicationController
     before_filter :is_admin
 
     def index
+        @quotes = Quote.last(5).reverse
         @announcements = Announcement.last(5).reverse
         @announcement_update = Announcement.last
         @announcement = Announcement.new

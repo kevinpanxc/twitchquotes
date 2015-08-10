@@ -2,6 +2,7 @@ class AnnouncementsController < ApplicationController
     before_filter :is_admin
 
     def index
+        @first_page = (!params.has_key?(:page) or params[:page] == '1')
         @announcements = Announcement.order("created_at desc").paginate(page: params[:page], per_page: 10)
     end
 

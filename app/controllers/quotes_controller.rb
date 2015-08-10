@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-    before_filter :is_admin, only: [:edit, :update, :marked, :new, :create]
+    before_filter :is_admin, only: [:edit, :update, :marked, :new, :create, :admin_quotes, :admin_toggle]
 
     def index
         @quote_dom_id = 0
@@ -106,13 +106,31 @@ class QuotesController < ApplicationController
 
     def marked
         @quotes = Quote.where.not( marked_as: nil ).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
-        render 'marked_quotes'
+    end
+
+    def admin_quotes
+        @quotes = Quote.paginate(page: params[:page], per_page: 20, order: "created_at DESC")
+    end
+
+    def admin_toggle
+        quote = Quote.find(params[:id])
+        if params.has_key? :marked_as
+            if quote.marked_as.nil?
+                quote.marked_as = 1
+            else
+                quote.marked_as = nil
+            end
+        end
+        if params.has_key? :highlight
+            quote.highlight = !quote.highlight
+        end
+        quote.save
+        redirect_to :back
     end
 
     def ascii_art
         @quote_dom_id = 0
         @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 19, order: "created_at DESC")
-        render 'ascii_art'
     end
 
     private

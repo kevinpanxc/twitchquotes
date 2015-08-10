@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="paginate_parent_top"><%= will_paginate %></div>
+
+    <div class="col-md-12">
+        <div class="panel panel-default admin_quotes_panel">
+            <div class="panel-heading">Quotes</div>
+            <table class="table table-hover">
+                <thead>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 20%">Title</th>
+                    <th style="width: 35%">Quote</th>
+                    <th style="width: 10%">Stream</th>
+                    <th style="width: 5%">Marked</th>
+                    <th style="width: 5%">Highlight</th>
+                    <th style="width: 10%">f_ip_likes</th>
+                    <th style="width: 10%">IP likes</th>
+                </thead>
+                <tbody>
+                    <%= render partial: 'quotes/quote_admin', collection: @quotes, as: 'quote' %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="paginate_parent_bottom"><%= will_paginate %></div>
+</div>

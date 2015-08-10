@@ -1,20 +1,23 @@
-<% if announcement_counter == 0 %>
+<% if announcement_counter == 0 and (!(defined? @first_page) or @first_page) %>
     <tr <% if announcement.expired %> class="active" <% else %> class="info" <% end %>>
         <th scope="row"><%= announcement_counter + 1 %></th>
         <td><%= content_tag :div, raw(announcement.content) %></td>
         <td><%= announcement.created_at.strftime("%b %d, %Y %H:%M") %></td>
         <td>
-            <div style="margin-bottom: 5px">
-                <%= form_tag announcements_toggle_expire_path, method: "post", style:"margin: 0" do %>
-                    <% if announcement.expired %>
-                        <%= submit_tag "Activate", class: "btn btn-success" %>
-                    <% else %>
-                        <%= submit_tag "Expire", class: "btn btn-warning" %>
-                    <% end %>
-                <% end %>
+            <div class="announcement_action">
+                <% 
+                    if announcement.expired
+                        button_class = "btn-success"
+                        button_text = "Activate"
+                    else
+                        button_class = "btn-warning"
+                        button_text = "Expire"
+                    end
+                %>
+                <%= link_to button_text, toggle_expire_announcements_path, method: :post, class: "btn " + button_class %>
             </div>
-            <div>
-                <%= link_to "Edit", edit_announcement_path(announcement), style: "display: block", class: "btn btn-primary" %>
+            <div class="announcement_action">
+                <%= link_to "Edit", edit_announcement_path(announcement), class: "btn btn-primary" %>
             </div>
         </td>
     </tr>

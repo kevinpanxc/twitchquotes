@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default" style="padding-bottom: 12px">
+        <div class="panel panel-default admin_panel">
             <div class="panel-heading">Announcements</div>
             <table class="table table-hover">
                 <thead>
@@ -13,29 +13,37 @@
                     <%= render @announcements %>
                 </tbody>
             </table>
-            <div style="text-align: center">
+            <div class="show_all">
                 <%= link_to "New", new_announcement_path, class: "btn btn-default" %>
                 <%= link_to "Show all", announcements_path, class: "btn btn-default" %>
             </div>
         </div>
-<!--         <div>
-            <h2 style="text-align:left">Announcements</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default admin_panel">
+            <div class="panel-heading">Quotes</div>
+            <table class="table table-hover">
+                <thead>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 20%">Title</th>
+                    <th style="width: 35%">Quote</th>
+                    <th style="width: 10%">Stream</th>
+                    <th style="width: 5%">Marked</th>
+                    <th style="width: 5%">Highlight</th>
+                    <th style="width: 10%">f_ip_likes</th>
+                    <th style="width: 10%">IP likes</th>
+                </thead>
+                <tbody>
+                    <%= render partial: 'quotes/quote_admin', collection: @quotes, as: 'quote' %>
+                </tbody>
+            </table>
+            <div class="show_all">
+                <%= link_to "Show all", admin_quotes_path, class: "btn btn-default" %>
+            </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-                <th style="width: 5%">#</th>
-                <th style="width: 60%">Content</th>
-                <th style="width: 20%">Date</th>
-                <th style="width: 15%">Actions</th>
-            </thead>
-            <tbody>
-                <%= render @announcements %>
-            </tbody>
-        </table>
-        <div style="text-align: center">
-            <%= link_to "New", new_announcement_path, class: "btn btn-default" %>
-            <%= link_to "Show all", announcements_path, class: "btn btn-default" %>
-        </div> -->
     </div>
 </div>
 
@@ -53,7 +61,7 @@
                 <h3 class="panel-title">Social Settings</h3>
             </div>
             <div class="panel-body">
-                <%= link_to panel_button_text, admin_toggle_social_path, method: :post,
+                <%= link_to panel_button_text, toggle_social_admin_index_path, method: :post,
                     class: "btn btn-default btn-lg btn-block" %>
             </div>
         </div>
@@ -71,7 +79,7 @@
                 <h3 class="panel-title">Ip Voting Settings</h3>
             </div>
             <div class="panel-body">
-                <%= link_to panel_button_text, admin_toggle_ip_voting_path, method: :post, class: "btn btn-default btn-lg btn-block" %>
+                <%= link_to panel_button_text, toggle_ip_voting_admin_index_path, method: :post, class: "btn btn-default btn-lg btn-block" %>
             </div>
         </div>
     </div>

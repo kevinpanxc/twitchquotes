@@ -7,25 +7,37 @@ class Emoticons
         ActionController::Base.helpers.asset_path(path)
     end
 
-    def self.refactor_emoticon_quotes()
+    def self.quotes_with_emoticons
+        return Quote.where("lower(quote) like ?", "%<img class%")
+    end
+
+    def self.refactor_emoticon_quotes
         # build lower case to actual emote string
-        local_case_to_actual = {}
-        @@emoticons.keys.each do |key|
-            local_case_to_actual["#{key.downcase}"] = "#{key}"
-        end
+        lower_case_to_actual = build_lower_case_to_actual
 
         updated_quote_ids = []
 
         Quote.all.each do |q|
             if q.quote =~ /<img[^<>]+\/>/
                 updated_quote_ids.push(q.id)
-                # q.update(quote: q.quote.gsub(/<img[^<>]+\/>/) { |match| "data-emote=\"#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}\" #{match}" })
-                q.update(quote: q.quote.gsub(/<img[^<>]+\/>/) { |match| "#{local_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" })
+                q.update(quote: revert_img_tag_to_emoticon_string(lower_case_to_actual, q.quote))
             end
         end
 
         puts "Updated quotes (#{updated_quote_ids.length.to_s}):"
         puts updated_quote_ids.join(', ')
+    end
+
+    def self.build_lower_case_to_actual
+        lower_case_to_actual = {}
+        @@emoticons.keys.each do |key|
+            lower_case_to_actual["#{key.downcase}"] = "#{key}"
+        end
+        return lower_case_to_actual
+    end
+
+    def self.revert_img_tag_to_emoticon_string(lower_case_to_actual, quote)
+        return quote.gsub(/<img[^<>]+\/>/) { |match| "#{lower_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" }
     end
 
     @@emoticons = {

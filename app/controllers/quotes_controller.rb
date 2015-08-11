@@ -120,10 +120,10 @@ class QuotesController < ApplicationController
     def admin_toggle
         quote = Quote.find(params[:id])
         if params.has_key? :marked_as
-            if quote.marked_as.nil?
-                quote.marked_as = 1
+            if !quote.is_marked_as? :profanity_auto
+                quote.set_marked_as :profanity_auto
             else
-                quote.marked_as = nil
+                quote.remove_marked_as :profanity_auto
             end
         end
         if params.has_key? :highlight

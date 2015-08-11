@@ -21,24 +21,28 @@ module ProfanityFilter
     ]
 
     def self.set_profanity_flag(ignore_flagged)
+        count = 0
         ActiveRecord::Base.transaction do
             # fetch quotes in batches and set marked_as integer
             Quote.find_each do |quote|
-                if !ignore_flagged || quote.marked_as.nil?
+                if !ignore_flagged || !(quote.is_marked_as? :profanity_auto)
                     if KEY_WORDS.any? { |word| quote.quote.downcase.include? word }
-                        quote.marked_as = 1
+                        count += 1
+                        quote.set_marked_as(:profanity_auto)
                         quote.save
+                        puts "Marked quote #{quote.id}"
                     end
                 end
             end
         end
+        puts "Total #{count} quotes marked for profanity."
     end
 
     def self.has_profanity(text)
         if KEY_WORDS.any? { |word| text.downcase.include? word }
-            return 1
+            return true
         else
-            return nil
+            return false
         end
     end
 

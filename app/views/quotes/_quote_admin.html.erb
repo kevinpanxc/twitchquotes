@@ -5,7 +5,7 @@
     <td><%= quote.stream.name %></td>
     <td>
         <% 
-            if quote.marked_as.nil?
+            if quote.not_marked_as?
                 button_class = "btn-default"
                 glyphicon_class = "glyphicon-remove"
             else

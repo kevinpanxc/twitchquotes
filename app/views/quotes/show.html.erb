@@ -1,5 +1,5 @@
 <% quote_title = ProfanityFilter.replace_with_stars(@quote.title) # just in case since current profanity filter doesn't check titles... %> 
-<% unless @quote.marked_as.nil? %>
+<% if @quote.is_marked_as? :profanity_auto %>
     <% quote_content = ProfanityFilter.replace_with_stars(@quote.quote) %>
 <% else %>
     <% quote_content = @quote.quote %>
@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<% unless @quote.marked_as.nil? %>
+<% if @quote.is_marked_as? :profanity_auto %>
     <div class="row">
         <div class="col-md-offset-2 col-md-8" style="text-align: center">
             <%= form_tag(quote_path(@quote), remote: true, method: :get) do |f| %>

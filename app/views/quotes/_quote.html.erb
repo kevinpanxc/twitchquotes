@@ -1,7 +1,7 @@
 <% highlight = false if local_assigns[:highlight].nil? %>
 
 <li class="single_quote_block <%= "highlight" if highlight%>">
-    <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>" <% if !quote.marked_as.nil? %> style="display: none" <% end %>>
+    <div class="quote_vote_area" id="quote_<%= @quote_dom_id += 1 %>" <% unless quote.not_marked_as? %> style="display: none" <% end %>>
         <%= render "quotes/quote_actions_block", quote: quote %>
     </div>
     <% if quote.text_art %>
@@ -14,7 +14,7 @@
         </div>
     <% end %>
     <div class="<%= quote.text_art ? "quote_text_area_text_art" : "quote_text_area" %>" id="quote_text_area_<%= @quote_dom_id %>">
-        <% if quote.marked_as.nil? %>
+        <% if quote.not_marked_as? %>
         	<%= render "quotes/quote_content_block", quote: quote, highlight: highlight %>
         <% else %>
             <span class="quote_explicit_message">

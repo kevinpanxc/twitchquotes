@@ -2,7 +2,8 @@ class Quote < ActiveRecord::Base
     MarkedAs = {
         none: 0,
         profanity_auto: 1,
-        user_override: 2
+        user_override: 2,
+        dont_filter_title: 4
     }
 
     has_many :ip_likes, dependent: :destroy

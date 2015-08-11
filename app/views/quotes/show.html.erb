@@ -1,9 +1,15 @@
-<% quote_title = ProfanityFilter.replace_with_stars(@quote.title) # just in case since current profanity filter doesn't check titles... %> 
 <% if @quote.is_marked_as? :profanity_auto %>
     <% quote_content = ProfanityFilter.replace_with_stars(@quote.quote) %>
 <% else %>
     <% quote_content = @quote.quote %>
 <% end %>
+
+<% unless @quote.is_marked_as? :dont_filter_title %>
+    <% quote_title = ProfanityFilter.replace_with_stars(@quote.title) %>
+<% else %>
+    <% quote_title = @quote.title %>
+<% end %>
+
 
 <% unless @quote.text_art %>
     <% provide(:title, raw(quote_title)) %>

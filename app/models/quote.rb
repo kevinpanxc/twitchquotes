@@ -3,7 +3,8 @@ class Quote < ActiveRecord::Base
         none: 0,
         profanity_auto: 1,
         user_override: 2,
-        dont_filter_title: 4
+        dont_filter_title: 4,
+        no_emote: 8
     }
 
     has_many :ip_likes, dependent: :destroy

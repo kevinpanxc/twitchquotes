@@ -61,11 +61,13 @@ class Quote < ActiveRecord::Base
 
     private
         def process_emoticons
-            self.quote.strip!
-            self.title.strip!
-            self.quote = Emoticons.revert_img_tag_to_emoticon_string(Emoticons.build_lower_case_to_actual, self.quote)
-            Emoticons.emoticons.each do |key, value|
-                self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{key}\" src=\"#{value}\"/>")
+            if !self.is_marked_as? :no_emote
+                self.quote.strip!
+                self.title.strip!
+                self.quote = Emoticons.revert_img_tag_to_emoticon_string(Emoticons.build_lower_case_to_actual, self.quote)
+                Emoticons.emoticons.each do |key, value|
+                    self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{key}\" src=\"#{value}\"/>")
+                end
             end
         end
 

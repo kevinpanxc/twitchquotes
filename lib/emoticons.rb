@@ -66,6 +66,7 @@ class Emoticons
         "4Head" => asset_path("emoticons/4head.png"),
         KappaPride: asset_path("emoticons/kappapride.png"),
         CoolCat: asset_path("emoticons/coolcat.png"),
-        trumpW: asset_path("emoticons/trumpw.png")
+        trumpW: asset_path("emoticons/trumpw.png"),
+        reynadTS: asset_path("emoticons/reynadts.png")
     }
 end

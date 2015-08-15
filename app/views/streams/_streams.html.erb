@@ -1,0 +1,24 @@
+<!-- MOBILE VIEW -->
+
+<% @streams.each_slice(3).with_index do |stream_batch, i| %>
+    <div class="row stream_row visible-xs">
+        <%= render partial: stream_batch, locals: { mode: :mobile } %>
+    </div>
+<% end %>
+
+<!-- MOBILE VIEW -->
+
+<!-- WEB VIEW -->
+
+<% @streams.each_slice(5).with_index do |stream_batch, i| %>
+    <div class="row stream_row hidden-xs">
+        <div class="col-sm-1">
+            <% if i == 0 %>
+                <%= render partial: "stream_sort_buttons", locals: { mode: :web } %>
+            <% end %>
+        </div>
+        <%= render partial: stream_batch, locals: { mode: :web } %>
+    </div>
+<% end %>
+
+<!-- WEB VIEW -->

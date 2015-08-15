@@ -1,3 +1,8 @@
+<% if @starred 
+    provide(:title, 'Top Copypastas') 
+    provide(:description, 'View the top copypastas the best memers on Twitch chat can offer. TwitchQuotes is the leading database for Twitch chat quotes, copypastas, and ASCII art.')
+end %>
+
 <% if @page_one %>
     <div class="page-header" style="<% unless has_announcement? %> margin-top: -24px; <% end %> padding-bottom: 0px">
         <h1>TwitchQuotes <small> The Largest Database for Twitch Chat Copypastas on the Internet</small></h1>

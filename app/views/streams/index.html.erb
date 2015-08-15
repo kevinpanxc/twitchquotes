@@ -1,6 +1,10 @@
 <% provide(:title, 'All Streams') %>
 <% provide(:description, 'Browse the funniest copypastas from the Twitch chat of your favorite Twitch streamer. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
+<div class="row">
+    <%= render partial: "stream_sort_buttons", locals: { mode: :mobile } %>
+</div>
+
 <% if @letter %>
     <div class="paginate_parent_top">
         <ul class="pagination">
@@ -13,38 +17,32 @@
             <% } %>
         </ul>
     </div>
-<% end %>
 
-<% if @streams.empty? %>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h1>No streams with quotes</h1>
+    <% if @streams.empty? %>
+        <div class="row">
+            <div class="col-sm-1">
+                <%= render partial: "stream_sort_buttons", locals: { mode: :web } %>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <h1>No streams with quotes</h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-md-offset-5">
-            <div class="btn-group btn-group-justified">
-                <div class="btn-group">
-                    <%= link_to new_quote_path do %>
-                        <button class="btn btn-large btn-custom" style="border-radius: 4px">Add a quote!</button>
-                    <% end %>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <%= link_to new_quote_path do %>
+                            <button class="btn btn-large btn-custom" style="border-radius: 4px">Add a quote!</button>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-<% else %>
-    <% @streams.each_slice(5).with_index do |stream_batch, i| %>
-        <div class="row stream_row">
-            <div class="col-sm-1">
-                <% if i == 0 %>
-                    <%= render "stream_sort_buttons" %>
-                <% end %>
-            </div>
-            <%= render stream_batch %>
-        </div>
+    <% else %>
+        <%= render "streams" %>
     <% end %>
-<% end %>
-
-<% if !@letter %>
+<% else %>
+    <div class="paginate_parent_bottom visible-xs"><%= will_paginate %></div>
+    <%= render "streams" %>
     <div class="paginate_parent_bottom"><%= will_paginate %></div>
 <% end %>

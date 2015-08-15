@@ -13,9 +13,10 @@
 
 <% unless @quote.text_art %>
     <% provide(:title, raw(quote_title)) %>
-    <% provide(:description, raw(quote_content)) %>
+    <% provide(:description, "#{strip_tags(raw(quote_content))} - TwitchQuotes is one of the largest databases of Twitch chat copypastas on the internet. Our database contains over 1000 text and ASCII art copypastas.") %>
 <% else %>
     <% provide(:title, quote_title + " (ASCII Art)") %>
+    <% provide(:description, 'Browse a large collection of ASCII art (text art) copypastas from Twitch chat. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 <% end %>
 
 <% provide(:no_footer, true) %>

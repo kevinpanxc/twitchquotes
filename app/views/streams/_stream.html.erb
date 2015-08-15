@@ -1,4 +1,4 @@
-<div class="col-sm-2 stream_box">
+<div class="<% if mode == :web %> col-sm-2 <% elsif mode == :mobile %> col-xs-4 <% end %> stream_box">
     <%= link_to stream_path(stream.name) do %>
         <div title="<%= stream.name %>">
             <div class="logo_parent">

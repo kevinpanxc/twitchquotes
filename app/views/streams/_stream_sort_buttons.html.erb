@@ -1,8 +1,24 @@
-<div class="btn-group-vertical" id="sort_buttons_parent">
-	<%= link_to streams_path(letter: 'A'), class: "btn btn-default" do %>
-		<span class="glyphicon glyphicon-sort-by-alphabet"></span>
-	<% end %>
-	<%= link_to streams_path(page: 1), class: "btn btn-default" do %>
-		<span class="glyphicon glyphicon-sort-by-order-alt"></span>
-	<% end %>
-</div>
+<% alph_button_active_class = if @letter then "active" else "" end %>
+<% num_button_active_class = if @letter then "" else "active" end %>
+
+<% if mode == :web %>
+    <div class="btn-group-vertical hidden-xs" id="sort_buttons_parent">
+        <%= link_to streams_path(letter: 'A'), class: "btn btn-default #{alph_button_active_class}" do %>
+            <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+        <% end %>
+        <%= link_to streams_path(page: 1), class: "btn btn-default #{num_button_active_class}" do %>
+            <span class="glyphicon glyphicon-sort-by-order-alt"></span>
+        <% end %>
+    </div>
+<% elsif mode == :mobile %>
+    <div class="col-xs-12">
+        <div class="btn-group btn-group-justified visible-xs" id="sort_buttons_parent">
+            <%= link_to streams_path(letter: 'A'), class: "btn btn-default #{alph_button_active_class}" do %>
+                <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+            <% end %>
+            <%= link_to streams_path(page: 1), class: "btn btn-default #{num_button_active_class}" do %>
+                <span class="glyphicon glyphicon-sort-by-order-alt"></span>
+            <% end %>
+        </div>
+    </div>
+<% end %>

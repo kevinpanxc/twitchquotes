@@ -1,9 +1,15 @@
 left_key_nav = (link, e) ->
-  Turbolinks.visit(link)  if e.keyCode is 37
-  return
+  if e.keyCode is 37
+    Turbolinks.visit(link)
+    return true
+  else
+    return false
 right_key_nav = (link, e) ->
-  Turbolinks.visit(link)  if e.keyCode is 39
-  return
+  if e.keyCode is 39
+    Turbolinks.visit(link)
+    return true
+  else
+    return false
 
 ready = ->
   if $("body").hasClass("quotes_index") || $("body").hasClass("streams_show")
@@ -15,21 +21,17 @@ ready = ->
     if not next.hasClass("disabled") and not prev.hasClass("disabled")
       document.onkeydown = (e) ->
         if not pressed
-          pressed = true
-          left_key_nav prev_href, e
-          right_key_nav next_href, e
+          pressed = (left_key_nav prev_href, e) or (right_key_nav next_href, e)
           return
     else unless next.hasClass("disabled")
       document.onkeydown = (e) ->
         if not pressed
-          pressed = true
-          right_key_nav next_href, e
+          pressed = right_key_nav next_href, e
           return
     else
       document.onkeydown = (e) ->
         if not pressed
-          pressed = true
-          left_key_nav prev_href, e
+          pressed = left_key_nav prev_href, e
           return
   return
 

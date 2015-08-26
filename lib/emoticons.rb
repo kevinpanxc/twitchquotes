@@ -67,6 +67,7 @@ class Emoticons
         KappaPride: asset_path("emoticons/kappapride.png"),
         CoolCat: asset_path("emoticons/coolcat.png"),
         trumpW: asset_path("emoticons/trumpw.png"),
-        reynadTS: asset_path("emoticons/reynadts.png")
+        reynadTS: asset_path("emoticons/reynadts.png"),
+        shazamicon: asset_path("emoticons/shazamicon.png")
     }
 end

@@ -114,7 +114,13 @@ class QuotesController < ApplicationController
     end
 
     def admin_quotes
-        @quotes = Quote.paginate(page: params[:page], per_page: 20, order: "created_at DESC")
+        if (params.has_key? :quote_id) and (!params[:quote_id].empty?)
+            @quotes = Quote.where(id: params[:quote_id]).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        elsif (params.has_key? :quote_text) and (!params[:quote_text].empty?)
+            @quotes = Quote.where("lower(quote) like ?", "%#{params[:quote_text].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        else
+            @quotes = Quote.paginate(page: params[:page], per_page: 20, order: "created_at DESC")
+        end
     end
 
     def admin_toggle

@@ -24,7 +24,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default admin_panel">
-            <div class="panel-heading">Quotes</div>
+            <div class="panel-heading">
+                Quotes 
+                <span class="label label-success">IP likes: <%= IpLike.count %></span>
+                <span class="label label-success">IP Users: <%= IpUser.count %></span>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <th style="width: 5%">#</th>

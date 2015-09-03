@@ -1,9 +1,37 @@
 <div class="row">
     <div class="paginate_parent_top"><%= will_paginate %></div>
+</div>
 
+<div class="row">
+    <div class="col-md-12" style="text-align: right">
+        <form class="form-inline" style="display: inline-block; margin-right: 8px;" method="put" action="<%= admin_quotes_path %>">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Go to:</div>
+                    <input type="text" class="form-control" placeholder="Quote ID" name="quote_id">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <form class="form-inline" style="display: inline-block" method="put" action="<%= admin_quotes_path %>">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Text search" name="quote_text">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default admin_quotes_panel">
-            <div class="panel-heading">Quotes</div>
+            <div class="panel-heading">
+                Quotes 
+                <span class="label label-success">IP likes: <%= IpLike.count %></span>
+                <span class="label label-success">IP Users: <%= IpUser.count %></span>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <th style="width: 5%">#</th>

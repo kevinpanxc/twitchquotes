@@ -31,7 +31,7 @@ class Quote < ActiveRecord::Base
     end
 
     def generate_f_ip_likes
-        gen = Rubystats::NormalDistribution.new(10, 5)
+        gen = Rubystats::NormalDistribution.new(15, 7)
         self.f_ip_likes = gen.rng.ceil.abs
     end
 

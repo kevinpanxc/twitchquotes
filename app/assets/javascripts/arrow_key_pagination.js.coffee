@@ -20,17 +20,17 @@ ready = ->
     prev_href = prev.attr("href")
     if not next.hasClass("disabled") and not prev.hasClass("disabled")
       document.onkeydown = (e) ->
-        if not pressed
+        if ($("body").hasClass("quotes_index") || $("body").hasClass("streams_show") and not pressed)
           pressed = (left_key_nav prev_href, e) or (right_key_nav next_href, e)
           return
     else unless next.hasClass("disabled")
       document.onkeydown = (e) ->
-        if not pressed
+        if ($("body").hasClass("quotes_index") || $("body").hasClass("streams_show") and not pressed)
           pressed = right_key_nav next_href, e
           return
     else
       document.onkeydown = (e) ->
-        if not pressed
+        if ($("body").hasClass("quotes_index") || $("body").hasClass("streams_show") and not pressed)
           pressed = left_key_nav prev_href, e
           return
   return

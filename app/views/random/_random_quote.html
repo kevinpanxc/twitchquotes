@@ -18,6 +18,9 @@
             <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago
         </div>
     </div>
+    <div class="col-xs-1">
+        <%= link_to random_index_path, class: "btn btn-custom", style: "height: 100px; padding-top: 40px; margin-top: 5px" do %> <span class="glyphicon glyphicon-chevron-right"></span> <% end %>
+    </div>
 </div>
 
 <% if [true, false].sample %>

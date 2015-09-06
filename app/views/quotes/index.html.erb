@@ -1,6 +1,9 @@
 <% if @starred 
     provide(:title, 'Top Copypastas') 
-    provide(:description, 'View the top copypastas the best memers on Twitch chat can offer. TwitchQuotes is the leading database for Twitch chat quotes, copypastas, and ASCII art.')
+    provide(:description, 'View the most creative copypastas the best of Twitch chat can offer. TwitchQuotes is the leading database for Twitch chat quotes, copypastas, and ASCII art.')
+elsif @popular
+    provide(:title, 'Popular Copypastas') 
+    provide(:description, 'View the top voted copypastas by the community! TwitchQuotes is the leading database for Twitch chat quotes, copypastas, and ASCII art.')
 end %>
 
 <% if @page_one %>
@@ -13,31 +16,74 @@ end %>
     <div class="col-md-10">
         <div class="row" id="quote_options_row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                    <div class="btn-group <%= "dropup" if @sort_reverse %>" role="group">
-                        <%
-                            link_params = {}
-                            link_params[:sort] = "reverse" if !@sort_reverse
-                            link_params[:starred] = true if @starred
+                <div class="btn-group btn-group-justified" role="group">
+                    <!-- latest -->
+                    <div class="btn-group <%= "dropup" if @oldest %>" role="group">
+                        <%  
+                            class_string = "btn btn-default"
+                            path = quotes_path
+                            button_text = "Latest"
+                            if @latest
+                                class_string = "btn btn-custom"
+                                path = quotes_path(oldest: true)
+                            elsif @oldest
+                                class_string = "btn btn-custom"
+                                button_text = "Oldest"
+                            end
                         %>
 
-                        <%= link_to quotes_path(link_params), class: 'btn btn-default' do %>
-                            <span class="caret" aria-hidden="true"></span> Sort By Date
+                        <%= link_to path, {class: class_string} do %>
+                            <span class="caret" aria-hidden="true"></span> <%= button_text %>
                         <% end %>
                     </div>
+
+                    <!-- popular -->
                     <div class="btn-group" role="group">
-                        <% if not @starred %>
-                            <%= link_to "Starred", quotes_path(starred: true), {class: "btn btn-default"} %>
-                        <% else %>
-                            <%= link_to "Starred", quotes_path, {class: "btn btn-custom"} %>
+                        <%  
+                            class_string = "btn btn-default"
+                            path = quotes_path(popular: true)
+                            if @popular
+                                class_string = "btn btn-custom"
+                                path = quotes_path
+                            end
+                        %>
+
+                        <%= link_to path, {class: class_string, title: "Top copypastas by popular vote!"} do %>
+                            <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Popular
                         <% end %>
                     </div>
+
+                    <!-- starred quotes -->
+                    <div class="btn-group" role="group">
+                        <%  
+                            class_string = "btn btn-default"
+                            path = quotes_path(starred: true)
+                            if @starred
+                                class_string = "btn btn-custom"
+                                path = quotes_path
+                            end
+                        %>
+
+                        <%= link_to path, {class: class_string, title: "Specially picked, quality copypastas"} do %>
+                            <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Starred
+                        <% end %>
+                    </div>
+
+                    <!-- ascii art -->
                     <div class="btn-group hidden-xs" role="group">
-                        <%= link_to "ASCII Art", ascii_art_quotes_path, {class: "btn btn-default"} %>
+                        <%= link_to ascii_art_quotes_path, {class: "btn btn-default"} do %>
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> ASCII Art
+                        <% end %>
                     </div>
+
+                    <!-- random -->
                     <div class="btn-group" role="group">
-                        <%= link_to "Random", random_index_path, {class: "btn btn-default"} %>
+                        <%= link_to random_index_path, {class: "btn btn-default"} do %>
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Random
+                        <% end %>
                     </div>
+
+                    <!-- search -->
                     <div class="btn-group hidden-xs" role="group">
                         <%= link_to search_quotes_path, class: 'btn btn-default' do %>
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search

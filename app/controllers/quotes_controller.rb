@@ -4,17 +4,20 @@ class QuotesController < ApplicationController
     def index
         @quote_dom_id = 0
         @page_one = (!params.has_key? :page) || (params[:page].eql? '1')
-        @sort_reverse = (params.has_key? :sort) and (params[:sort].eql? 'reverse')
+        @popular = (params.has_key? :popular)
         @starred = (params.has_key? :starred)
-        @highlight_quote = (@starred) ? nil : Quote.where(highlight: true).random
+        @oldest = (params.has_key? :oldest)
+        @latest = (!@popular and !@starred and !@oldest)
+        @highlight_quote = (@starred || @popular) ? nil : Quote.where(highlight: true).random
 
-        query_options = {}
-        query_options[:highlight] = true if @starred
-
-        if @sort_reverse
-            @quotes = Quote.where(query_options).paginate(page: params[:page], per_page: 10, order: "created_at ASC")
-        else
-            @quotes = Quote.where(query_options).paginate(page: params[:page], per_page: 10, order: "created_at DESC")
+        if @latest
+            @quotes = Quote.paginate(page: params[:page], per_page: 10, order: "created_at DESC")
+        elsif @oldest
+            @quotes = Quote.paginate(page: params[:page], per_page: 10, order: "created_at ASC")
+        elsif @popular
+            @quotes = Quote.where({ text_art: false }).paginate(page: params[:page], per_page: 10, order: "ip_likes_count DESC")
+        elsif @starred
+            @quotes = Quote.where({ highlight: true }).paginate(page: params[:page], per_page: 10, order: "created_at DESC")
         end
     end
 

@@ -68,6 +68,9 @@ class Emoticons
         CoolCat: asset_path("emoticons/coolcat.png"),
         trumpW: asset_path("emoticons/trumpw.png"),
         reynadTS: asset_path("emoticons/reynadts.png"),
-        shazamicon: asset_path("emoticons/shazamicon.png")
+        shazamicon: asset_path("emoticons/shazamicon.png"),
+        tbSpicy: asset_path("emoticons/tbspicy.png"),
+        tbSriracha: asset_path("emoticons/tbsriracha.png"),
+        SwiftRage: asset_path("emoticons/swiftrage.png")
     }
 end

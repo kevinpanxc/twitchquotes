@@ -9,3 +9,8 @@ Models can inherit from other models without having to deal with the database. Y
 
     class Emoticon < AbstractModel
     end
+
+HTML style tags in body
+=======================
+
+In HTML5 you can have style tags in the body. Otherwise it's invalid code.

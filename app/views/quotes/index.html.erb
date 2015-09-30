@@ -53,19 +53,10 @@ end %>
                         <% end %>
                     </div>
 
-                    <!-- starred quotes -->
+                    <!-- emoticons -->
                     <div class="btn-group" role="group">
-                        <%  
-                            class_string = "btn btn-default"
-                            path = quotes_path(starred: true)
-                            if @starred
-                                class_string = "btn btn-custom"
-                                path = quotes_path
-                            end
-                        %>
-
-                        <%= link_to path, {class: class_string, title: "Specially picked, quality copypastas"} do %>
-                            <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Starred
+                        <%= link_to emoticons_path, {class: "btn btn-default", title: "Twitch chat emoticons"} do %>
+                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Emotes
                         <% end %>
                     </div>
 
@@ -76,17 +67,17 @@ end %>
                         <% end %>
                     </div>
 
-                    <!-- random -->
-                    <div class="btn-group" role="group">
-                        <%= link_to random_index_path, {class: "btn btn-default"} do %>
-                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Random
-                        <% end %>
-                    </div>
-
                     <!-- search -->
                     <div class="btn-group hidden-xs" role="group">
                         <%= link_to search_quotes_path, class: 'btn btn-default' do %>
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                        <% end %>
+                    </div>
+
+                    <!-- random -->
+                    <div class="btn-group" role="group">
+                        <%= link_to random_index_path, {class: "btn btn-default"} do %>
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Random
                         <% end %>
                     </div>
                 </div>

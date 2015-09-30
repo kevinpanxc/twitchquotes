@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906034707) do
+ActiveRecord::Schema.define(version: 20150929213957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20150906034707) do
   add_index "dislikes", ["quote_id"], name: "index_dislikes_on_quote_id", using: :btree
   add_index "dislikes", ["user_id", "quote_id"], name: "index_dislikes_on_user_id_and_quote_id", unique: true, using: :btree
   add_index "dislikes", ["user_id"], name: "index_dislikes_on_user_id", using: :btree
+
+  create_table "emoticons", force: true do |t|
+    t.string   "string_id"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "marked_as",  default: 0
+  end
+
+  add_index "emoticons", ["string_id"], name: "index_emoticons_on_string_id", using: :btree
 
   create_table "facebook_users", force: true do |t|
     t.string   "provider"

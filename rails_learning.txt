@@ -1,0 +1,11 @@
+Abstract models
+===============
+
+Models can inherit from other models without having to deal with the database. You use an abstract model in this case.
+
+    class AbstractModel < ActiveRecord::Base
+        self.abstract_class = true
+    end
+
+    class Emoticon < AbstractModel
+    end

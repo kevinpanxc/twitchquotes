@@ -1,4 +1,4 @@
-class Emoticons
+class EmoticonUtils
     def self.emoticons
         @@emoticons
     end
@@ -38,6 +38,20 @@ class Emoticons
 
     def self.revert_img_tag_to_emoticon_string(lower_case_to_actual, quote)
         return quote.gsub(/<img[^<>]+\/>/) { |match| "#{lower_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" }
+    end
+
+    def self.build_global_emoticons_dataset
+        global_emoticons = TwitchApi.fetch_global_emoticons["emoticons"]
+
+        global_emoticons.each do |emoticon|
+            if Emoticon.where(string_id: emoticon["regex"]).blank?
+                marked_as = Emoticon.get_marked_as()[:global]
+                if emoticon["regex"].include? "\\"
+                    marked_as |= Emoticon.get_marked_as()[:default_robot]
+                end
+                Emoticon.create(string_id: emoticon["regex"], image_url: emoticon["url"], marked_as: marked_as)
+            end
+        end
     end
 
     @@emoticons = {

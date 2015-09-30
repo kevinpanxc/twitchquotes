@@ -18,6 +18,7 @@ Twitchquotes::Application.routes.draw do
     resources :ip_likes, only: [:create, :destroy]
     resources :random, only: [:index, :show]
     resources :users, only: [:new, :create, :show]
+    resources :emoticons, only: [:index]
     resources :admin, only: [:index] do
         post 'toggle_social', on: :collection, to: 'admin#toggle_social'
         post 'toggle_ip_voting', on: :collection, to: 'admin#toggle_ip_voting'

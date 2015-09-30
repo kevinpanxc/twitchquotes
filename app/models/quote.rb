@@ -1,5 +1,7 @@
 class Quote < ActiveRecord::Base
-    MarkedAs = {
+    include IntegerFlagModule
+
+    @@MarkedAs = {
         none: 0,
         profanity_auto: 1,
         user_override: 2,
@@ -30,33 +32,13 @@ class Quote < ActiveRecord::Base
         end
     end
 
+    def self.get_marked_as
+        @@MarkedAs
+    end
+
     def generate_f_ip_likes
         gen = Rubystats::NormalDistribution.new(15, 7)
         self.f_ip_likes = gen.rng.ceil.abs
-    end
-
-    def set_marked_as(type)
-        if MarkedAs.has_key? type
-            self.marked_as |= MarkedAs[type]
-        end
-    end
-
-    def remove_marked_as(type)
-        if MarkedAs.has_key? type
-            self.marked_as &= ~MarkedAs[type]
-        end
-    end
-
-    def is_marked_as?(type)
-        if MarkedAs.has_key? type
-            return self.marked_as & MarkedAs[type] != 0
-        else
-            return false
-        end
-    end
-
-    def not_marked_as?
-        return self.marked_as == 0
     end
 
     private
@@ -64,8 +46,8 @@ class Quote < ActiveRecord::Base
             if !self.is_marked_as? :no_emote
                 self.quote.strip!
                 self.title.strip!
-                self.quote = Emoticons.revert_img_tag_to_emoticon_string(Emoticons.build_lower_case_to_actual, self.quote)
-                Emoticons.emoticons.each do |key, value|
+                self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(EmoticonUtils.build_lower_case_to_actual, self.quote)
+                EmoticonUtils.emoticons.each do |key, value|
                     self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{key}\" src=\"#{value}\"/>")
                 end
             end

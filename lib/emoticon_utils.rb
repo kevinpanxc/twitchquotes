@@ -89,6 +89,7 @@ class EmoticonUtils
         OSkomodo: asset_path("emoticons/oskomodo.png"),
         MingLee: asset_path("emoticons/minglee.png"),
         EleGiggle: asset_path("emoticons/elegiggle.png"),
-        KKona: asset_path("emoticons/kkona.png")
+        KKona: asset_path("emoticons/kkona.png"),
+        KappaRoss: asset_path("emoticons/kappaross.png")
     }
 end

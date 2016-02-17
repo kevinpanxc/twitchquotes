@@ -11,13 +11,13 @@ class QuotesController < ApplicationController
         @highlight_quote = (@starred || @popular) ? nil : Quote.where(highlight: true).random
 
         if @latest
-            @quotes = Quote.paginate(page: params[:page], per_page: 10, order: "created_at DESC")
+            @quotes = Quote.paginate(page: params[:page], per_page: 10).order("created_at DESC")
         elsif @oldest
-            @quotes = Quote.paginate(page: params[:page], per_page: 10, order: "created_at ASC")
+            @quotes = Quote.paginate(page: params[:page], per_page: 10).order("created_at ASC")
         elsif @popular
-            @quotes = Quote.where({ text_art: false }).paginate(page: params[:page], per_page: 10, order: "ip_likes_count DESC")
+            @quotes = Quote.where({ text_art: false }).paginate(page: params[:page], per_page: 10).order("ip_likes_count DESC")
         elsif @starred
-            @quotes = Quote.where({ highlight: true }).paginate(page: params[:page], per_page: 10, order: "created_at DESC")
+            @quotes = Quote.where({ highlight: true }).paginate(page: params[:page], per_page: 10).order("created_at DESC")
         end
     end
 
@@ -83,12 +83,12 @@ class QuotesController < ApplicationController
         if (params.has_key? :query) and (!params[:query].empty?)
             @query = params[:query]
             if @search_type == "quote"
-                @quotes = Quote.where("lower(quote) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+                @quotes = Quote.where("lower(quote) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20).order("created_at DESC")
             else
-                @quotes = Quote.where("lower(title) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+                @quotes = Quote.where("lower(title) like ?", "%#{@query.downcase}%").paginate(page: params[:page], :per_page => 20).order("created_at DESC")
             end
         else
-            @quotes = Quote.none.paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            @quotes = Quote.none.paginate(page: params[:page], :per_page => 20).order("created_at DESC")
         end
         render 'search_results'
     end
@@ -113,16 +113,16 @@ class QuotesController < ApplicationController
     end
 
     def marked
-        @quotes = Quote.where.not( marked_as: nil ).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+        @quotes = Quote.where.not( marked_as: nil ).paginate(page: params[:page], :per_page => 20).order("created_at DESC")
     end
 
     def admin_quotes
         if (params.has_key? :quote_id) and (!params[:quote_id].empty?)
-            @quotes = Quote.where(id: params[:quote_id]).paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            @quotes = Quote.where(id: params[:quote_id]).paginate(page: params[:page], :per_page => 20).order("created_at DESC")
         elsif (params.has_key? :quote_text) and (!params[:quote_text].empty?)
-            @quotes = Quote.where("lower(quote) like ?", "%#{params[:quote_text].downcase}%").paginate(page: params[:page], :per_page => 20, order: "created_at DESC")
+            @quotes = Quote.where("lower(quote) like ?", "%#{params[:quote_text].downcase}%").paginate(page: params[:page], :per_page => 20).order("created_at DESC")
         else
-            @quotes = Quote.paginate(page: params[:page], per_page: 20, order: "created_at DESC")
+            @quotes = Quote.paginate(page: params[:page], per_page: 20).order("created_at DESC")
         end
     end
 
@@ -144,7 +144,7 @@ class QuotesController < ApplicationController
 
     def ascii_art
         @quote_dom_id = 0
-        @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 19, order: "created_at DESC")
+        @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 19).order("created_at DESC")
     end
 
     private

@@ -4,9 +4,9 @@ class StreamsController < ApplicationController
 			@streams = Stream.where("UPPER(name) LIKE :prefix", prefix: "#{params[:letter]}%")
 			@letter = params[:letter].upcase
 		elsif params[:page] =~ /^\d+$/
-			@streams = Stream.paginate(page: params[:page], :per_page => 15, order: "quotes_count DESC")
+			@streams = Stream.paginate(page: params[:page], :per_page => 15).order("quotes_count DESC")
 		else
-			@streams = Stream.paginate(page: 1, :per_page => 15, order: "quotes_count DESC")
+			@streams = Stream.paginate(page: 1, :per_page => 15).order("quotes_count DESC")
 		end
 	end
 
@@ -14,7 +14,7 @@ class StreamsController < ApplicationController
 		@quote_dom_id = 0
 		@stream = Stream.where('LOWER(name) = ?', params[:id].downcase).first
 		if @stream
-			@quotes = @stream.quotes.paginate(page: params[:page], :per_page => 10, order: "created_at DESC")
+			@quotes = @stream.quotes.paginate(page: params[:page], :per_page => 10).order("created_at DESC")
 		else
 			render 'show_missing'
 		end

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.2.5'
 
 gem 'unicorn'
 
@@ -14,9 +14,9 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5.0.4'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.1.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -57,7 +57,7 @@ group :doc do
 end
 
 # Bootstrap framework
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.6'
 
 gem 'rubystats'
 

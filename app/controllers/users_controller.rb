@@ -9,9 +9,9 @@ class UsersController < ApplicationController
         @which_quotes = params.has_key?(:which) ? params[:which] : "like"
 
         if @which_quotes == "like"
-            @links = @user.likes.paginate(page: params[:page], :per_page => 24, order: "created_at DESC")
+            @links = @user.likes.paginate(page: params[:page], :per_page => 24).order("created_at DESC")
         else
-            @links = @user.dislikes.paginate(page: params[:page], :per_page => 24, order: "created_at DESC")
+            @links = @user.dislikes.paginate(page: params[:page], :per_page => 24).order("created_at DESC")
         end
 
         @like_count = @user.likes.count

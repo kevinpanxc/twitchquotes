@@ -3,7 +3,7 @@
     <title><%= content_for?(:title) ? "#{yield(:title)} | TwitchQuotes" : "TwitchQuotes | The Best Quotes from Twitch Chat" %></title>
     <meta name="description" content="<%= content_for?(:description) ? "#{yield(:description)}".truncate(200) : "TwitchQuotes is the leading database for Twitch chat quotes, copypastas, and ASCII art. Browse copypastas and ASCII text art from your favorite streamer's Twitch chat or even build your own copypasta" %>">
     <%= favicon_link_tag asset_path("favicon.ico") %>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

@@ -4,6 +4,11 @@
     <% end %>
 </li> -->
 <li>
+    <%= link_to new_submission_path, id: "profile-nav-li", class: "nav-li-highlight" do %>
+        <span style="margin-left: 2px"><img src="https://static-cdn.jtvnw.net/jtv_user_pictures/emoticon-2867-src-f02f9d40f66f0840-28x28.png" style="display: inline; width: 28px; margin-top: -20px; margin-bottom: -20px;"/> SUBMIT PASTA</span>
+    <% end %>  
+</li>
+<li>
     <%= link_to search_quotes_path do %>
         <span class="glyphicon glyphicon-search" title="Search"></span><span data-target=".navbar-collapse" class="navbar-toggle custom-navbar-toggle">Search</span>
     <% end %>    
@@ -47,7 +52,7 @@
 </li>
 <% if signed_in? %>
     <li class="dropdown" id="profile-nav-li">
-        <%= link_to "#", data: { toggle: "dropdown", class: "dropdown-toggle" } do %>
+        <%= link_to "#", data: { toggle: "dropdown", class: "dropdown-toggle" }, class: "nav-li-highlight" do %>
             <span class="glyphicon glyphicon-user" title="Sign Out"></span>
             <span style="margin-left: 2px"><%= current_user.username %></span>
         <% end %>

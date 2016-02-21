@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221082437) do
+ActiveRecord::Schema.define(version: 20160221195836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,9 +68,11 @@ ActiveRecord::Schema.define(version: 20160221082437) do
   add_index "ip_likes", ["quote_id"], name: "index_ip_likes_on_quote_id", using: :btree
 
   create_table "ip_users", force: :cascade do |t|
-    t.string   "ip_address", limit: 255
+    t.string   "ip_address",               limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "recent_submissions_count",             default: 0, null: false
+    t.datetime "last_day"
   end
 
   add_index "ip_users", ["ip_address"], name: "index_ip_users_on_ip_address", unique: true, using: :btree
@@ -109,6 +111,15 @@ ActiveRecord::Schema.define(version: 20160221082437) do
     t.integer  "followers"
     t.integer  "quotes_count",             default: 0
   end
+
+  create_table "submissions", force: :cascade do |t|
+    t.string   "quote"
+    t.integer  "ip_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "submissions", ["ip_user_id"], name: "index_submissions_on_ip_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        limit: 24

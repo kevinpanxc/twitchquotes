@@ -182,17 +182,31 @@ fieldset[disabled] .btn-mywebsite.active {
   text-align: center;
 }
 
-#profile-nav-li > a:focus {
-  outline: 0;
-}
+// #profile-nav-li > a:focus {
+//   outline: 0;
+// }
 
-#profile-nav-li > a {
-  background-color: #866bb9;
-  color: white;
+// #profile-nav-li > a {
+//   background-color: #866bb9;
+//   color: white;
+
+//   &:hover {
+//     color: #eee;
+//   }
+// }
+
+.nav-li-highlight {
+  background-color: #866bb9 !important;
+  color: white !important;
 
   &:hover {
-    color: #eee;
-  }
+    background-color: #866bb9 !important;
+    color: #eee !important;
+  }  
+}
+
+.nav-li-highlight:focus {
+  outline: 0;
 }
 
 /* footer */

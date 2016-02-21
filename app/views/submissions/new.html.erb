@@ -1,0 +1,12 @@
+<% provide(:title, 'Add Submission') %>
+<% provide(:description, 'Contribute to the TwitchQuotes copypasta database by adding your favorite copypastas. TwitchQuotes allows you to choose from a large selection of Twitch chat emoticons and use them like you normally do in chat') %>
+<div class="row">
+    <%= render 'shared/error_messages', object: @submission %>
+    <div class="col add_quote_main_content" id="new_submission_form">
+        <%= form_for(@submission) do |f| %>
+            <%= f.text_area :quote, rows: 4, placeholder: "Enter quote here... (required)" %>
+            <%= f.submit "Add Submission", class: "btn btn-large btn-custom" %>
+        <% end %>
+    </div>
+    <div class='spinner'><img src='<%= asset_path("default_spinner.GIF") %>'/></div>
+</div>

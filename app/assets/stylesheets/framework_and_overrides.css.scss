@@ -135,6 +135,11 @@ footer {
 	}
 }
 
+/* for alerts on the main page */
+.quotes_index .alert {
+    margin-bottom: 42px !important;
+}
+
 /* forms */
 input, textarea, select, .uneditable-input {
 	border: 1px solid #bbb;

@@ -34,15 +34,5 @@
 			<%= f.submit "Add Quote", class: "btn btn-large btn-custom" %>
 		<% end %>
 	</div>
-	<div id="available_emoticons_box" class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-			<div class="panel-heading">Available Emoticons</div>
-			<div class="panel-body">
-				<% EmoticonUtils.emoticons.each do |key, value| %>
-					<%=image_tag value, style: "display: inline-block", title: key %>
-				<% end %>
-			</div>
-		</div>
-	</div>
 	<div class='spinner'><img src='<%= asset_path("default_spinner.GIF") %>'/></div>
 </div>

@@ -25,9 +25,9 @@ module Misc
                 end
 
                 # finish
-                quote.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(EmoticonUtils.build_lower_case_to_actual, quote.quote)
+                quote.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(quote.quote)
                 quote.f_ip_likes += l_to_a
-                quote.save
+                quote.save!
 
                 if l_to_a > 0
                     results.push("[#{quote.id} : #{l_to_a}]")

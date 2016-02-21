@@ -21,6 +21,7 @@ class Quote < ActiveRecord::Base
     validates :title, presence: true
     validates :marked_as, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+    before_validation :revert_emoticon_urls
     before_create :generate_f_ip_likes
     before_save :process_emoticons
     before_save :check_profanity
@@ -42,14 +43,18 @@ class Quote < ActiveRecord::Base
     end
 
     private
+        def revert_emoticon_urls
+            if !self.new_record?
+                self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(self.quote)
+            end
+        end
+
         def process_emoticons
             if !self.is_marked_as? :no_emote
                 self.quote.strip!
                 self.title.strip!
-                self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(EmoticonUtils.build_lower_case_to_actual, self.quote)
-                EmoticonUtils.emoticons.each do |key, value|
-                    self.quote = self.quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{key}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{key}\" src=\"#{value}\"/>")
-                end
+                self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(self.quote)
+                self.quote = EmoticonUtils.emoticon_string_to_img_tag(self.quote)
             end
         end
 

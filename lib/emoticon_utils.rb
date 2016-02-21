@@ -1,8 +1,4 @@
 class EmoticonUtils
-    def self.emoticons
-        @@emoticons
-    end
-
     def self.asset_path(path)
         ActionController::Base.helpers.asset_path(path)
     end
@@ -12,15 +8,12 @@ class EmoticonUtils
     end
 
     def self.refactor_emoticon_quotes
-        # build lower case to actual emote string
-        lower_case_to_actual = build_lower_case_to_actual
-
         updated_quote_ids = []
 
         Quote.all.each do |q|
             if q.quote =~ /<img[^<>]+\/>/
                 updated_quote_ids.push(q.id)
-                q.update(quote: revert_img_tag_to_emoticon_string(lower_case_to_actual, q.quote))
+                q.save
             end
         end
 
@@ -28,19 +21,28 @@ class EmoticonUtils
         puts updated_quote_ids.join(', ')
     end
 
-    def self.build_lower_case_to_actual
-        lower_case_to_actual = {}
-        @@emoticons.keys.each do |key|
-            lower_case_to_actual["#{key.downcase}"] = "#{key}"
+    def self.revert_img_tag_to_emoticon_string(quote)
+        # e.g. <img class="emoticon" data-emote="MingLee" src="/assets/emoticons/minglee-37bd3a8f07cab6f5fecf73a4aae076b234e34e1adcfcd3329f1646becebfc35d.png"/>
+        # match[/\/([a-zA-Z0-9]+)[-,.]/, 1] returns minglee
+        # return quote.gsub(/<img[^<>]+\/>/) { |match| "#{lower_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" }
+
+        # this new version just looks for the text in data-emote
+        return quote.gsub(/<img[^<>]+\/>/) { |match| "#{match[/data-emote=\"([a-zA-Z0-9]+)\"/, 1]}" }
+    end
+
+    def self.emoticon_string_to_img_tag(quote)
+        Emoticon.all.each do |emoticon|
+            if not emoticon.is_marked_as?(:default_robot)
+                quote = quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{emoticon.string_id}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{emoticon.string_id}\" src=\"#{emoticon.image_url}\"/>")
+            end
         end
-        return lower_case_to_actual
+        return quote
     end
 
-    def self.revert_img_tag_to_emoticon_string(lower_case_to_actual, quote)
-        return quote.gsub(/<img[^<>]+\/>/) { |match| "#{lower_case_to_actual[match[/\/([a-zA-Z0-9]+)[-,.]/, 1]]}" }
-    end
-
+    # TODO: this method can be optimized like crazy
     def self.build_global_emoticons_dataset
+        Emoticon.update_all(in_use: false)
+
         global_emoticons = TwitchApi.fetch_global_emoticons["emoticons"]
 
         global_emoticons.each do |emoticon|
@@ -49,12 +51,15 @@ class EmoticonUtils
                 if emoticon["regex"].include? "\\"
                     marked_as |= Emoticon.get_marked_as()[:default_robot]
                 end
-                Emoticon.create(string_id: emoticon["regex"], image_url: emoticon["url"], marked_as: marked_as)
+                Emoticon.create!(string_id: emoticon["regex"], image_url: emoticon["url"], marked_as: marked_as, in_use: true)
+            else
+                emoticon = Emoticon.find_by_string_id(emoticon["regex"])
+                emoticon.update!(in_use: true)
             end
         end
     end
 
-    @@emoticons = {
+    EMOTICONS = {
         Kappa: asset_path("emoticons/kappa.png"),
         PJSalt: asset_path("emoticons/pjsalt.png"),
         BrainSlug: asset_path("emoticons/brainslug.png"),
@@ -91,5 +96,5 @@ class EmoticonUtils
         EleGiggle: asset_path("emoticons/elegiggle.png"),
         KKona: asset_path("emoticons/kkona.png"),
         KappaRoss: asset_path("emoticons/kappaross.png")
-    }
+    }.freeze
 end

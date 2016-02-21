@@ -69,6 +69,8 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'activerecord-import', '0.4.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

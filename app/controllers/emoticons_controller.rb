@@ -5,11 +5,11 @@ class EmoticonsController < ApplicationController
         @emoticons_robots = []
         @emoticons_faces = []
 
-        emoticons.each do |x|
-            if x.marked_as & 2 == 2
-                @emoticons_robots.push(x)
+        emoticons.each do |emoticon|
+            if emoticon.is_marked_as? :default_robot
+                @emoticons_robots.push(emoticon)
             else
-                @emoticons_faces.push(x)
+                @emoticons_faces.push(emoticon)
             end
         end
     end

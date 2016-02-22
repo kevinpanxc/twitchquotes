@@ -1,6 +1,6 @@
 <%= form_for(IpLike.new, remote: true) do |f| %>
     <%= button_tag(type: 'submit') do %>
-        <img src='<%= asset_path("emoticons/kappa.png") %>'/>
+        <img src='<%= EmoticonUtils.asset_path("emoticons/#{EmoticonUtils::EMOTICONS_IP_LIKE_BEFORE[rand(EmoticonUtils::EMOTICONS_IP_LIKE_BEFORE.length)]}") %>'/>
     <% end %>
     <%= render 'shared/like_dislike_form_hidden_fields', quote: quote %>
 <% end %>

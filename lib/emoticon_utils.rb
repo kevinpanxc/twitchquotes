@@ -33,7 +33,7 @@ class EmoticonUtils
     def self.emoticon_string_to_img_tag(quote)
         Emoticon.all.each do |emoticon|
             if not emoticon.is_marked_as?(:default_robot)
-                quote = quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{emoticon.string_id}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{emoticon.string_id}\" src=\"#{emoticon.image_url}\"/>")
+                quote = quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{emoticon.string_id}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{emoticon.string_id}\" src=\"#{emoticon.get_image_url}\"/>")
             end
         end
         return quote
@@ -59,42 +59,21 @@ class EmoticonUtils
         end
     end
 
+    EMOTICONS_IP_LIKE_BEFORE = [ 
+        "kappa", 
+        "keepo", 
+        "kappaclaus", 
+        "kappaross" ].freeze
+
+    EMOTICONS_IP_LIKE_AFTER = [
+        "frankerz",
+        "pogchamp",
+        "elegiggle",
+        "4head",
+        "kreygasm"
+        ].freeze
+
     EMOTICONS = {
-        Kappa: asset_path("emoticons/kappa.png"),
-        PJSalt: asset_path("emoticons/pjsalt.png"),
-        BrainSlug: asset_path("emoticons/brainslug.png"),
-        FrankerZ: asset_path("emoticons/frankerz.png"),
-        Keepo: asset_path("emoticons/keepo.png"),
-        Kreygasm: asset_path("emoticons/kreygasm.png"),
-        FailFish: asset_path("emoticons/failfish.png"),
-        BibleThump: asset_path("emoticons/biblethump.png"),
-        BabyRage: asset_path("emoticons/babyrage.png"),
-        krippRage: asset_path("emoticons/kripprage.png"),
-        PunchTrees: asset_path("emoticons/punchtrees.png"),
-        SSSsss: asset_path("emoticons/ssssss.png"),
-        MrDestructoid: asset_path("emoticons/mrdestructoid.png"),
-        OpieOP: asset_path("emoticons/opieop.png"),
-        krippFist: asset_path("emoticons/krippfist.png"),
-        RalpherZ: asset_path("emoticons/ralpherz.png"),
-        ResidentSleeper: asset_path("emoticons/residentsleeper.png"),
-        DansGame: asset_path("emoticons/dansgame.png"),
-        PogChamp: asset_path("emoticons/pogchamp.png"),
-        SMOrc: asset_path("emoticons/smorc.png"),
-        deIlluminati: asset_path("emoticons/deilluminati.png"),
-        OSfrog: asset_path("emoticons/osfrog.png"),
-        "4Head" => asset_path("emoticons/4head.png"),
-        KappaPride: asset_path("emoticons/kappapride.png"),
-        CoolCat: asset_path("emoticons/coolcat.png"),
-        trumpW: asset_path("emoticons/trumpw.png"),
-        reynadTS: asset_path("emoticons/reynadts.png"),
-        shazamicon: asset_path("emoticons/shazamicon.png"),
-        tbSpicy: asset_path("emoticons/tbspicy.png"),
-        tbSriracha: asset_path("emoticons/tbsriracha.png"),
-        SwiftRage: asset_path("emoticons/swiftrage.png"),
-        OSkomodo: asset_path("emoticons/oskomodo.png"),
-        MingLee: asset_path("emoticons/minglee.png"),
-        EleGiggle: asset_path("emoticons/elegiggle.png"),
-        KKona: asset_path("emoticons/kkona.png"),
-        KappaRoss: asset_path("emoticons/kappaross.png")
+        BibleThump: asset_path("emoticons/biblethump.png")
     }.freeze
 end

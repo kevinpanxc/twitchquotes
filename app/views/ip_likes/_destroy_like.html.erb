@@ -1,6 +1,10 @@
 <%= form_for(current_ip_user.ip_likes.find_by(quote_id: quote.id, ip_user_id: current_ip_user.id), html: { method: :delete }, remote: true) do |f| %>
     <%= button_tag(type: 'submit') do %>
-        <img src='<%= asset_path("emoticons/kreygasm.png") %>'/>
+        <% if quote.id == 1655 %>
+            <img src='<%= EmoticonUtils.asset_path("emoticons/osfrog") %>' />
+        <% else %>
+            <img src='<%= EmoticonUtils.asset_path("emoticons/#{EmoticonUtils::EMOTICONS_IP_LIKE_AFTER[rand(EmoticonUtils::EMOTICONS_IP_LIKE_AFTER.length)]}") %>'/>
+        <% end %>
     <% end %>
     <%= render 'shared/like_dislike_form_hidden_fields', quote: quote %>
 <% end %>

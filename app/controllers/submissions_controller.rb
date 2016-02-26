@@ -1,6 +1,13 @@
 class SubmissionsController < ApplicationController
+    before_filter :is_admin, only: [:index]
+
     def new
         @submission = Submission.new
+    end
+
+    def index
+        @submission_dom_id = 0
+        @submissions = Submission.paginate(page: params[:page], per_page: 10).order("created_at DESC")
     end
 
     def create

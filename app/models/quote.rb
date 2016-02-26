@@ -15,11 +15,13 @@ class Quote < ActiveRecord::Base
     has_many :dislikes, dependent: :destroy
     has_many :dislikers, through: :dislikes, source: :user
     belongs_to :stream, foreign_key: "stream_id", primary_key: "stream_id"
+    belongs_to :quote_tag
 
 	validates :quote, presence: true, length: { maximum: 1200 }
 	validates :stream_id, presence: true
     validates :title, presence: true
     validates :marked_as, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    validates :context, length: { maximum: 250 }
 
     before_validation :revert_emoticon_urls
     before_create :generate_f_ip_likes

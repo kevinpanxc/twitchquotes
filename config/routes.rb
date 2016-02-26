@@ -8,7 +8,7 @@ Twitchquotes::Application.routes.draw do
         get 'show_marked_quote', on: :member
         post 'admin_toggle', on: :member
     end
-    resources :submissions, only: [:new, :create]
+    resources :submissions, only: [:index, :new, :create]
     resources :sessions, only: [:new, :create, :destroy]
     resources :streams, only: [:index, :show]
     resources :announcements, only: [:index, :create, :update, :edit, :new] do

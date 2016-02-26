@@ -1,0 +1,10 @@
+<% provide(:title, 'All Submissions') %>
+<% provide(:description, 'All copypasta submissions from the community. TwitchQuotes is the largest database of Twitch chat copypastas on the internet!') %>
+
+<div class="row">
+    <ul class="quotes">
+        <%= render @submissions %>
+    </ul>
+
+    <div class="paginate_parent_bottom"><%= will_paginate %></div>
+</div>

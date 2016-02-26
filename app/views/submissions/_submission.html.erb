@@ -1,0 +1,7 @@
+<li class="single_quote_block">
+    <div class="quote_text_area">
+        "<span id="submission_content_<%= @submission_dom_id += 1 %>"><%=raw submission.quote %></span>"
+    </div>
+
+    <button class="quote_copy_button" data-quote-id="submission_content_<%= @submission_dom_id %>">copy</button>
+</li>

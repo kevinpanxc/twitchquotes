@@ -39,7 +39,7 @@ ready = ->
             $(this).addClass "new_quote_text_art_options_options_active"
             return
 
-    else if $body.hasClass("quotes_index") or $body.hasClass("quotes_show")
+    else if $body.hasClass("quotes_index") or $body.hasClass("quotes_show") or $body.hasClass("submissions_index")
         # initialize non flash-based copy
         $('.copy_clipboard').click( ->
             prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $("#quote_content_" + $(this).data("dom-id")).html());

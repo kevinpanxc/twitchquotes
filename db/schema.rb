@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221195836) do
+ActiveRecord::Schema.define(version: 20160226082941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,14 @@ ActiveRecord::Schema.define(version: 20160221195836) do
   add_index "likes", ["user_id", "quote_id"], name: "index_likes_on_user_id_and_quote_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
+  create_table "quote_tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quote_tags", ["name"], name: "index_quote_tags_on_name", using: :btree
+
   create_table "quotes", force: :cascade do |t|
     t.text     "quote"
     t.datetime "created_at"
@@ -99,7 +107,11 @@ ActiveRecord::Schema.define(version: 20160221195836) do
     t.boolean  "highlight",                  default: false
     t.integer  "f_ip_likes",                 default: 0
     t.integer  "ip_likes_count",             default: 0,     null: false
+    t.string   "context"
+    t.integer  "quote_tag_id"
   end
+
+  add_index "quotes", ["quote_tag_id"], name: "index_quotes_on_quote_tag_id", using: :btree
 
   create_table "streams", force: :cascade do |t|
     t.string   "name",         limit: 255

@@ -70,6 +70,15 @@ function show_adsense_square() {
     $ascii_art_square_ad.show();    
 }
 
+function show_mobile_horizontal_square(id, index) {
+    $ad = $('#' + id);
+    var li = document.createElement('li');
+    $li = $(li);
+    $li.addClass('ad hidden-md hidden-lg');
+    $li.append($ad);
+    $quotes = $('.quotes > li:nth-child(' + index + ')').after($li);
+}
+
 function init_stream_ad_ellipsis_listener () {
     function show_hide_ellipsis () {
         $('.stream_ad_body').each(function () {

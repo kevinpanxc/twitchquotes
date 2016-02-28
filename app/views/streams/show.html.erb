@@ -21,6 +21,13 @@
     </div>
 
     <div class="col-md-2 hidden-xs hidden-sm">
-        <%= render 'layouts/ads/adsense/vertical_ads', second: true %>
+        <%= render 'layouts/ads/adsense/desktop/vertical_ads', second: true %>
     </div>
+
+    <% if @quotes.length >= 3 %>
+        <%= render 'layouts/ads/adsense/mobile/horizontal_ad_one' %>
+    <% end %>
+    <% if @quotes.length >= 8 %>
+        <%= render 'layouts/ads/adsense/mobile/horizontal_ad_two' %>
+    <% end %>
 </div>

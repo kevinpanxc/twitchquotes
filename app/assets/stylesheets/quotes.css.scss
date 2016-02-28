@@ -109,6 +109,14 @@ ul.quotes li .quote_text_art_label {
     text-align: right !important;
 }
 
+ul.quotes li.ad > div {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+}
+
 #show_quote .quote_text_art_label {
     text-align: right !important;
     margin-right: 10px;

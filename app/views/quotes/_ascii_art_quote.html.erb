@@ -1,23 +1,37 @@
-<div class="col-sm-3 ascii_preview_box" id="quote_<%= @quote_dom_id += 1 %>">
-    <div class="ascii_preview_parent">
-        <%= link_to quote_path(quote), class: "ascii_preview_link" do %>
-            <div class="ascii_preview_content">
-                <div id="quote_content_<%= @quote_dom_id%>"><%= quote.quote %></div>
-            </div>
-        <% end %>
-        <div class="ascii_preview_title">
-            <% if Rails.application.config.display_ip_voting %>
-                <div class="ip_vote_parent">
-                    <% if current_ip_user && current_ip_user.ip_liked_quotes.include?(quote) %>
-                        <span class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></span>
-                    <% else %>
-                        <span class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></span>
-                    <% end %>
-                    <span class="ip_vote_count"><%= quote.ip_likes.count + quote.f_ip_likes %></span>
+<% if not quote_container.ad %>
+    <% quote = quote_container.model %>
+
+    <div class="col-sm-3 ascii_preview_box" id="quote_<%= @quote_dom_id += 1 %>">
+        <div class="ascii_preview_parent">
+            <%= link_to quote_path(quote), class: "ascii_preview_link" do %>
+                <div class="ascii_preview_content">
+                    <div id="quote_content_<%= @quote_dom_id%>"><%= quote.quote %></div>
                 </div>
             <% end %>
-            <%= link_to quote_path(quote), class: "ascii_preview_link" do %><div class="ascii_preview_title_text"><%= quote.title %></div><% end %>
+            <div class="ascii_preview_title">
+                <% if Rails.application.config.display_ip_voting %>
+                    <div class="ip_vote_parent">
+                        <% if current_ip_user && current_ip_user.ip_liked_quotes.include?(quote) %>
+                            <span class="ip_like_form_parent"><%= render "ip_likes/destroy_like", quote: quote %></span>
+                        <% else %>
+                            <span class="ip_like_form_parent"><%= render "ip_likes/like", quote: quote %></span>
+                        <% end %>
+                        <span class="ip_vote_count"><%= quote.ip_likes.count + quote.f_ip_likes %></span>
+                    </div>
+                <% end %>
+                <%= link_to quote_path(quote), class: "ascii_preview_link" do %><div class="ascii_preview_title_text"><%= quote.title %></div><% end %>
+            </div>
+            <button class="quote_copy_button quote_copy_button_top" data-quote-id="quote_content_<%= @quote_dom_id %>">copy</button>
         </div>
-        <button class="quote_copy_button quote_copy_button_top" data-quote-id="quote_content_<%= @quote_dom_id %>">copy</button>
     </div>
-</div>
+<% else %>
+    <div class="col-sm-3 ascii_art_swagbucks">
+        <% if quote_container.id == 1 %>
+            <%= render partial: 'layouts/ads/adsense/square_ad_one' %>
+        <% elsif quote_container.id == 2 %>
+            <%= render partial: 'layouts/ads/adsense/square_ad_two' %>
+        <% elsif quote_container.id == 3 %>
+            <%= render partial: 'layouts/ads/adsense/square_ad_three' %>
+        <% end %>
+    </div>
+<% end %>

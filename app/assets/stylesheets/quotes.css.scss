@@ -238,9 +238,40 @@ ul.quotes li .quote_vote_area {
     }
 }
 
-#show_quote_ad {
-    margin-top: 8px;
+.show_quote_ad {
     text-align: center;
+    width: 100%;
+}
+
+.show_quote_ad_child_mobile {
+    height: 90px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.show_quote_ad_child_desktop {
+    height: 90px;
+    margin-top: 8px;
+    width: 720px;
+}
+
+/*random quote page*/
+
+.random_quote_ad {
+    text-align: center;
+    width: 100%;
+}
+
+.random_quote_ad_child_mobile {
+    height: 90px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.random_quote_ad_child_desktop {
+    height: 90px;
+    margin-top: 20px;
+    width: 720px;
 }
 
 /*add quote page*/

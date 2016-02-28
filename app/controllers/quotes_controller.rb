@@ -144,7 +144,28 @@ class QuotesController < ApplicationController
 
     def ascii_art
         @quote_dom_id = 0
-        @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 19).order("created_at DESC")
+        @quotes = Quote.where( text_art: true ).paginate(page: params[:page], :per_page => 17).order("created_at DESC")
+
+        @quote_containers = @quotes.map { |quote| ASCIIArtQuoteContainer.new( model: quote ) }
+
+        if @quote_containers.length < 6
+            @quote_containers.push(ASCIIArtQuoteContainer.new( ad: true, id: 1 ))
+            return
+        end
+
+        @quote_containers.insert(5, ASCIIArtQuoteContainer.new( ad: true, id: 1 ))
+
+        if @quote_containers.length < 11
+            return
+        end
+
+        @quote_containers.insert(11, ASCIIArtQuoteContainer.new( ad: true, id: 2 ))
+
+        if @quote_containers.length < 17
+            return
+        end
+
+        @quote_containers.insert(17, ASCIIArtQuoteContainer.new( ad: true, id: 3 ))
     end
 
     private

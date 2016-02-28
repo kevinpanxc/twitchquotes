@@ -149,7 +149,7 @@ class QuotesController < ApplicationController
 
     private
         def quote_params
-            params.require(:quote).permit(:quote, :stream_id, :title, :text_art)
+            params.require(:quote).permit(:quote, :stream_id, :title, :text_art, :context)
         end
 
         def stream_params

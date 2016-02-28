@@ -241,3 +241,17 @@ fieldset[disabled] .btn-mywebsite.active {
 #twitchquotes_contact_button:focus {
   outline: 0;
 }
+
+#twitchquotes_page_header {
+  margin-top: -18px !important;
+  padding-bottom: 0px !important;
+
+  h1 {
+    letter-spacing: 0.8px;
+  }
+
+  small {
+    font-size: 24px;
+    margin-left: 5px;
+  }
+}

@@ -1,5 +1,15 @@
 preloader = new Image("/assets/default_spinner.GIF")
 
+quote_context_expand = ->
+    $('.quotes_context').click ->
+        context = $(this).find('.quotes_context_content')
+        if context.attr('data-toggle-text')
+            temp = context.data('toggle-text')
+            context.data 'toggle-text', context.html()
+            context.html temp
+        return
+    return
+
 ready = ->
     $body = $("body");
 
@@ -39,7 +49,7 @@ ready = ->
             $(this).addClass "new_quote_text_art_options_options_active"
             return
 
-    else if $body.hasClass("quotes_index") or $body.hasClass("quotes_show") or $body.hasClass("submissions_index")
+    if $body.hasClass("quotes_index") or $body.hasClass("quotes_show") or $body.hasClass("submissions_index")
         # initialize non flash-based copy
         $('.copy_clipboard').click( ->
             prompt("Copy to clipboard: Ctrl+C or CMD+C, Enter", $("#quote_content_" + $(this).data("dom-id")).html());
@@ -50,18 +60,20 @@ ready = ->
         $('form').submit ->
             $(this).find('img').attr 'src', '<%= asset_path("quote_spinner.GIF") %>'
             return
+        # setup quote context expansion
+        quote_context_expand()
 
-    else if $body.hasClass("quotes_ascii_art") or $body.hasClass("streams_show")
+    if $body.hasClass("quotes_ascii_art") or $body.hasClass("streams_show")
         init_zero_clipboard $('.quote_copy_button')
 
-    else if $body.hasClass("quotes_search")
+    if $body.hasClass("quotes_search")
         $("#search_options").find("div").click ->
             $("#search_type").val($(this).data("value"))
             $(".search_options_active").removeClass "search_options_active"
             $(this).addClass "search_options_active"
             return
 
-    else if $body.hasClass("admin_index") or $body.hasClass("quotes_admin_quotes")
+    if $body.hasClass("admin_index") or $body.hasClass("quotes_admin_quotes")
         $('.admin_quote_content').bind 'click.show_entire_quote', ->
             $quote = $(this)
             $quote.html '<img class="admin_quotes_spinner" src="<%= asset_path("default_spinner.GIF") %>"/>'

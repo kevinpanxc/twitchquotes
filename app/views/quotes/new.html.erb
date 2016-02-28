@@ -21,6 +21,7 @@
 		<%= form_for(@quote) do |f| %>
 			<%= f.text_field :title, placeholder: "Quote title (required)" %>
 			<%= f.text_area :quote, rows: 4, placeholder: "Enter quote here... (required)" %>
+			<%= f.text_area :context, rows: 1, placeholder: "Enter context here..." %>
 			<%= f.hidden_field :stream_id, id: "stream_id" %>
 			<%= f.hidden_field :text_art, id: "text_art" %>
 			<%= hidden_field_tag "stream_name" %>

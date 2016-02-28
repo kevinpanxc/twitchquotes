@@ -160,24 +160,51 @@ ul.quotes li .quote_vote_area {
     color: rgb(120, 120, 120);
 }
 
-.quotes_context {
-    text-align: right;
-    margin-top: 8px;
-    margin-bottom: 2px;
-    div {
-        padding: 3px 9px;
-        font-size: 14px;
-        border-radius: 4px;
-        display: inline-block;
-        max-width: 100%;
-        background-color: #9A84C4;
-        color: white;
-        word-wrap: break-word;
+@mixin quote_context_common {
+    display: inline-block;
+    word-wrap: break-word;
+    background-color: #9A84C4;
+    border-radius: 4px;
+    padding: 3px 9px;
+    color: white;
+}
 
-        .glyphicon {
-            font-size: 15px;
-            margin-top: 3px;
-            margin-right: 3px;
+@mixin quote_context_icon_common {
+    margin-top: 3px;
+    margin-right: 6px;    
+}
+
+.quotes_index {
+    .quotes_context_parent {
+        text-align: right;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        .quotes_context {
+            max-width: 100%;
+            word-wrap: break-word;
+            cursor: pointer;
+            font-size: 14px;
+            @include quote_context_common;
+            .glyphicon {
+                font-size: 15px;
+                @include quote_context_icon_common;
+            }
+        }
+    }
+}
+
+.quotes_show {
+    .quotes_context_parent {
+        text-align: center;
+        margin-top: -10px;
+        margin-bottom: 20px;
+        .quotes_context {
+            font-size: 16px;
+            @include quote_context_common;
+            .glyphicon {
+                font-size: 18px;
+                @include quote_context_icon_common;
+            }
         }
     }
 }

@@ -10,7 +10,6 @@
     <% quote_title = @quote.title %>
 <% end %>
 
-
 <% unless @quote.text_art %>
     <% provide(:title, raw(quote_title)) %>
     <% provide(:description, "#{strip_tags(raw(quote_content))} - TwitchQuotes is one of the largest databases of Twitch chat copypastas on the internet. Our database contains over 1000 text and ASCII art copypastas.") %>
@@ -48,6 +47,15 @@
 
         <button class="quote_copy_button" data-quote-id="quote_content_<%= @quote_dom_id%>">copy</button>
     </div>
+</div>
+
+<div class="row">
+    <%# CONTEXT %>
+    <% unless @quote.context.nil? %>
+        <div class="quotes_context_parent col-xs-offset-2 col-xs-8">
+            <div class="quotes_context"><span class="glyphicon glyphicon-question-sign"></span><span class="quotes_context_content"><%= @quote.context %></span></div>
+        </div>
+    <% end %>
 </div>
 
 <% if @quote.is_marked_as? :profanity_auto %>

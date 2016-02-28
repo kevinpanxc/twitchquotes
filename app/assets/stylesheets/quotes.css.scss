@@ -160,6 +160,28 @@ ul.quotes li .quote_vote_area {
     color: rgb(120, 120, 120);
 }
 
+.quotes_context {
+    text-align: right;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    div {
+        padding: 3px 9px;
+        font-size: 14px;
+        border-radius: 4px;
+        display: inline-block;
+        max-width: 100%;
+        background-color: #9A84C4;
+        color: white;
+        word-wrap: break-word;
+
+        .glyphicon {
+            font-size: 15px;
+            margin-top: 3px;
+            margin-right: 3px;
+        }
+    }
+}
+
 .quote_actions {
     text-align: left;
     display: inline-block;

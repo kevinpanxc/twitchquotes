@@ -25,6 +25,7 @@ class Quote < ActiveRecord::Base
 
     before_validation :revert_emoticon_urls
     before_create :generate_f_ip_likes
+    before_save :default_processing
     before_save :process_emoticons
     before_save :check_profanity
     after_destroy :refresh_stream_quote_count
@@ -45,6 +46,18 @@ class Quote < ActiveRecord::Base
     end
 
     private
+        def default_processing
+            self.quote.strip!
+            self.title.strip!
+            if not self.context.nil?
+                self.context.strip!
+
+                if self.context.empty?
+                    self.context = nil
+                end
+            end
+        end
+
         def revert_emoticon_urls
             if !self.new_record?
                 self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(self.quote)
@@ -53,8 +66,6 @@ class Quote < ActiveRecord::Base
 
         def process_emoticons
             if !self.is_marked_as? :no_emote
-                self.quote.strip!
-                self.title.strip!
                 self.quote = EmoticonUtils.revert_img_tag_to_emoticon_string(self.quote)
                 self.quote = EmoticonUtils.emoticon_string_to_img_tag(self.quote)
             end

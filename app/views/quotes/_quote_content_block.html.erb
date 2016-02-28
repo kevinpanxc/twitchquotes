@@ -10,7 +10,7 @@
 <% end %>
 
 <%# CONTEXT %>
-<% unless quote.context.nil? %>
+<% unless quote.context.nil? or quote.context.empty? %>
     <div class="quotes_context_parent">
         <div class="quotes_context"><span class="glyphicon glyphicon-question-sign"></span><span class="quotes_context_content" <% if quote.context.length > 45 then %> data-toggle-text="<%= quote.context %>" <% end %>><%= quote.context.truncate(45) %></span></div>
     </div>

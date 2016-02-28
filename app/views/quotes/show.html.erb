@@ -51,7 +51,7 @@
 
 <div class="row">
     <%# CONTEXT %>
-    <% unless @quote.context.nil? %>
+    <% unless @quote.context.nil? or @quote.context.empty? %>
         <div class="quotes_context_parent col-xs-offset-2 col-xs-8">
             <div class="quotes_context"><span class="glyphicon glyphicon-question-sign"></span><span class="quotes_context_content"><%= @quote.context %></span></div>
         </div>

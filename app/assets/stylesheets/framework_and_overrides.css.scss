@@ -4,13 +4,6 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-$nprogress-color: #f1f1f1;
-$nprogress-height: 4px;
-$nprogress-zindex: 10100;
-
-@import "nprogress";
-@import "nprogress-bootstrap";
-
 // make all images responsive by default
 img {
   @extend .img-responsive;

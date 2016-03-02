@@ -58,8 +58,6 @@ gem 'bootstrap-sass', '3.3.6'
 
 gem 'rubystats'
 
-gem 'nprogress-rails'
-
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

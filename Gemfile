@@ -40,9 +40,6 @@ gem 'will_paginate'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # Free font icons from font awesome!
 gem 'font-awesome-sass'
 

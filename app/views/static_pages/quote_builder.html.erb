@@ -1,42 +1,93 @@
 <% provide(:title, 'Copypasta Builder - Unicode Text Converter') %>
 <% provide(:description, 'Build Twitch chat copypastas using unicode fonts, dongers, and more. Choose between a large variety of fonts, dongers, and donger accessories. TwitchQuotes is the leading online database for Twitch chat copypastas') %>
 
-<div class="row">
+<div id="blocker_row" class="row">
+</div>
+
+<div id="builder_row" class="row">
+  <div class="panel panel-default panel-builder">
+    <div class="panel-heading">Copypasta Builder</div>
+    <div class="panel-body">
+      <div class="btn-group" id="font-selector">
+          <button style="background-color: #F9F9F9" type="button" class="btn btn-default">Font</button>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <span id="current-font"></span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" id="font-selector-menu"></ul>
+      </div>
+      <textarea id="builder" rows="4" placeholder="Type your spam here"></textarea>
+    </div>
+  </div>
+</div>
+
+<div id="emoticons_row" class="row">
     <div class="col-md-10">
-
-        <div class="panel panel-default panel-builder">
-          <div class="panel-heading">Copypasta Builder</div>
-          <div class="panel-body">
-            <div class="btn-group" id="font-selector">
-                <button style="background-color: #F9F9F9" type="button" class="btn btn-default">Font</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="current-font"></span> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" id="font-selector-menu"></ul>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (stay positive!)</div>
+            <div class="panel-body">
+              <div class="eu">(◕‿◕✿)</div> <div class="eu">~(˘▾˘~)</div> <div class="eu">(~˘▾˘)~</div> <div class="eu">ᕙ( ^ₒ^ c)</div> <div class="eu">☜(ﾟ∀ ﾟ☜)</div> <div class="eu">(☞ﾟ∀ﾟ)☞</div> <div class="eu">✿*∗˵╰༼✪ᗜ✪༽╯˵∗*✿</div> <div class="eu">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</div> <div class="eu">ᕕ┌◕ᗜ◕┐ᕗ</div>
             </div>
-            <textarea id="builder" rows="5" placeholder="Type your spam here"></textarea>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (fighting and flexing)</div>
+            <div class="panel-body">
+              <div class="eu">୧༼ಠ益▀̿༽୨</div> <div class="eu">ᕙ༼ຈلຈ༽ᕗ</div> <div class="eu">(ง ͠° ͟ʖ ͡°)ง</div> <div class="eu">(ง'̀-'́)ง</div> <div class="eu">୧༼ಠ益ಠ༽୨</div> <div class="eu">ᕦ(ò_óˇ)ᕤ</div> <div class="eu">(ง°ل͜°)ง</div> <div class="eu">ᕙʕ ಥ ▃ ಥ ʔᕗ</div> <div class="eu">ᕙʕ ಥ ▃ ಥ ʔᕗ</div> <div class="eu">ᕦ[ . ◕ ͜ ʖ ◕ . ]ᕤ</div> <div class="eu">ᕙ( * •̀ ᗜ •́ * )ᕗ</div> <div class="eu">ᕙ(⇀‸↼‶)ᕗ</div> <div class="eu">ლ(◉◡◔ლ)</div> <div>(ง •̀_•́)ง</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (pirates and aliens and such)</div>
+            <div class="panel-body">
+              <div class="eu">༼◥▶ل͜◀◤༽</div> <div class="eu">~~~~~~~[]=¤ԅ[✖Ĺ̯ಠ]/</div> <div class="eu">/{▀益▀}\</div> <div class="eu">╭(◕◕ ◉෴◉ ◕◕)╮</div> <div class="eu">/╲/\╭(▀̿̿Ĺ̯̿̿▀̿ ̿)╮/\╱\</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (animals)</div>
+            <div class="panel-body">
+              <div class="eu">(❍ᴥ❍ʋ)</div> <div class="eu">( ͡°ᴥ ͡° ʋ)</div> <div class="eu">ʕ ͡◊ ͜◉ ͡◊ ʔ</div> <div class="eu">ʕ•ᴥ•ʔ</div> <div class="eu">(つ•̀ᴥ•́)つ</div> <div class="eu">⋛⋋( ‘◇’)⋌⋚</div> <div class="eu">⊹⋛⋋( ՞ਊ ՞)⋌⋚⊹</div> <div class="eu">/╲/\╭༼ : ❛ ◡ ❛ : ༽╮/\╱﻿\</div> <div class="eu">(∩◕(oo)◕∩ )</div> <div class="eu">ʕ⌐ ͡▢ ͜ᴥ ͡▢ʔ</div> <div class="eu">くコ:彡</div> <div class="eu">໒(˵￣ᴥ￣˵)७</div> <div class="eu">(^ ◕ᴥ◕ ^)</div> <div class="eu">ʕ ͡◊ ͜◉ ͡◊ ʔ</div> <div class="eu">[ ಠ (oo) ಠ ]</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (serious)</div>
+            <div class="panel-body">
+              <div class="eu">(̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄</div> <div class="eu">(⌐■_■)</div> <div class="eu">༼ ºل͟º ༽</div> <div class="eu">༼ ಠل͟ರೃ ༽</div> <div class="eu">༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽</div> <div class="eu">༼ ºل͟º༼ ºل͟º༼ ºل͟º ༽ºل͟º ༽ºل͟º ༽</div> <div class="eu">(◕_◕)╭∩╮</div> <div class="eu">( ರ Ĺ̯ ರೃ )</div> <div class="eu">(◞≼◉ื≽◟ ;益;◞≼◉ื≽◟) ╭∩∩∩∩∩╮</div>
+            </div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="panel panel-default panel-builder">
-              <div class="panel-heading">Dongers</div>
-              <div class="panel-body">
-                <div class="eu">ຈل͜ຈ</div> <div class="eu">ಠ_ಠ</div> <div class="eu">Ծ_Ծ</div> <div class="eu">ಠ~ಠ</div> <div class="eu">(ಠ╭╮ಠ)</div> <div class="eu">ヽ༼ຈل͜ຈ༽ﾉ</div> <div class="eu">(ง ͠° ͟ʖ ͡°)ง</div> <div class="eu">(ง'̀-'́)ง</div> <div class="eu">༼ つ ◕_◕ ༽つ</div> <div class="eu">( ͡° ͜ʖ ͡°)</div> <div class="eu">( ͡~ ͜ʖ ͡°)</div> <div class="eu">ヽ( ͝° ͜ʖ͡°)ﾉ</div> <div class="eu">୧༼ಠ益ಠ༽୨</div> <div class="eu">ᕙ༼ຈلຈ༽ᕗ</div> <div class="eu">༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽</div> <div class="eu">༼ ಠل͟ರೃ ༽</div> <div class="eu">ლ(◉◡◔ლ)</div> <div class="eu">(⌐■_■)</div> <div class="eu">(̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄</div> <div class="eu">ᕙ( ^ₒ^ c)</div> <div class="eu">༼ ºل͟º ༽</div> <div class="eu"> [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]</div> <div class="eu">ʕ•ᴥ•ʔ</div> <div class="eu">ヽ( ͡°╭͜ʖ╮͡° )ﾉ</div> <div class="eu">(ʘᗩʘ')</div> <div class="eu">(◕‿◕✿)</div> <div class="eu">~(˘▾˘~)</div> <div class="eu">☜(՞ਊ ՞　)</div> <div class="eu">ԅ(‾⌣‾ԅ)</div> <div class="eu">(❍ᴥ❍ʋ)</div> <div class="eu">ʕ ͡◊ ͜◉ ͡◊ ʔ</div> <div class="eu">/{▀益▀}\</div> <div class="eu">༼◥▶ل͜◀◤༽</div> <div class="eu">୧༼ಠ益▀̿༽୨</div> <div class="eu">◥·̿Ĺ̯·̿ ̿◤</div> <div class="eu">( ͡ʘ╭͜ʖ╮͡ʘ)</div> <div class="eu">(つ•̀ᴥ•́)つ</div> <div class="eu">( ͡° ͜◯ ͡°)</div> <div class="eu">ԅ[✖Ĺ̯ಠ]/</div> <div class="eu">╭(◕◕ ◉෴◉ ◕◕)╮</div>
-              </div>
+        <div class="col-sm-6">
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Accessories (weapons)</div>
+            <div class="panel-body">
+              <div class="eu">̿' ̿'\̵͇̿̿\з=</div> <div class="eu">=ε/̵͇̿̿/'̿'̿ ̿</div> <div class="eu">¯¯̿̿¯̿̿'̿̿̿̿̿̿̿'̿̿'̿̿̿̿̿'̿̿̿)͇̿̿)̿̿̿̿ '̿̿̿̿̿̿\̵͇̿̿\=</div> <div class="eu">_•︻̷̿┻̿═━一</div> <div class="eu">=/̵͇̿̿/'̿'̿̿̿ ̿ ̿̿</div> <div class="eu">ﾟ. * ･ ｡ﾟ☆━</div> <div class="eu">━☆ﾟ. * ･ ｡ﾟ</div> <div class="eu"><:::::[]=¤</div> <div class="eu">¤=[]:::::></div> <div class="eu">~~~~~~~[]=¤</div> <div class="eu">¤=[]~~~~~~~</div> <div class="eu">▬▬ι═══════ﺤ </div> <div class="eu"><═══════ι▬▬</div>
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="panel panel-default panel-builder">
-              <div class="panel-heading">Accessories</div>
-              <div class="panel-body">
-                <div class="eu">_•︻̷̿┻̿═━一</div> <div class="eu">=/̵͇̿̿/'̿'̿̿̿ ̿ ̿̿</div> <div class="eu"> ▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬ </div> <div class="eu">☑</div> <div class="eu">☐</div> <div class="eu">━☆</div> <div class="eu"><:::::[]=¤</div> <div class="eu">¤=[]:::::></div> <div class="eu">♫</div> <div class="eu">♪</div> <div class="eu">[̲̅$̲̅(̲̅5)̲̅$̲̅]</div> <div class="eu">~~~~~~~[]=¤</div> <div class="eu">¤=[]~~~~~~~</div> <div class="eu">┻━┻</div> <div class="eu">┳━┳</div> <div class="eu">├┬┴┬ </div> <div class="eu">┴┬┴┤</div> <div class="eu">✿</div> <div class="eu">✔</div>
-              </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Accessories (misc)</div>
+            <div class="panel-body">
+              <div class="eu">╭∩╮</div> <div class="eu"> ▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬ </div> <div class="eu">☑</div> <div class="eu">☐</div> <div class="eu">━☆</div> <div class="eu">♫</div> <div class="eu">♪</div> <div class="eu">♬</div> <div class="eu">┻━┻</div> <div class="eu">┳━┳</div> <div class="eu">├┬┴┬ </div> <div class="eu">┴┬┴┤</div> <div class="eu">✿</div> <div class="eu">✔</div> <div class="eu">旦~</div> <div class="eu">♡</div> <div class="eu">♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪</div> <div class="eu">♚ ♛ ♜ ♝ ♞ ♟ ♔ ♕ ♖ ♗ ♘ ♙</div> <div class="eu">☪ ✡ † ☨ ✞ ✝ ☥ ☦ ☓ ♁</div> <div class="eu">☯</div> <div class="eu">✌</div> <div class="eu">◥█̆◤</div> <div class="eu">★　　★ ° ☾ ☆ ¸. ¸ 　★　 :.　 . • ○ ° ★　 .　 *　.　.　　¸ .　　 ° 　</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (lenny faces)</div>
+            <div class="panel-body">
+              <div class="eu">( ͡~ ͜ʖ ͡°)</div> <div class="eu">ヽ( ͝° ͜ʖ͡°)ﾉ</div> <div class="eu">( ͡° ͜ʖ ͡°)</div> <div class="eu">( ͡° ͜◯ ͡°)</div> <div class="eu"> [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]</div> <div class="eu">ヽ( ͡°╭͜ʖ╮͡° )ﾉ</div> <div class="eu">( ͠° ͟ʖ ͡°)</div> <div class="eu">(͡ ͡° ͜ つ ͡͡°)</div> <div class="eu">/╲/\╭( ͡° ͡° ͜ʖ ͡° ͡°)╮/\╱\</div> <div class="eu">( ͡ᵔ ͜ʖ ͡ᵔ )</div> <div class="eu">( ͡° ͜ʖ ( ͡~ ͜ʖ ͡~)</div> <div class="eu">(° ~͜ʖ~ °)</div> <div class="eu">( ཀ ʖ̯ ཀ)</div> <div class="eu">─=≡Σᕕ( ͡° ͜ʖ ͡°)ᕗ</div> <div class="eu">╭( ͡° ͜ʖ ͡°)╯╲_____</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (misc)</div>
+            <div class="panel-body">
+              <div class="eu">ຈل͜ຈ</div> <div class="eu">ಠ_ಠ</div> <div class="eu">Ծ_Ծ</div> <div class="eu">ಠ~ಠ</div> <div class="eu">(ಠ╭╮ಠ)</div> <div class="eu">ヽ༼ຈل͜ຈ༽ﾉ</div>   <div class="eu">༼ つ ◕_◕ ༽つ</div> <div class="eu">(ʘᗩʘ')</div>  <div class="eu">ԅ(‾⌣‾ԅ)</div>  <div class="eu">◥·̿Ĺ̯·̿ ̿◤</div> <div class="eu">( ͡ʘ╭͜ʖ╮͡ʘ)</div> <div class="eu">(ノಠ益ಠ)ノ彡┻━┻</div>
+            </div>
+          </div>
+          <div class="panel panel-default panel-builder">
+            <div class="panel-heading">Dongers (herp derp)</div>
+            <div class="panel-body">
+              <div class="eu">(◉◡◔)</div><div class="eu">ヽ(◉◡◔)ﾉ</div> <div class="eu">|̅|(̅|̅◉̅|̅◡̅|̅◔̅|̅)̅|</div>
             </div>
           </div>
         </div>
-
+      </div>
     </div>
 
     <div class="col-md-2 hidden-xs hidden-sm">

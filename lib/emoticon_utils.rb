@@ -33,7 +33,11 @@ class EmoticonUtils
     def self.emoticon_string_to_img_tag(quote)
         Emoticon.all.each do |emoticon|
             if not emoticon.is_marked_as?(:default_robot)
-                quote = quote.gsub(/(?<=[^[a-zA-Z0-9_]]|^)#{emoticon.string_id}(?=([^[a-zA-Z0-9_]]|$))/, "<img class=\"emoticon\" data-emote=\"#{emoticon.string_id}\" src=\"#{emoticon.get_image_url}\"/>")
+                # Positive look behind: (?<=a)b, matches the b, and only the b in cab, but does not match bed or debt
+                # Positive look ahead: b(?=a), matches a b that is followed by an a
+
+                # TODO: chat has changed so that emoticon strings besides characters like ( and . will not work
+                quote = quote.gsub(/(?<=[\s]|^)#{emoticon.string_id}(?=([\s]|$))/, "<img class=\"emoticon\" data-emote=\"#{emoticon.string_id}\" src=\"#{emoticon.get_image_url}\"/>")
             end
         end
         return quote

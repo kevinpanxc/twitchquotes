@@ -18,8 +18,14 @@
             <%= link_to @quote.stream.name, stream_path(@quote.stream.name), {:style=>"color:#6040a1"} %>'s stream, posted <%= time_ago_in_words(@quote.created_at) %> ago
         </div>
     </div>
-    <div class="col-xs-1">
+    <div class="col-xs-1 hidden-xs">
         <%= link_to random_index_path, class: "btn btn-custom", style: "height: 100px; padding-top: 40px; margin-top: 5px" do %> <span class="glyphicon glyphicon-chevron-right"></span> <% end %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6 visible-xs">
+        <%= link_to random_index_path, class: "btn btn-custom", style: "width: 100%; margin-top: 10px;" do %><span class="glyphicon glyphicon-refresh"></span> REFRESH<% end %>
     </div>
 </div>
 
@@ -34,7 +40,7 @@
 <% end %>
 
 <div class="row">
-    <div class="col-md-4 col-md-offset-4" style="margin-top: 20px; text-align: center">
+    <div class="col-md-4 col-md-offset-4" style="margin-top: 20px; margin-bottom: 20px; text-align: center">
         Brought to you by <%= link_to 'TwitchQuotes', root_path, class: "btn btn-custom", style: "margin-left: 4px" %>
     </div>
 </div>

@@ -1,6 +1,35 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap/variables";
+
+#builder_row {
+    position: fixed;
+    width: inherit;
+    z-index: 1000;
+    margin-top: -10px;
+}
+
+@media (max-width: $screen-sm) {
+    #builder_row {
+        width: 100%;
+    }    
+}
+
+#blocker_row {
+    position: fixed;
+    width: inherit;
+    z-index: 1000;
+    margin-top: -30px;
+    height: 42px;
+    background-color: #F7F7F7;
+}
+
+@media (max-width: $screen-sm) {
+    #blocker_row {
+        width: 100%;
+    }    
+}
 
 #builder {
     margin-top: 10px;
@@ -24,4 +53,14 @@
     cursor: pointer;
     display: inline-block;
     margin-bottom: 5px;
+}
+
+.builder-up {
+    margin-left: 24px;
+    background-color: #E4DCF2;
+}
+
+.builder-down {
+    margin-left: 10px;
+    background-color: #E4DCF2;
 }

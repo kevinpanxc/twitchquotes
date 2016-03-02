@@ -4,6 +4,7 @@
 
 ready = ->
     if $("body").hasClass("static_pages_quote_builder")
+        $("#emoticons_row").css("marginTop", $("#builder_row").outerHeight() - 10);
         Unicode.initialize_font_selector()
         builder = document.getElementById("builder")
         $(".eu").click ->
@@ -14,7 +15,6 @@ ready = ->
             if !/[^a-zA-Z]/.test(alpha)
                 insert_at_caret_2(builder, Unicode.get_char(alpha))
                 return false
-
 
 $(document).ready ready
 $(document).on "page:load", ready
